@@ -21,9 +21,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+    <%= f.label :nombre %><br >
+    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
