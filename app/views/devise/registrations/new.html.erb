@@ -1,28 +1,61 @@
-<h2>Sign up</h2>
+<h2>Registrar usuario</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Contraseña" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caracteres minimos)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Contraseña" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label "Confirme la contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, placeholder: "Confirmar contraseña" %>
   </div>
 
-    <%= f.label :nombre %><br >
+    <div class="field">
+    <%= f.label :nombre %><br />
     <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :DNI %><br />
+    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :suscripcion %> <br />
+    <%= f.check_box :suscripcion %> <br />
+    </div>
+    <% if (:suscripcion) %>
+      <div class="field">
+      <%= f.label "Numero de tarjeta (opcional)" %><br />
+      <%= f.text_field :nrotarjeta, required: true, placeholder: 'Ingrese el numero de tarjeta' %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Vencimiento (opcional)" %><br />
+      <%= f.text_field :vencimiento, required: true, placeholder: 'Ej: mes/año' %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Codigo de seguridad (opcional)" %><br />
+      <%= f.text_field :codseguridad, required: true, placeholder: 'Los tres digitos detras de la tarjeta' %>
+      </div>
+    <% end %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
