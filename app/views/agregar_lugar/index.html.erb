@@ -1,3 +1,22 @@
-<h1>Ingrese los datos del lugar que desea agregar</h1>
+<h2>Ingrese los datos del lugar que desea agregar</h2>
 
+   <%= form_for :lugar, :url => { :action => :create } do |l| %>
 
+  <div class="field">
+    <%= l.label :provincia %><br />
+    <%= l.text_field :provincia, autofocus: true, required: true, placeholder: "Provincia" %>
+  </div>
+
+  <div class="field">
+    <%= l.label :ciudad %><br />
+    <%= l.text_field :ciudad, required: true, placeholder: "Ciudad" %>
+  </div>
+
+  <div class="actions">
+
+    <%= l.submit "Agregar Lugar" %>
+  
+  </div>
+<% end %>
+
+<div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
