@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'
