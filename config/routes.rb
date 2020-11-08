@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
   get 'ruta/alta'
+
+  get 'agregar_lugar/index'
+
   get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'
