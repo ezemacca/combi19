@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_184510) do
+ActiveRecord::Schema.define(version: 2020_11_08_204226) do
+
+  create_table "combis", force: :cascade do |t|
+    t.string "clasificacion"
+    t.integer "plazas_totales"
+    t.integer "plazas_libres"
+    t.string "modelo"
+    t.string "patente"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
