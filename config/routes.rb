@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ruta/alta'
   get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'
