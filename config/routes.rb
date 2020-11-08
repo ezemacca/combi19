@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'agregar_lugar/index'
   get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'

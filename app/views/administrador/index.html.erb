@@ -1,3 +1,9 @@
 <h1> Inicio de administrador </h1>
 	
-	<%= link_to "Ver choferes",choferes_index_path %>
+	<%# Link para ver administrar los choferes #%>
+	<div><h2>Choferes<h2></div>
+	<div><%= link_to "Ver Choferes",choferes_index_path %></div>
+	
+	<%# Link para Agregar los lugares de origen y destino  #%>
+	<div><h2>Lugares<h2></div>
+	<div><%= link_to "Agregar Lugares", agregar_lugar_index_path %></div>
