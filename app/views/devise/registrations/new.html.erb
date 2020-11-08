@@ -39,23 +39,23 @@
     <div class="field">
     <%= f.label :suscripcion %> <br />
     <%= f.check_box :suscripcion %> <br />
-    </div>
-    <% if (:suscripcion) %>
+    </div> 
+    <%# if resource.suscripcion?%>
       <div class="field">
       <%= f.label "Numero de tarjeta (opcional)" %><br />
-      <%= f.text_field :nrotarjeta, required: true, placeholder: 'Ingrese el numero de tarjeta' %>
+      <%= f.text_field :nrotarjeta, placeholder: 'Ingrese el numero de tarjeta' %>
       </div>
 
       <div class="field">
       <%= f.label "Vencimiento (opcional)" %><br />
-      <%= f.text_field :vencimiento, required: true, placeholder: 'Ej: mes/año' %>
+      <%= f.text_field :vencimiento, placeholder: 'Ej: mes/año' %>
       </div>
 
       <div class="field">
       <%= f.label "Codigo de seguridad (opcional)" %><br />
-      <%= f.text_field :codseguridad, required: true, placeholder: 'Los tres digitos detras de la tarjeta' %>
+      <%= f.text_field :codseguridad, placeholder: 'Los tres digitos detras de la tarjeta' %>
       </div>
-    <% end %>
+    <%#end %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

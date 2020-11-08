@@ -10,6 +10,8 @@
   </head>
 
   <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <div>
       <% if signed_in? %>
         <%= link_to "Salir", destroy_usuario_session_path, method: :delete %>
