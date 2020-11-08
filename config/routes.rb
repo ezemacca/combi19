@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'ruta/alta'
 
+
   get 'agregar_lugar/index'
+  post 'agregar_lugar' => "agregar_lugar#create"
 
   get 'choferes/index'
   get 'usuario/index'
