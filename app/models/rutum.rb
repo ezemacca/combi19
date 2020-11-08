@@ -1,0 +1,2 @@
+class Rutum < ApplicationRecord
+end

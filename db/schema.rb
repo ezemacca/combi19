@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_204226) do
+
+
+ActiveRecord::Schema.define(version: 2020_11_08_204303) do
 
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"
@@ -18,6 +20,18 @@ ActiveRecord::Schema.define(version: 2020_11_08_204226) do
     t.integer "plazas_libres"
     t.string "modelo"
     t.string "patente"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lugars", force: :cascade do |t|
+    t.string "provincia"
+    t.string "ciudad"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ruta", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
