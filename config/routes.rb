@@ -5,11 +5,13 @@ Rails.application.routes.draw do
 
   get 'agregar_lugar/index'
   post 'agregar_lugar' => "agregar_lugar#create"
-
   get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'
+  get 'combis/new'
+  get 'combis/index'
+  post 'combis' => "combis#new"
   devise_for :usuarios
 
   root 'welcome#index'
