@@ -1,2 +1,3 @@
 class Lugar < ApplicationRecord
+	
 end
