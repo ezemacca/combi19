@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'ruta/alta'
+  post 'ruta' => "ruta#create"
 
 
   get 'agregar_lugar/index'							# Creacion de los lugares

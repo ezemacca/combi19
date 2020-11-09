@@ -1,6 +1,6 @@
 <h1>Agregar Ruta</h1>
 
-<%= form_for :ruta do |r| %>
+<%= form_for :ruta, :url => { :action => :create } do |r| %>
 <div class="field">
     <%= r.label "Ingrese nombre de la ruta:" %><br />
     <%= r.text_field :nombre, autofocus: true, required: true %>
@@ -9,13 +9,14 @@
 <div class="row">
   <div class="col-md-4">
   	<h3> Origen </h3>
-  	<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" } %>
+  	<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
   </div>
   <div class="col-md-4">
   	<h3> Destino </h3>
-  	<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" } %>
+  	<%= r.collection_select :destino, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required: true %>
   </div>
 </div>
-
+<%= r.submit "Agregar ruta" %>
 <%end%>
 
+<div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>

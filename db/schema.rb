@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_11_08_211540) do
 
-  create_table "lugars", force: :cascade do |t|
-    t.string "provincia"
-    t.string "ciudad"
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"
     t.integer "plazas_totales"
@@ -24,7 +21,6 @@ ActiveRecord::Schema.define(version: 2020_11_08_211540) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "lugars", force: :cascade do |t|
     t.string "provincia"
