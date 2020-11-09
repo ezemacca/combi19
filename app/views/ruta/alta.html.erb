@@ -6,5 +6,16 @@
     <%= r.text_field :nombre, autofocus: true, required: true %>
 </div>
 
+<div class="row">
+  <div class="col-md-4">
+  	<h3> Origen </h3>
+  	<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" } %>
+  </div>
+  <div class="col-md-4">
+  	<h3> Destino </h3>
+  	<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" } %>
+  </div>
+</div>
 
+<%end%>
 
