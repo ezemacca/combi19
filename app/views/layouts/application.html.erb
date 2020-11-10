@@ -15,6 +15,7 @@
     <div>
       <% if signed_in? %>
         <%= link_to "Salir", destroy_usuario_session_path, method: :delete %>
+        <%= link_to "Inicio", administrador_index_path %>
       <% else %>
         <%= link_to "Registrarse", new_usuario_registration_path %>
         <%= link_to "Ingresar", new_usuario_session_path %>
