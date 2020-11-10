@@ -6,10 +6,10 @@ class AgregarLugarController < ApplicationController
   def create
     @lugar = Lugar.new(params.require(:lugar).permit(:provincia, :ciudad))
 
-    if @lugar.save
+    if @lugar.save 
         redirect_to agregar_lugar_index_path, notice:"Lugar se agego correctamente"
-	else
-	flash[:Error]= "Error al agregar lugar"
+	 else
+	    redirect_to agregar_lugar_index_path, notice: "Error al agregar lugar, la ciudad ya existe"
 	end 
   end
 end
