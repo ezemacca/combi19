@@ -1,0 +1,31 @@
+<h1> Editar una combi </h1>
+
+   <%= form_for :combi, url: combi_path, method: :patch do |c| %>
+
+  <div class="field">
+    <%= c.label :clasificacion %><br />
+    <%= c.text_field :clasificacion, autofocus: true, required: true, placeholder: "tipo de plaza" %>
+  </div>
+
+  <div class="field">
+    <%= c.label :plazas_totales %><br />
+    <%= c.text_field :plazas_totales, required: true, placeholder: "Plazas Totales" %>
+  </div>
+  <div class="field">
+    <%= c.label :modelo %><br />
+    <%= c.text_field :modelo, required: true, placeholder: "Modelo de la combi:" %>
+  </div>
+  <div class="field">
+    <%= c.label :patente %><br />
+    <%= c.text_field :patente, required: true, placeholder: "Patente" %>
+  </div>
+
+  <div class="actions">
+
+    <%= c.submit "guardar cambios" %>
+  
+  </div>
+<% end %>
+<div> <%= link_to "Volver a lista de combis", combis_path %> </div>
+
+<div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>

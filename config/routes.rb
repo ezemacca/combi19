@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'
-  get 'combis/new'
-  get 'combis/index'
+  #get 'combis/new'
+  #get 'combis/index'
+  #get 'combis/buscar_combi'
+  #get 'combis/edit'
   post 'combis' => "combis#create"
+  resources :combis
   devise_for :usuarios
 
   root 'welcome#index'
