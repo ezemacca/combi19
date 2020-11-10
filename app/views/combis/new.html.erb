@@ -4,7 +4,7 @@ Formulario para cargar una nueva combi
 
 <h2>Ingrese los datos de la combi que desea agregar</h2>
 
-   <%= form_for :combi, :url => { :action => :new } do |c| %>
+   <%= form_for :combi, :url => { :action => :create } do |c| %>
 
   <div class="field">
     <%= c.label :clasificacion %><br />

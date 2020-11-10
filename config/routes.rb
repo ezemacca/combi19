@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'combis/new'
   get 'combis/index'
-  post 'combis' => "combis#new"
+  post 'combis' => "combis#create"
   devise_for :usuarios
 
   root 'welcome#index'
