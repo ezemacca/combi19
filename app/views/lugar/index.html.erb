@@ -1,2 +1,10 @@
-<h1>Lugar#index</h1>
-<p>Find me in app/views/lugar/index.html.erb</p>
+<h1>Lista de lugares</h1>
+
+<% lugar= Lugar.all %>
+
+	<% lugar.each do |l| %>
+	<div><%=l.provincia%>--<%=l.ciudad%>
+	<%=link_to "Editar", edit_lugar_path(l)%>
+	<%=link_to "eliminar", l,method: :delete%>
+	</div>
+	<%end%>

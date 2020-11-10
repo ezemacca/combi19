@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_211540) do
+ActiveRecord::Schema.define(version: 2020_11_10_183513) do
 
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"
@@ -29,8 +29,13 @@ ActiveRecord::Schema.define(version: 2020_11_08_211540) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "ruta" because of following StandardError
-#   Unknown type 'lugar' for column 'origen'
+  create_table "ruta", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "nombre"
+    t.integer "origen"
+    t.integer "destino"
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
