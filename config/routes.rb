@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'ruta/alta'
   post 'ruta' => "ruta#create"
 
+  resources :lugar
 
-  get 'lugar/new'							    # Creacion de los lugares
-  post 'lugar' => "lugar#create"	# Creacion de los lugares  
+  get 'lugar/new'							       # Creacion de los lugares
+  #post 'lugar' => "lugar#create"	   # Creacion de los lugares  
   get 'choferes/index'
   get 'usuario/index'
   get 'administrador/index'
