@@ -1,0 +1,2 @@
+module LugarHelper
+end

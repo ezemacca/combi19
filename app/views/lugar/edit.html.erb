@@ -1,0 +1,20 @@
+<h1>Editar Lugar</h1>
+
+<%= form_for :lugar, url: lugar_path, method: :patch do |f| %>
+  <p>
+    <%= f.label :provincia %><br>
+    <%= f.text_field :provincia, autofocus: true,placeholder: "Provincia" %>
+  </p>
+ 
+  <p>
+    <%= f.label :ciudad %><br>
+    <%= f.text_field :ciudad, placeholder: "Ciudad" %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Actualizar Lugar"%>
+  </p>
+<% end %>
+<div> <%= link_to "Volver a lista de lugares", lugar_index_path %> </div>
+
+<div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
