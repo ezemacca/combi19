@@ -9,7 +9,7 @@
 	<% @ruta.each do |r| %>
 	<% if !r.eliminado %>
 	<tr>
-		<td><%= r.nombre %></td>
+		<td><%= r.nombre.titleize %></td>
 		<td><%= @lugar.find(r.origen).mostrar_atributos.titleize%></td>
 		<td><%= @lugar.find(r.destino).mostrar_atributos.titleize%></td>
 		<td>
