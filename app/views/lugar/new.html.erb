@@ -3,12 +3,12 @@
    <%= form_for :lugar, :url => { :action => :create } do |l| %>
 
   <div class="field">
-    <%= l.label :provincia %><br />
+    <%= l.label :provincia%><br />
     <%= l.text_field :provincia, autofocus: true, required: true, placeholder: "Provincia" %>
   </div>
 
   <div class="field">
-    <%= l.label :ciudad %><br />
+    <%= l.label :ciudad%><br />
     <%= l.text_field :ciudad, required: true, placeholder: "Ciudad" %>
   </div>
 

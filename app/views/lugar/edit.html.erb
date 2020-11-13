@@ -1,14 +1,14 @@
 <h1>Editar Lugar</h1>
 
-<%= form_for :lugar, url: lugar_path, method: :patch do |f| %>
+<%= form_for :lugar, url: lugar_path , method: :patch do |f| %>
   <p>
     <%= f.label :provincia %><br>
-    <%= f.text_field :provincia, autofocus: true,placeholder: "Provincia" %>
+    <%= f.text_field :provincia, autofocus: true, required:true, placeholder: "Provincia" %>
   </p>
  
   <p>
     <%= f.label :ciudad %><br>
-    <%= f.text_field :ciudad, placeholder: "Ciudad" %>
+    <%= f.text_field :ciudad, required:true, placeholder: "Ciudad" %>
   </p>
  
   <p>

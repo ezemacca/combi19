@@ -16,14 +16,14 @@ class LugarController < ApplicationController
     else
       redirect_to lugar_index_path,notice: "Error al actualizar el lugar, ya existe ese lugar"
     end
-  end
+  end 
 
 
   def create
     @lugar = Lugar.new(params.require(:lugar).permit(:provincia, :ciudad))
 
      if @lugar.save 
-        redirect_to new_lugar_path, notice:"Lugar se agego correctamente"
+        redirect_to new_lugar_path, notice:"Lugar se agrego correctamente"
 	   else
 	    redirect_to new_lugar_path, notice: "Error al agregar lugar, la ciudad ya existe"
 	   end
