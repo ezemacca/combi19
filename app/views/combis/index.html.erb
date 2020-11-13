@@ -1,12 +1,43 @@
-<h1>Lista de Combis</h1>
+<html>
+<head> 
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<title> COMBIS </title> 
+</head>
+
+<body>
+	<h1>Lista de Combis</h1>
 
 <% combi= Combi.all %>
 
-	<% combi.each do |c| %>
-		<% if !(c.eliminado) %>
-			<div><%=c.patente%>--<%=c.plazas_totales%>
-			<%=link_to "Editar", edit_combi_path(c)%>
-			<%=link_to "eliminar", c,method: :delete%>
-			</div>
+		<% combi.each do |c| %>
+			<% if !(c.eliminado) %>
+				<div>
+				<table>
+					<tr>
+						<th>PATENTE-----------</th>
+						<th>Clasificacion-----</th>
+						<th>Plazas Totales-----</th>
+						<th>Plazas Libres-----</th>
+						<th>Modelo-----</th>
+						<th>Acciones------</th>					
+					</tr>
+					<tr>
+						<td><%=c.patente.upcase!%></td>
+						<td><%=c.clasificacion%></td>
+						<td><%=c.plazas_totales%></td> 
+						<td><%=c.plazas_libres%></td>
+						<td><%=c.modelo%></td>
+						<td>
+							<%=link_to "Editar", edit_combi_path(c)%>
+							<%=link_to "eliminar", c,method: :delete%>
+						</td>
+
+					
+					</tr>
+				</table>
+			
+				</div>
+			<%end%>
 		<%end%>
-	<%end%>
+</body>
+</html>
