@@ -35,7 +35,7 @@ class LugarController < ApplicationController
           redirect_to new_lugar_path, notice:"Error porque el lugar ya existe"
           end
         else
-         redirect_to new_lugar_path, notice:"Error Porque no encontro la provincia o la ciudad"
+         redirect_to new_lugar_path, notice:"Error Porque la ciudad ya existe"
         end
     end
   end

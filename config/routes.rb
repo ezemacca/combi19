@@ -3,12 +3,10 @@ Rails.application.routes.draw do
   get 'ruta/alta'
   get 'ruta/index'
   resources :ruta
-
-
 # Maneja la vista de lugar
-  resources :lugar
 
-  get 'choferes/index'
+  resources :lugar
+  resources :chofer, :controller => 'usuarios/registrations'
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'

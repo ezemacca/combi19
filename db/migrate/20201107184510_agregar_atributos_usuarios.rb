@@ -14,6 +14,5 @@ class AgregarAtributosUsuarios < ActiveRecord::Migration[6.0]
   	#Campo para chofer
   	add_column :usuarios, :telefono, :string
 
-
   end
 end

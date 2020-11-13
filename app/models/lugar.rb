@@ -1,5 +1,4 @@
 class Lugar < ApplicationRecord
-	validates :ciudad, uniqueness: { scope: :provincia }
 	validates :ciudad, uniqueness: { case_sensitive: false }
 
 	default_scope -> { order :provincia }

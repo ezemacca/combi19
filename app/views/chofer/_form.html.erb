@@ -1,7 +1,7 @@
-<h2>Registrar usuario</h2>
+<h2>Registrar chofer</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%#><%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -23,38 +23,23 @@
 
     <div class="field">
     <%= f.label :nombre %><br />
-    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
+    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre del chofer' %>
     </div>
 
     <div class="field">
     <%= f.label :apellido %><br />
-    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido' %>
+    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido del chofer' %>
     </div>
 
     <div class="field">
     <%= f.label :DNI %><br />
-    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
+    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese el DNI del chofer' %>
     </div>
 
     <div class="field">
-    <%= f.label :suscripcion %> <br />
-    <%= f.check_box :suscripcion %> <br />
-    </div> 
-      <div class="field">
-      <%= f.label "Numero de tarjeta (opcional)" %><br />
-      <%= f.text_field :nrotarjeta, placeholder: 'Ingrese el numero de tarjeta' %>
-      </div>
-
-      <div class="field">
-      <%= f.label "Vencimiento (opcional)" %><br />
-      <%= f.text_field :vencimiento, placeholder: 'Ej: mes/año' %>
-      </div>
-
-      <div class="field">
-      <%= f.label "Codigo de seguridad (opcional)" %><br />
-      <%= f.text_field :codseguridad, placeholder: 'Los tres digitos detras de la tarjeta' %>
-      </div>
-    <%#end %>
+    <%= f.label "Numero de contacto" %><br />
+    <%= f.text_field :telefono, required: true, placeholder: 'Ingrese el numero de contacto del chofer' %>
+    </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
@@ -62,4 +47,4 @@
 
 <% end %>
 
-<%#><%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>
