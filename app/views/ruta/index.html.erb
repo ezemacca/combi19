@@ -7,8 +7,9 @@
 	</tr>
 
 	<% @ruta.each do |r| %>
+	<% if !r.eliminado %>
 	<tr>
-		<td><%= r.nombre %></td>
+		<td><%= r.nombre.titleize %></td>
 		<td><%= @lugar.find(r.origen).mostrar_atributos%></td>
 		<td><%= @lugar.find(r.destino).mostrar_atributos%></td>
 		<td>
@@ -16,5 +17,6 @@
 			<%= link_to "Eliminar", r, method: :delete, class: 'btn btn-danger btn-sm' %>
 		</td>
 	</tr>
+	<% end %>
 	<% end %>
 </table>
