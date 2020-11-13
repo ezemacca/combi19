@@ -9,8 +9,8 @@
 	<% @ruta.each do |r| %>
 	<tr>
 		<td><%= r.nombre %></td>
-		<td><%= @lugar.find(r.origen).mostrar_atributos%></td>
-		<td><%= @lugar.find(r.destino).mostrar_atributos%></td>
+		<td><%= @lugar.find(r.origen).mostrar_atributos.titleize%></td>
+		<td><%= @lugar.find(r.destino).mostrar_atributos.titleize%></td>
 		<td>
 			<%= link_to "Editar", edit_rutum_path(r), class: 'btn btn-info btn-sm' %>
 			<%= link_to "Eliminar", r, method: :delete, class: 'btn btn-danger btn-sm' %>

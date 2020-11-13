@@ -25,13 +25,25 @@ class LugarController < ApplicationController
      if @lugar.save 
         redirect_to new_lugar_path, notice:"Lugar se agrego correctamente"
 	   else
-	    redirect_to new_lugar_path, notice: "Error al agregar lugar, la ciudad ya existe"
-	   end
+         l=Lugar.find_by ciudad: @lugar.ciudad.downcase, provincia: @lugar.provincia.downcase
+         if !l.nil?
+          if l.eliminado
+                l.eliminado = false
+                l.save
+                redirect_to new_lugar_path, notice:"Lugar se agrego correctamente (Se restauro)"
+          else
+          redirect_to new_lugar_path, notice:"Error porque el lugar ya existe"
+          end
+        else
+         redirect_to new_lugar_path, notice:"Error Porque no encontro la provincia o la ciudad"
+        end
+    end
   end
 
   def destroy
     @lugar = Lugar.find(params[:id])
-    @lugar.destroy
+    @lugar.eliminado = true
+    @lugar.save
     redirect_to lugar_index_path, notice: "El lugar se elimino correctamente"
   end
 

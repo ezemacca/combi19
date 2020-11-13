@@ -5,7 +5,8 @@ class RutaController < ApplicationController
   end
 
   def alta
-  	@lugar = Lugar.all
+  	@lugar = Lugar.where(eliminado: false)
+
   end
 
   def edit
