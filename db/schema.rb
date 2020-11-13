@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_121407) do
     t.string "patente"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
   end
 
   create_table "lugars", force: :cascade do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_121407) do
     t.string "ciudad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
   end
 
   create_table "ruta", force: :cascade do |t|
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_121407) do
     t.string "nombre"
     t.integer "origen"
     t.integer "destino"
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_121407) do
     t.string "vencimiento"
     t.string "codseguridad"
     t.string "telefono"
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
