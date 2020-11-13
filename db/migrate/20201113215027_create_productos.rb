@@ -1,12 +1,4 @@
-class CreateProductos < ActiveRecord::MigrNombre: Atun
-
-Descripcion: dos latas
-
-Precio: 600
-
-Stock: 5
-
-Eliminado: falseation[6.0]
+class CreateProductos < ActiveRecord::Migration[6.0]
   def change
     create_table :productos do |t|
       t.string :nombre
