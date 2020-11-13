@@ -15,7 +15,7 @@ class CombisController < ApplicationController
 		if @combi.save
     		redirect_to administrador_index_path, notice: "se cargo la combi correctamente"
     	else
-    		c=Combi.find_by(patente: @combi.patente)
+    		c=Combi.find_by(patente: @combi.patente.downcase)
     		if !c.nil?
     			if c.eliminado
     			
