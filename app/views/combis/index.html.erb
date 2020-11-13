@@ -3,8 +3,10 @@
 <% combi= Combi.all %>
 
 	<% combi.each do |c| %>
-	<div><%=c.patente%>--<%=c.plazas_totales%>
-	<%=link_to "Editar", edit_combi_path(c)%>
-	<%=link_to "eliminar", c,method: :delete%>
-	</div>
+		<% if !(c.eliminado) %>
+			<div><%=c.patente%>--<%=c.plazas_totales%>
+			<%=link_to "Editar", edit_combi_path(c)%>
+			<%=link_to "eliminar", c,method: :delete%>
+			</div>
+		<%end%>
 	<%end%>
