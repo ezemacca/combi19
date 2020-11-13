@@ -10,27 +10,31 @@ class RutaController < ApplicationController
 
   def edit
   	@ruta = Rutum.find(params[:id])
-  	@lugar = Lugar.all  	
+  	@lugar = Lugar.where(eliminado: false)	
   end
 
   def create
   	@ruta = Rutum.new((params.require(:ruta).permit(:nombre, :origen, :destino)))
-  	if @ruta.save
-  		redirect_to ruta_alta_path, notice: "Se agrego la ruta correctamente"
+  	if @ruta.origen == @ruta.destino
+  		redirect_to ruta_alta_path, notice: "El origen y el destino tienen que ser distintos"
   	else
-  		r = Rutum.find_by(nombre: @ruta.nombre.downcase)
-  		if !r.nil?
-  			if r.eliminado
-  				r.eliminado = false
-  				r.save
-  				redirect_to ruta_alta_path, notice: "Se agrego la ruta correctamente2"
-  			else
-  				redirect_to ruta_alta_path, notice: "Hubo un error la ruta ya existe"
-  			end
+  		if @ruta.save
+  			redirect_to ruta_alta_path, notice: "Se agrego la ruta correctamente"
   		else
-  			redirect_to ruta_alta_path, notice: "Hubo un error y no se pudo agregar la ruta"
-  		end
-  	end 	
+  			r = Rutum.find_by(nombre: @ruta.nombre.downcase)
+  			if !r.nil?
+  				if r.eliminado
+  					r.eliminado = false
+  					r.save
+  					redirect_to ruta_alta_path, notice: "Se agrego la ruta correctamente2"
+  				else
+  					redirect_to ruta_alta_path, notice: "Hubo un error la ruta ya existe"
+  				end
+  			else
+  				redirect_to ruta_alta_path, notice: "Hubo un error y no se pudo agregar la ruta"
+  			end
+  		end 	
+  	end
   end
 
   def destroy
