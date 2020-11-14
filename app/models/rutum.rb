@@ -5,4 +5,8 @@ class Rutum < ApplicationRecord
 	def minuscula_nombre
 		self.nombre.downcase!		
 	end
+
+	def mostrar_nombre
+		"#{nombre.titleize}"		
+	end
 end

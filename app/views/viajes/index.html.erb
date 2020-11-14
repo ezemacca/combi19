@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Viajes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha<br />(Año/Mes/Dia)</th>
+      <th>Origen</th>
+      <th>Destino</th>
+      <th>Ruta</th>
+      <th>Combi</th>
+      <th>Chofer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @viajes.each do |viaje| %>
+    <% if !viaje.eliminado %>
+      <tr>
+        <td><%= viaje.fecha %></td>
+        <td><%= @lugar.find(viaje.origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(viaje.destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(viaje.ruta).mostrar_nombre %></td>
+        <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
+        <td><%= viaje.chofer %></td>
+        <td><%= link_to 'Detalles', viaje %></td>
+        <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
+        <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Agregar viaje', new_viaje_path %>

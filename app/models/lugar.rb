@@ -4,7 +4,7 @@ class Lugar < ApplicationRecord
 	default_scope -> { order :ciudad }
 	before_save :minuscula_atributos
 	def mostrar_atributos
-		"#{ciudad.titleize} - #{provincia.titleize}"
+		"#{provincia.titleize} - #{ciudad.titleize}"
 	end
 	def minuscula_atributos
       self.provincia.downcase!
