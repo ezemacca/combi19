@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 # Maneja la vista de lugar
 
   resources :lugar
-  resources :chofer, :controller => 'usuarios/registrations'
+  resources :chofer
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'
