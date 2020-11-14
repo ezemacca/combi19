@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :viajes
   resources :productos
   get 'ruta/alta'
   get 'ruta/index'

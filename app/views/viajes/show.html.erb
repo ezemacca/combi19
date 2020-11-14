@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @viaje.fecha %>
+</p>
+
+<p>
+  <strong>Origen:</strong>
+  <%= @lugar.find(@viaje.origen).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @lugar.find(@viaje.destino).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Ruta:</strong>
+  <%= @ruta.find(@viaje.ruta).mostrar_nombre %>
+</p>
+
+<p>
+  <strong>Combi:</strong>
+  <%= @combi.find(@viaje.combi).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Chofer:</strong>
+  <%= @viaje.chofer %>
+</p>
+
+<p>
+  <strong>Eliminado:</strong>
+  <%= @viaje.eliminado %>
+</p>
+
+<%= link_to 'Editar', edit_viaje_path(@viaje) %> |
+<%= link_to 'Volver', viajes_path %>

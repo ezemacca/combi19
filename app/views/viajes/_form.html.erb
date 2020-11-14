@@ -1,0 +1,52 @@
+<%= form_with(model: viaje, local: true) do |form| %>
+  <% if viaje.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(viaje.errors.count, "error") %> prohibited this viaje from being saved:</h2>
+
+      <ul>
+        <% viaje.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_select :fecha, start_year: 2020, end_year: 2030 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora %>
+    <%= form.time_select :hora %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origen %>
+    <%= form.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destino %>
+    <%= form.collection_select :destino, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ruta %>
+    <%= form.collection_select :ruta, @ruta, :id, :mostrar_nombre, { include_blank: "" }, required:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :combi %>
+    <%= form.collection_select :combi, @combi, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chofer %>
+    <%= form.collection_select :chofer, @chofer, :id, :mostrar_atributos, { include_blank: "" } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Agregar viaje" %>
+  </div>
+<% end %>
