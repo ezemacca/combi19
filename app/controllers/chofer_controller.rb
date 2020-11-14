@@ -1,9 +1,18 @@
-class ChoferController < Devise::RegistrationsController
+class ChoferController < ApplicationController
   def index
-  	super
   end
   def new
-   super
+  	@chofer = Usuario.new
+  end
+
+  def create
+  	@chofer = Usuario.new(params.require(:usuario).permit(:email, :password, :password_confirmation, :nombre, :apellido, :DNI, :telefono))
+  	@chofer.role = "chofer"
+  	if @chofer.save
+  		redirect_to administrador_index_path,notice: "Se registro el chofer correctamente"
+  	else
+  		redirect_to administrador_index_path,notice: "No se pudo registrar el chofer"
+  	end
   end
 
 end
