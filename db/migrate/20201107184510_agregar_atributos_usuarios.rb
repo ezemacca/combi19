@@ -7,7 +7,7 @@ class AgregarAtributosUsuarios < ActiveRecord::Migration[6.0]
   	add_column :usuarios, :suscripcion, :boolean
 
   	#Datos de tarjeta de credito
-  	add_column :usuarios, :nrotarjeta, :string
+  	add_column :usuarios, :nrotarjeta, :string 
   	add_column :usuarios, :vencimiento, :string 
   	add_column :usuarios, :codseguridad, :string
 
