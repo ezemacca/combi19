@@ -4,7 +4,7 @@
 
 	<% lugar.each do |l| %>
 	 <%if !(l.eliminado)%> 
-	<div><%=l.provincia.titleize%> --<%=l.ciudad.titleize%>
+	<div><%=l.provincia.titleize%> - <%=l.ciudad.titleize%>
 	<%=link_to "Editar", edit_lugar_path(l)%>
 	<%=link_to "eliminar", l,method: :delete%>
 	<%end%>

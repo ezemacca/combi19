@@ -1,6 +1,5 @@
 class Lugar < ApplicationRecord
 	validates :ciudad, uniqueness: { case_sensitive: false }
-
 	default_scope -> { order :provincia }
 	default_scope -> { order :ciudad }
 	before_save :minuscula_atributos
@@ -10,5 +9,5 @@ class Lugar < ApplicationRecord
 	def minuscula_atributos
       self.provincia.downcase!
       self.ciudad.downcase!
-   end
+    end
 end

@@ -25,7 +25,7 @@ class LugarController < ApplicationController
      if @lugar.save 
         redirect_to new_lugar_path, notice:"Lugar se agrego correctamente"
 	   else
-         l=Lugar.find_by ciudad: @lugar.ciudad.downcase, provincia: @lugar.provincia.downcase
+         l=Lugar.find_by(ciudad: @lugar.ciudad.downcase, provincia: @lugar.provincia.downcase)
          if !l.nil?
           if l.eliminado
                 l.eliminado = false
