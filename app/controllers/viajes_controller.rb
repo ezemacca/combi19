@@ -39,15 +39,20 @@ class ViajesController < ApplicationController
   # POST /viajes.json
   def create
     @viaje = Viaje.new(viaje_params)
-
-    respond_to do |format|
-      if @viaje.save
-        format.html { redirect_to @viaje, notice: 'Viaje was successfully created.' }
-        format.json { render :show, status: :created, location: @viaje }
-      else
-        format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
-        format.json { render json: @viaje.errors, status: :unprocessable_entity }
+    o = Rutum.find(@viaje.ruta).origen
+    d = Rutum.find(@viaje.ruta).destino
+    if @viaje.origen == o
+      respond_to do |format|
+        if @viaje.save
+          format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
+          format.json { render :show, status: :created, location: @viaje }
+        else
+          format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
+          format.json { render json: @viaje.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to new_viaje_path, notice: "La ruta no es la correcta para el origen y destino que elegiste"
     end
   end
 
