@@ -7,6 +7,6 @@ class Rutum < ApplicationRecord
 	end
 
 	def mostrar_nombre
-		"#{nombre.titleize}"		
+		"#{nombre.titleize} | #{Lugar.find(origen).ciudad.titleize} -> #{Lugar.find(destino).ciudad.titleize}"		
 	end
 end
