@@ -1,7 +1,6 @@
-<h2>Registrar chofer</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for @chofer, :url => { :action => remplazo } do |f| %> <%# En caso de emergencia la palabra remplazada es remplazo%> 
+ 
+  <%# <%= form_for @chofer, :url => { :action => :create } do |f| %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -10,9 +9,7 @@
 
   <div class="field">
     <%= f.label "Contraseña" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> caracteres minimos)</em>
-    <% end %><br />
+    <em>(6 caracteres minimos)</em><br />
     <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Contraseña" %>
   </div>
 
@@ -23,28 +20,26 @@
 
     <div class="field">
     <%= f.label :nombre %><br />
-    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre del chofer' %>
+    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
     </div>
 
     <div class="field">
     <%= f.label :apellido %><br />
-    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido del chofer' %>
+    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido' %>
     </div>
 
     <div class="field">
     <%= f.label :DNI %><br />
-    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese el DNI del chofer' %>
+    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
     </div>
 
     <div class="field">
-    <%= f.label "Numero de contacto" %><br />
-    <%= f.text_field :telefono, required: true, placeholder: 'Ingrese el numero de contacto del chofer' %>
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono, required: true, placeholder: 'Ingrese su telefono' %>
     </div>
 
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrar chofer" %>
   </div>
-
-<% end %>
-
-<%= render "devise/shared/links" %>
+<%end%>

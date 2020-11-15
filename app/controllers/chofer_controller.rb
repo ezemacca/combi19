@@ -16,6 +16,8 @@ class ChoferController < ApplicationController
   		redirect_to administrador_index_path, notice: "No se pudo registrar el chofer"
   	end
   end
+  def edit
+  end
 
 private
   def chofer_params
