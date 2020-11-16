@@ -33,18 +33,23 @@ class ProductosController < ApplicationController
         format.json { render :show, status: :created, location: @producto }
       else
         format.html { 
-          render :new
-          p=Producto.find_by(nombre: @producto.nombre.downcase)
-          if !c.nil?
-            if c.eliminado
-          
-              c.eliminado=false
-              c.save
+          p =Producto.find_by(nombre: @producto.nombre.downcase)
+          if !p.nil?
+            if p.eliminado
+              #Aca estoy volviendo a agregar un producto que alguna vez existio y que tiene una bjaa logica
+              p.eliminado=false
+              p.precio=@producto.precio
+              p.descripcion=@producto.descripcion
+              p.stock=@producto.stock
+              p.save
               redirect_to administrador_index_path, notice: "Se cargo el producto correctamente (2)"
             else
               redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"
             end
-        end 
+          else
+            redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"    
+          end
+       
          }
         format.json { render json: @producto.errors, status: :unprocessable_entity }
       end

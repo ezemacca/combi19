@@ -3,6 +3,6 @@ class Producto < ApplicationRecord
 	before_save :minuscula_nombre 
 	
 	def minuscula_nombre
-   	   self.nombre.downcase
+   	   self.nombre.downcase!
 	end
 end

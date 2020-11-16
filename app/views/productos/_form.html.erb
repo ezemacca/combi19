@@ -19,6 +19,7 @@
   <div class="field">
     <%= form.label :descripcion %>
     <%= form.text_field :descripcion %>
+    <%=f.file_field :image%>
   </div>
 
   <div class="field">
@@ -31,7 +32,7 @@
     <%= form.number_field :stock %>
   </div>
 
-
+  <div></div>
 
   <div class="actions">
     <%= form.submit "Crear Producto" %>
