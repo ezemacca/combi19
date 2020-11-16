@@ -1,4 +1,47 @@
 <h1>Editar Chofer</h1>
 	
+<%= form_for @chofer, url: chofer_path , method: :patch do |f| %> <%# En caso de emergencia la palabra remplazada es remplazo%> 
+ 
+  <%# <%= form_for @chofer, :url => { :action => :create } do |f| %>
 
-	<%=render "form", remplazo:"edit"%>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Contraseña" %>
+    <em>(6 caracteres minimos)</em><br />
+    <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Contraseña" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Confirme la contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, placeholder: "Confirmar contraseña" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :DNI %><br />
+    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono, required: true, placeholder: 'Ingrese su telefono' %>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit "Actualizar chofer" %>
+  </div>
+<%end%>

@@ -1,1 +1,13 @@
-<h1>Lista de choferes</h1>
+<h1>lista de choferes</h1>
+
+<%#mostrar toda la lista de choferes %>
+<% chofer= Usuario.all %>
+
+	<% chofer.each do |c| %>
+	 <%if !((c.eliminado)) and (c.role == "chofer")%> 
+	<div><%=c.apellido.titleize%> <%=c.nombre.titleize%> - <%=c.DNI%> - <%=c.email%> - <%=c.telefono%>
+	<%=link_to "Editar", edit_chofer_path(c)%>
+	<%=link_to "Eliminar", chofer_path(c), method: :delete%>
+	<%end%>
+	</div>
+	<%end%> 
