@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'ruta/index'
   resources :ruta
 # Maneja la vista de lugar
-
   resources :lugar
   resources :chofer
   get 'usuario/index'
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
-
   root 'welcome#index'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

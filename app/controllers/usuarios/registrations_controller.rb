@@ -7,7 +7,13 @@ class Usuarios::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
+def destroy
+    @chofer = Usuario.find(params[:id])
+    @chofer.eliminado = true            #Lo marcamos como eliminado para la baja logica
+    @chofer.email = "Eliminado"         #Eliminamos al chofer y le anulamos el mail para que no pueda volver a ingresar y no tenga problemas con futuras creaciones de choferes
+    @chofer.save
+    redirect_to chofer_index_path, notice: "El chofer se elimino correctamente"
+  end
   # POST /resource
   # def create
   #   super

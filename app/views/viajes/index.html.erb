@@ -24,7 +24,7 @@
         <td><%= @lugar.find(viaje.destino).mostrar_atributos %></td>
         <td><%= @ruta.find(viaje.ruta).mostrar_nombre %></td>
         <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
-        <td><%= viaje.chofer %></td>
+        <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
         <td><%= link_to 'Detalles', viaje %></td>
         <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
         <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>
