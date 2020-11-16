@@ -13,12 +13,7 @@
 
   <div class="field">
     <%= form.label :fecha %>
-    <%= form.date_select :fecha, start_year: 2020, end_year: 2030 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hora %>
-    <%= form.time_select :hora %>
+    <%= form.datetime_field :fecha, start_year: 2020, end_year: 2030 %>
   </div>
 
   <div class="field">
@@ -44,6 +39,11 @@
   <div class="field">
     <%= form.label :chofer %>
     <%= form.collection_select :chofer, @chofer, :id, :mostrar_atributos, { include_blank: "" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_llegada %>
+    <%= form.datetime_field :fecha_llegada, start_year: 2020, end_year: 2030 %>
   </div>
 
   <div class="actions">

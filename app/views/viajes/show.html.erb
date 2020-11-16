@@ -27,12 +27,7 @@
 
 <p>
   <strong>Chofer:</strong>
-  <%= @viaje.chofer %>
-</p>
-
-<p>
-  <strong>Eliminado:</strong>
-  <%= @viaje.eliminado %>
+  <%= @usuario.find(@viaje.chofer).mostrar_atributos %>
 </p>
 
 <%= link_to 'Editar', edit_viaje_path(@viaje) %> |

@@ -8,6 +8,7 @@ class ViajesController < ApplicationController
     @lugar = Lugar.all
     @ruta = Rutum.all
     @combi = Combi.all
+    @usuario = Usuario.all
   end
 
   # GET /viajes/1
@@ -16,6 +17,7 @@ class ViajesController < ApplicationController
     @lugar = Lugar.all
     @ruta = Rutum.all
     @combi = Combi.all
+    @usuario = Usuario.all
   end
 
   # GET /viajes/new
@@ -41,15 +43,19 @@ class ViajesController < ApplicationController
     @viaje = Viaje.new(viaje_params)
     o = Rutum.find(@viaje.ruta).origen
     d = Rutum.find(@viaje.ruta).destino
-    if @viaje.origen == o
-      respond_to do |format|
-        if @viaje.save
-          format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
-          format.json { render :show, status: :created, location: @viaje }
-        else
-          format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
-          format.json { render json: @viaje.errors, status: :unprocessable_entity }
+    if @viaje.origen == o && @viaje.destino == d
+      if @viaje.validacion_fecha
+        respond_to do |format|
+          if @viaje.save
+            format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
+            format.json { render :show, status: :created, location: @viaje }
+          else
+            format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
+            format.json { render json: @viaje.errors, status: :unprocessable_entity }
+          end
         end
+      else
+        redirect_to new_viaje_path, notice: "La combi ya tiene asignado un viaje a esa hora, o la fecha ya paso"
       end
     else
       redirect_to new_viaje_path, notice: "La ruta no es la correcta para el origen y destino que elegiste"
@@ -86,6 +92,6 @@ class ViajesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viaje_params
-      params.require(:viaje).permit(:fecha, :origen, :destino, :ruta, :combi, :chofer, :eliminado)
+      params.require(:viaje).permit(:fecha,:hora, :origen, :destino, :ruta, :fecha_llegada, :hora_llegada, :combi, :chofer, :eliminado)
     end
 end

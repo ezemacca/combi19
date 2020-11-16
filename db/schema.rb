@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_182308) do
+ActiveRecord::Schema.define(version: 2020_11_15_235638) do
 
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"
@@ -72,7 +72,17 @@ ActiveRecord::Schema.define(version: 2020_11_14_182308) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
-# Could not dump table "viajes" because of following StandardError
-#   Unknown type 'lugar' for column 'origen'
+  create_table "viajes", force: :cascade do |t|
+    t.datetime "fecha"
+    t.boolean "eliminado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "origen"
+    t.integer "destino"
+    t.integer "ruta"
+    t.integer "combi"
+    t.integer "chofer"
+    t.datetime "fecha_llegada"
+  end
 
 end
