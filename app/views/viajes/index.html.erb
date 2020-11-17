@@ -11,6 +11,7 @@
       <th>Ruta</th>
       <th>Combi</th>
       <th>Chofer</th>
+      <th> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,6 +26,17 @@
         <td><%= @ruta.find(viaje.ruta).mostrar_nombre %></td>
         <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
         <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
+        <% if @usuario.find(viaje.chofer).eliminado || @combi.find(viaje.combi).eliminado%>
+          <% if @usuario.find(viaje.chofer).eliminado && @combi.find(viaje.combi).eliminado%>
+            <td style="red">Chofer y Combi estan eliminados</td>
+          <% elsif @usuario.find(viaje.chofer).eliminado %>
+            <td style="red"> Chofer eliminado </td>
+          <% else %>
+            <td style="red"> Combi eliminada</td>
+          <% end %>
+        <%else %>
+          <td>--</td>
+        <% end %>
         <td><%= link_to 'Detalles', viaje %></td>
         <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
         <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>

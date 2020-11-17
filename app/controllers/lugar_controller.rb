@@ -44,6 +44,16 @@ class LugarController < ApplicationController
     @lugar = Lugar.find(params[:id])
     @lugar.eliminado = true
     @lugar.save
+    ruta = Rutum.where(origen: @lugar.id)
+    ruta.each do |r|
+      r.eliminado = true
+      r.save      
+    end
+    ruta2 = Rutum.where(destino: @lugar.id)
+    ruta2.each do |r2|
+      r2.eliminado = true
+      r2.save      
+    end
     redirect_to lugar_index_path, notice: "El lugar se elimino correctamente"
   end
 

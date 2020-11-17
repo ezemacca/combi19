@@ -1,5 +1,5 @@
 class ViajesController < ApplicationController
-  before_action :set_viaje, only: [:show, :edit, :update, :destroy]
+  #before_action :set_viaje, only: [:show, :edit, :update, :destroy]
 
   # GET /viajes
   # GET /viajes.json
@@ -14,6 +14,7 @@ class ViajesController < ApplicationController
   # GET /viajes/1
   # GET /viajes/1.json
   def show
+    @viaje = Viaje.find(params[:id])
     @lugar = Lugar.all
     @ruta = Rutum.all
     @combi = Combi.all
@@ -92,6 +93,6 @@ class ViajesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viaje_params
-      params.require(:viaje).permit(:fecha,:hora, :origen, :destino, :ruta, :fecha_llegada, :hora_llegada, :combi, :chofer, :eliminado)
+      params.require(:viaje).permit(:fecha, :origen, :destino, :ruta, :fecha_llegada, :combi, :chofer, :eliminado)
     end
 end
