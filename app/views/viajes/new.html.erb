@@ -1,5 +1,7 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Agregar un viaje</h1>
 
 <%= render 'form', viaje: @viaje %>
 
 <%= link_to 'Volver', viajes_path %>
+<%end%>

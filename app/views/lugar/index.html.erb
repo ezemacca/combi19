@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Lista de lugares</h1>
 
 <% lugar= Lugar.all %>
@@ -5,8 +6,10 @@
 	<% lugar.each do |l| %>
 	 <%if !(l.eliminado)%> 
 	<div><%=l.provincia.titleize%> - <%=l.ciudad.titleize%>
+	<%=link_to "Ver", lugar_path(l) %>
 	<%=link_to "Editar", edit_lugar_path(l)%>
-	<%=link_to "eliminar", l,method: :delete%>
-	<%end%>
+	<%=link_to "Eliminar", l,method: :delete%>
 	</div>
+	<%end%>
 	<%end%> 
+<%end%>

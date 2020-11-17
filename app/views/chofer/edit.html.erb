@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Editar Chofer</h1>
 	
 <%= form_for @chofer, url: chofer_path , method: :patch do |f| %> <%# En caso de emergencia la palabra remplazada es remplazo%> 
@@ -44,4 +45,5 @@
   <div class="actions">
     <%= f.submit "Actualizar chofer" %>
   </div>
+<%end%>
 <%end%>

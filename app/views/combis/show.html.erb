@@ -1,0 +1,24 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
+<p>
+  <strong>Clasificacion:</strong>
+  <%= @combi.clasificacion.titleize %>
+</p>
+
+<p>
+  <strong>Plazas:</strong>
+  <%= @combi.plazas_totales %>
+</p>
+
+<p>
+  <strong>Modelo:</strong>
+  <%= @combi.modelo.titleize %>
+</p>
+
+<p>
+  <strong>Patente:</strong>
+  <%= @combi.patente.upcase %>
+</p>
+
+<%= link_to 'Editar', edit_combi_path(@combi) %> |
+<%= link_to 'Volver', combis_path %>
+<% end %>

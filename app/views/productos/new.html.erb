@@ -1,6 +1,8 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Nuevo Producto</h1>
 
 <%= render 'form', producto: @producto %>
 
 <%= link_to 'Volver Atras', productos_path %>
 
+<%end%>

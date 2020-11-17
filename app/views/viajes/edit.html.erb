@@ -1,6 +1,8 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Editing Viaje</h1>
 
 <%= render 'form', viaje: @viaje %>
 
-<%= link_to 'Show', @viaje %> |
-<%= link_to 'Back', viajes_path %>
+<%= link_to 'Detalles del viaje', @viaje %> |
+<%= link_to 'Atras', viajes_path %>
+<%end%>

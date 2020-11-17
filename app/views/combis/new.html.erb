@@ -1,4 +1,4 @@
-
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 Formulario para cargar una nueva combi
 <h1> Cargar una nueva combi </h1>
 
@@ -32,3 +32,4 @@ Formulario para cargar una nueva combi
 <% end %>
 
 <div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
+<% end %>

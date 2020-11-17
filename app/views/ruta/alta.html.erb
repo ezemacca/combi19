@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Agregar Ruta</h1>
 
 <%= form_for :ruta, :url => { :action => :create } do |r| %>
@@ -20,3 +21,4 @@
 <%end%>
 
 <div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
+<% end %>
