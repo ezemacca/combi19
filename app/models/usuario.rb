@@ -8,7 +8,9 @@ class Usuario < ApplicationRecord
   						 presence: true, if: :suscripcion
   validates :codseguridad, numericality: true,
   						   length: { in: 3..4 },
-  						   presence: true, if: :suscripcion 
+  						   presence: true, if: :suscripcion
+  validates :DNI, numericality: true 
+  validates :telefono, format: { with: /[0-9]/ }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

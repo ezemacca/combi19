@@ -16,9 +16,11 @@ class ChoferController < ApplicationController
   	@chofer.role = "chofer"
 
   	if @chofer.save
-  		redirect_to administrador_index_path, notice: "Se registro el chofer correctamente"
+  		redirect_to chofer_path(@chofer), notice: "Se registro el chofer correctamente"
   	else
-  		redirect_to administrador_index_path, notice: "No se pudo registrar el chofer, el mail asignado ya existe"
+      flash[:error] = "Hubo un error al cargar chofer"
+      render :new
+  		#redirect_to administrador_index_path, notice: "No se pudo registrar el chofer, el mail asignado ya existe"
   	end
   end
 

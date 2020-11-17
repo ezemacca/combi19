@@ -2,10 +2,14 @@
  
   <%# <%= form_for @chofer, :url => { :action => :create } do |f| %>
 <% if @chofer.errors.any? %>
-        <% @chofer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-  <% end %>
+  <div id="error_explanation">
+    <ul>
+      <% @chofer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.label :email %><br />
