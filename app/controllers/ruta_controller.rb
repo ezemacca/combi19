@@ -21,7 +21,7 @@ class RutaController < ApplicationController
   		if @ruta.save
   			redirect_to ruta_alta_path, notice: "Se agrego la ruta correctamente"
   		else
-  			r = Rutum.find_by(nombre: @ruta.nombre.downcase)
+  			r = Rutum.find_by(nombre: @ruta.nombre.downcase, origen: @ruta.origen, destino: @ruta.destino)
   			if !r.nil?
   				if r.eliminado
   					r.eliminado = false

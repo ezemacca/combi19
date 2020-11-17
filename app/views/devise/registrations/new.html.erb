@@ -36,28 +36,32 @@
     <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
     </div>
 
+    <div>Desea suscribirse? 10% de descuento en sus proximos viajes. Valor: $$</div>
     <div class="field">
     <%= f.label :suscripcion %> <br />
     <%= f.check_box :suscripcion %> <br />
     </div> 
-      <div class="field">
-      <%= f.label "Numero de tarjeta (opcional)" %><br />
+    <div><h3>Tarjeta de credito (Opcional)
+    	 </h3>
+    	 *Obligatorio con suscripcion activa</div>
+    	       <div class="field">
+      <%= f.label "Numero de tarjeta (16 digitos)" %><br />
       <%= f.text_field :nrotarjeta, placeholder: 'Ingrese el numero de tarjeta' %>
       </div>
 
       <div class="field">
-      <%= f.label "Vencimiento (opcional)" %><br />
+      <%= f.label "Vencimiento" %><br />
       <%= f.text_field :vencimiento, placeholder: 'Ej: mes/año' %>
       </div>
 
       <div class="field">
-      <%= f.label "Codigo de seguridad (opcional)" %><br />
+      <%= f.label "Codigo de seguridad (3 digitos)" %><br />
       <%= f.text_field :codseguridad, placeholder: 'Los tres digitos detras de la tarjeta' %>
       </div>
     <%#end %>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrarse" %>
   </div>
 
 <% end %>
