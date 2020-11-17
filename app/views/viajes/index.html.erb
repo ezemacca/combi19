@@ -38,9 +38,9 @@
         <%else %>
           <td>--</td>
         <% end %>
-        <td><%= link_to 'Detalles', viaje %></td>
-        <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
-        <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>
+        <td><%= link_to 'Detalles', viaje, class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Editar', edit_viaje_path(viaje), class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } , class: 'btn btn-danger btn-sm' %></td>
       </tr>
     <% end %>
     <% end %>
