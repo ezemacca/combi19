@@ -33,7 +33,6 @@ class CombisController < ApplicationController
     				redirect_to new_combi_path, notice: "No se cargo la combi, combi repetida"
     			end
     		end
-    		
     	end
 	end
 	#	@combiselected= Combi.where(patente: params[:id] ))

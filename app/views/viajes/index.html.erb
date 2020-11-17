@@ -29,11 +29,11 @@
         <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
         <% if @usuario.find(viaje.chofer).eliminado || @combi.find(viaje.combi).eliminado%>
           <% if @usuario.find(viaje.chofer).eliminado && @combi.find(viaje.combi).eliminado%>
-            <td style="red">Chofer y Combi estan eliminados</td>
+            <td><span>Chofer y Combi estan eliminados</span></td>
           <% elsif @usuario.find(viaje.chofer).eliminado %>
-            <td style="red"> Chofer eliminado </td>
+            <td><span>Chofer eliminado</span></td>
           <% else %>
-            <td style="red"> Combi eliminada</td>
+            <td><span>Combi eliminada</span></td>
           <% end %>
         <%else %>
           <td>--</td>
