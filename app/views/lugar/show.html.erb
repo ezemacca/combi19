@@ -1,2 +1,14 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
+<p>
+  <strong>Provincia:</strong>
+  <%= @lugar.provincia.titleize %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @lugar.ciudad.titleize %>
+</p>
+
+<%= link_to 'Editar', edit_lugar_path(@lugar) %> |
+<%= link_to 'Volver', lugar_index_path %>
 <%end%>

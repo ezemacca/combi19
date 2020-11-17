@@ -10,11 +10,12 @@
 				<div>
 				<table>
 					<tr>
-						<th>PATENTE-----------</th>
-						<th>Clasificacion-----</th>
-						<th>Plazas Totales-----</th>
-						<th>Modelo-----</th>
-						<th>Acciones------</th>					
+						<th>PATENTE</th>
+						<th>Clasificacion</th>
+						<th>Plazas Totales</th>
+						<th>Modelo</th>
+						<th>Acciones</th>
+						<th colspan="3"></th>					
 					</tr>
 					<tr>
 						<td><%=c.patente.upcase%></td>
@@ -22,6 +23,7 @@
 						<td><%=c.plazas_totales%></td> 
 						<td><%=c.modelo%></td>
 						<td>
+							<%=link_to "Ver", combi_path(c) %>
 							<%=link_to "Editar", edit_combi_path(c)%>
 							<%=link_to "eliminar", c,method: :delete%>
 						</td>

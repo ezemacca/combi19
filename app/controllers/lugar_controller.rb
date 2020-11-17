@@ -4,6 +4,10 @@ class LugarController < ApplicationController
   end
   #Parametros de lugar
 
+  def show
+    @lugar = Lugar.find(params[:id])    
+  end
+
   def edit
     @lugar = Lugar.find(params[:id])
   end

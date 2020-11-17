@@ -3,6 +3,10 @@ class CombisController < ApplicationController
 
 	end
 
+	def show
+		@combi = Combi.find(params[:id])		
+	end
+
 	def new
 		@combi = Combi.new
 	end
@@ -13,7 +17,7 @@ class CombisController < ApplicationController
 	def create
 		@combi=Combi.new(params.require(:combi).permit(:clasificacion,:plazas_totales,:modelo,:patente))
 		if @combi.save
-    		redirect_to administrador_index_path, notice: "se cargo la combi correctamente"
+    		redirect_to new_combi_path, notice: "se cargo la combi correctamente"
     	else
     		c=Combi.find_by(patente: @combi.patente.downcase)
     		if !c.nil?
@@ -24,9 +28,9 @@ class CombisController < ApplicationController
     				c.clasificacion=@combi.clasificacion
     				c.modelo=@combi.modelo
     				c.save
-    				redirect_to administrador_index_path, notice: "Se cargo la combi correctamente (2)"
+    				redirect_to new_combi_path, notice: "Se cargo la combi correctamente (2)"
     			else
-    				redirect_to administrador_index_path, notice: "No se cargo la combi, combi repetida"
+    				redirect_to new_combi_path, notice: "No se cargo la combi, combi repetida"
     			end
     		end
     		
