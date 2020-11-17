@@ -20,6 +20,9 @@ class CombisController < ApplicationController
     			if c.eliminado
     			
     				c.eliminado=false
+    				c.plazas_totales=@combi.plazas_totales
+    				c.clasificacion=@combi.clasificacion
+    				c.modelo=@combi.modelo
     				c.save
     				redirect_to administrador_index_path, notice: "Se cargo la combi correctamente (2)"
     			else
