@@ -1,5 +1,5 @@
 class ViajesController < ApplicationController
-  #before_action :set_viaje, only: [:show, :edit, :update, :destroy]
+  before_action :set_viaje, only: [:show, :edit, :update, :destroy]
 
   # GET /viajes
   # GET /viajes.json
@@ -24,18 +24,18 @@ class ViajesController < ApplicationController
   # GET /viajes/new
   def new
     @viaje = Viaje.new
-    @lugar = Lugar.all
-    @ruta = Rutum.all
-    @combi = Combi.all
-    @chofer = Usuario.where(role: "chofer")
+    @lugar = Lugar.where(eliminado: false)
+    @ruta = Rutum.where(eliminado: false)
+    @combi = Combi.where(eliminado: false)
+    @chofer = Usuario.where(role: "chofer", eliminado: false)
   end
 
   # GET /viajes/1/edit
   def edit
-    @lugar = Lugar.all
-    @ruta = Rutum.all
-    @combi = Combi.all
-    @chofer = Usuario.where(role: "chofer")
+    @lugar = Lugar.where(eliminado: false)
+    @ruta = Rutum.where(eliminado: false)
+    @combi = Combi.where(eliminado: false)
+    @chofer = Usuario.where(role: "chofer",eliminado: false)
   end
 
   # POST /viajes

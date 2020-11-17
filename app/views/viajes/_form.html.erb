@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= form.label :fecha %>
-    <%= form.datetime_field :fecha, start_year: 2020, end_year: 2030 %>
+    <%= form.datetime_field :fecha, start_year: 2020, end_year: 2030, required: true %>
   </div>
 
   <div class="field">
@@ -41,13 +41,17 @@
 
   <div class="field">
     <%= form.label :chofer %>
-    <%= form.collection_select :chofer, @chofer, :id, :mostrar_atributos, { include_blank: "" } %>
+    <%= form.collection_select :chofer, @chofer, :id, :mostrar_atributos, { include_blank: "" }, required: true %>
   </div>
+<!--
+  A futuro para tener la fecha de llegada
 
   <div class="field">
     <%= form.label :fecha_llegada %>
     <%= form.datetime_field :fecha_llegada, start_year: 2020, end_year: 2030 %>
   </div>
+
+-->
 
   <div class="actions">
     <%= form.submit "Agregar viaje" %>
