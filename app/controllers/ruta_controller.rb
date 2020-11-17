@@ -51,12 +51,15 @@ class RutaController < ApplicationController
 
   def update
   	@ruta = Rutum.find(params[:id])
- 
-  	if @ruta.update(ruta_params)
-    	redirect_to ruta_index_path, notice: "La ruta se actualizo"
-  	else
-    	redirect_to ruta_index_path, notice: "La ruta no se pudo actualizar"
-  	end
+    if @ruta.origen == @ruta.destino
+      redirect_to ruta_alta_path, notice: "El origen y el destino tienen que ser distintos"
+    else 
+  	 if @ruta.update(ruta_params)
+    	 redirect_to ruta_index_path, notice: "La ruta se actualizo"
+  	 else
+    	 redirect_to ruta_index_path, notice: "La ruta no se pudo actualizar"
+  	 end
+    end
   end
  
 private
