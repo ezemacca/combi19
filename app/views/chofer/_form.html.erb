@@ -1,6 +1,11 @@
 <%= form_for @chofer, :url => { :action => remplazo } do |f| %> <%# En caso de emergencia la palabra remplazada es remplazo%> 
  
   <%# <%= form_for @chofer, :url => { :action => :create } do |f| %>
+<% if @chofer.errors.any? %>
+        <% @chofer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+  <% end %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -35,7 +40,7 @@
 
     <div class="field">
     <%= f.label :telefono %><br />
-    <%= f.text_field :telefono, required: true, placeholder: 'Ingrese su telefono' %>
+    <%= f.telephone_field :telefono, required: true, placeholder: 'Ingrese su telefono' %>
     </div>
 
 
