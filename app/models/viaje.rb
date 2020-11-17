@@ -1,4 +1,14 @@
 class Viaje < ApplicationRecord
+	validate :validacion_rango_fecha
+
+	def validacion_rango_fecha
+		viajes = Viaje.where("fecha < ?", self.fecha_llegada)
+		viajes2 = viajes.where("fecha_llegada > ?", self.fecha)
+		viajes2.each do |v|
+			errors.add(:combi, :fecha, message: "La combi tiene asignado un viaje en ese rango de fecha") if v.combi == self.combi
+			errors.add(:chofer, :fecha, message: "El chofer tiene asignado un viaje en ese rango de fecha") if v.chofer == self.chofer
+		end
+	end
 
 	def validacion_fecha
 		viaje = Viaje.find_by(combi: self.combi, fecha: self.fecha)

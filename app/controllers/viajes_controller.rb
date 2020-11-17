@@ -45,19 +45,22 @@ class ViajesController < ApplicationController
     o = Rutum.find(@viaje.ruta).origen
     d = Rutum.find(@viaje.ruta).destino
     if @viaje.origen == o && @viaje.destino == d
-      if @viaje.validacion_fecha
-        respond_to do |format|
+      #if @viaje.validacion_fecha
+        #respond_to do |format|
           if @viaje.save
-            format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
-            format.json { render :show, status: :created, location: @viaje }
+            redirect_to @viaje, notice: "El viaje se agrego correctamente"
+            #format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
+            #format.json { render :show, status: :created, location: @viaje }
           else
-            format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
-            format.json { render json: @viaje.errors, status: :unprocessable_entity }
+            flash[:error]
+            render :new
+            #format.html { render :new }
+            #format.json { render json: @viaje.errors, status: :unprocessable_entity }
           end
-        end
-      else
-        redirect_to new_viaje_path, notice: "La combi ya tiene asignado un viaje a esa hora, o la fecha ya paso"
-      end
+        #end
+      #else
+        #redirect_to new_viaje_path, notice: "La combi ya tiene asignado un viaje a esa hora, o la fecha ya paso"
+      #end
     else
       redirect_to new_viaje_path, notice: "La ruta no es la correcta para el origen y destino que elegiste"
     end
