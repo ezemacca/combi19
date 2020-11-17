@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= c.label :plazas_totales %><br />
-    <%= c.text_field :plazas_totales, required: true, placeholder: "Plazas Totales" %>
+    <%= c.number_field :plazas_totales, in: 1..100 , step: 1, required: true, placeholder: "Plazas " %>
   </div>
   <div class="field">
     <%= c.label :modelo %><br />
