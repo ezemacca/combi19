@@ -2,14 +2,28 @@
 <h1>lista de choferes</h1>
 
 <%#mostrar toda la lista de choferes %>
-<% chofer= Usuario.all %>
+<table>
+	<tr>
+		<th>Apellido</th>
+		<th>Nombre</th>
+		<th>DNI</th>
+		<th>Email</th>
+		<th>Telefono</th>
+	</tr>
 
-	<% chofer.each do |c| %>
-	 <%if !((c.eliminado)) and (c.role == "chofer")%> 
-	<div><%=c.apellido.titleize%> <%=c.nombre.titleize%> - <%=c.DNI%> - <%=c.email%> - <%=c.telefono%>
-	<%=link_to "Editar", edit_chofer_path(c)%>
-	<%=link_to "Eliminar", chofer_path(c), method: :delete%>
-	<%end%>
-	</div>
-	<%end%> 
+	<% @chofer.each do |c| %>
+	<tr>
+		<td><%=c.apellido.titleize%></td>
+		<td><%=c.nombre.titleize%></td>
+		<td><%=c.DNI%></td>
+		<td><%=c.email%></td>
+		<td><%=c.telefono%></td>
+		<td>
+		<%=link_to "Ver", chofer_path(c)%> 
+		<%=link_to "Editar", edit_chofer_path(c)%>
+		<%=link_to "Eliminar", chofer_path(c), method: :delete%>
+		</td>
+	</tr>
+	<% end %>
+</table>
 <%end%>

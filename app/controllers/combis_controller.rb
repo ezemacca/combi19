@@ -1,6 +1,6 @@
 class CombisController < ApplicationController
 	def index
-
+		@combi = Combi.where(eliminado: false)
 	end
 
 	def show

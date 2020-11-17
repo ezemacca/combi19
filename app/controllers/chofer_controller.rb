@@ -1,6 +1,12 @@
 class ChoferController < ApplicationController
   def index
+    @chofer = Usuario.where(role: "chofer", eliminado: false)
   end
+
+  def show
+    @chofer = Usuario.find(params[:id])
+  end
+  
   def new
   	@chofer = Usuario.new
   end

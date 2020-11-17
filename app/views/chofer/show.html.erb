@@ -1,0 +1,29 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
+<p>
+  <strong>Apellido:</strong>
+  <%= @chofer.apellido.titleize %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @chofer.nombre %>
+</p>
+
+<p>
+  <strong>DNI:</strong>
+  <%= @chofer.DNI %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @chofer.email %>
+</p>
+
+<p>
+	<strong>Telefono:</strong>
+	<%= @chofer.telefono %>
+</p>
+
+<%= link_to 'Editar', edit_chofer_path(@chofer) %> |
+<%= link_to 'Volver', chofer_index_path %>
+<% end %>

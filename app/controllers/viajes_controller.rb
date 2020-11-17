@@ -66,14 +66,30 @@ class ViajesController < ApplicationController
   # PATCH/PUT /viajes/1
   # PATCH/PUT /viajes/1.json
   def update
-    respond_to do |format|
-      if @viaje.update(viaje_params)
-        format.html { redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
-        format.json { render :show, status: :ok, location: @viaje }
+    @viaje2 = Viaje.new(viaje_params)
+    o = Rutum.find(@viaje2.ruta).origen
+    d = Rutum.find(@viaje2.ruta).destino
+    if ((@viaje2.origen == o) && (@viaje2.destino == d))
+      a = @viaje2.validacion_actualizar
+      if a == 1
+        respond_to do |format|
+          if @viaje.update(viaje_params)
+            format.html { redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
+            format.json { render :show, status: :ok, location: @viaje }
+          else
+            format.html { render :edit }
+            format.json { render json: @viaje.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @viaje.errors, status: :unprocessable_entity }
+        if a == 2
+          redirect_to edit_viaje_path(@viaje), notice: "La fecha ya paso"
+        else
+          redirect_to edit_viaje_path(@viaje), notice: "No hiciste ningun cambio"
+        end
       end
+    else
+      redirect_to edit_viaje_path(@viaje), notice: "La ruta no es la correcta para el origen y destino que elegiste"
     end
   end
 
