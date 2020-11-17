@@ -15,4 +15,8 @@ class Rutum < ApplicationRecord
 	def mostrar_nombre
 		"#{nombre.titleize} | #{Lugar.find(origen).ciudad.titleize} -> #{Lugar.find(destino).ciudad.titleize}"		
 	end
+
+	def mostrar_atributos
+		"#{nombre.titleize}"		
+	end
 end

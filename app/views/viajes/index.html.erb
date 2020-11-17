@@ -13,7 +13,7 @@
       <th>Combi</th>
       <th>Chofer</th>
       <th> </th>
-      <th colspan="3"></th>
+      <th colspan="20"></th>
     </tr>
   </thead>
 
@@ -22,9 +22,9 @@
     <% if !viaje.eliminado %>
       <tr>
         <td><%= viaje.fecha %></td>
-        <td><%= @lugar.find(viaje.origen).mostrar_atributos %></td>
-        <td><%= @lugar.find(viaje.destino).mostrar_atributos %></td>
-        <td><%= @ruta.find(viaje.ruta).mostrar_nombre %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
         <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
         <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
         <% if @usuario.find(viaje.chofer).eliminado || @combi.find(viaje.combi).eliminado%>
