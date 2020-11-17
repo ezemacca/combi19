@@ -4,6 +4,11 @@ class RutaController < ApplicationController
   	@lugar = Lugar.all
   end
 
+  def show
+    @ruta = Rutum.find(params[:id])
+    @lugar = Lugar.all    
+  end
+
   def alta
   	@lugar = Lugar.where(eliminado: false)
   end

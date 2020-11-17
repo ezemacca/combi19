@@ -1,0 +1,19 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
+<p>
+  <strong>Nombre:</strong>
+  <%= @ruta.nombre.titleize %>
+</p>
+
+<p>
+  <strong>Origen:</strong>
+  <%= @lugar.find(@ruta.origen).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @lugar.find(@ruta.destino).mostrar_atributos %>
+</p>
+
+<%= link_to 'Editar', edit_rutum_path(@ruta) %> |
+<%= link_to 'Volver', ruta_index_path %>
+<%end%>
