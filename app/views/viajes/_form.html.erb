@@ -19,39 +19,37 @@
     <%= form.datetime_field :fecha, start_year: 2020, end_year: 2030, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :origen %><br />
-    <%= form.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+<!--  <div class="field">
+    <%= form.label :origen %>
+    <%= form.collection_select :origen, Lugar.where(eliminado: false), :id, :mostrar_atributos, { include_blank: "" }, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :destino %><br />
-    <%= form.collection_select :destino, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+    <%= form.label :destino %>
+    <%= form.collection_select :destino, Lugar.where(eliminado: false), :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+  </div>-->
+
+  <div class="field">
+    <%= form.label :ruta %>
+    <%= form.collection_select :ruta, Rutum.where(eliminado: false), :id, :mostrar_nombre, { include_blank: "" }, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :ruta %><br />
-    <%= form.collection_select :ruta, @ruta, :id, :mostrar_nombre, { include_blank: "" }, required:true %>
+    <%= form.label :combi %>
+    <%= form.collection_select :combi, Combi.where(eliminado: false), :id, :mostrar_atributos, { include_blank: "" }, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :combi %><br />
-    <%= form.collection_select :combi, @combi, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+    <%= form.label :chofer %>
+    <%= form.collection_select :chofer, Usuario.where(role: "chofer", eliminado: false), :id, :mostrar_atributos, { include_blank: "" },  required: true %>
   </div>
-
-  <div class="field">
-    <%= form.label :chofer %><br />
-    <%= form.collection_select :chofer, @chofer, :id, :mostrar_atributos, { include_blank: "" },  required: true %>
-  </div>
-<!--
-  A futuro para tener la fecha de llegada
 
   <div class="field">
     <%= form.label :fecha_llegada %>
     <%= form.datetime_field :fecha_llegada, start_year: 2020, end_year: 2030 %>
   </div>
 
--->
+
 
   <div class="actions">
     <%= form.submit "Agregar viaje" %>

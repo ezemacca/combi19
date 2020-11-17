@@ -8,12 +8,12 @@
 
 <p>
   <strong>Origen:</strong>
-  <%= @lugar.find(@viaje.origen).mostrar_atributos %>
+  <%= @lugar.find(@ruta.find(@viaje.ruta).origen).mostrar_atributos %>
 </p>
 
 <p>
   <strong>Destino:</strong>
-  <%= @lugar.find(@viaje.destino).mostrar_atributos %>
+  <%= @lugar.find(@ruta.find(@viaje.ruta).destino).mostrar_atributos %>
 </p>
 
 <p>
