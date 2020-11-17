@@ -13,12 +13,12 @@ Formulario para cargar una nueva combi
 
   <div class="field">
     <%= c.label :plazas_totales %><br />
-    <%= c.number_field :plazas_totales, in: 1..100 , step: 1, required: true, placeholder: "Plazas " %>
+    <%= c.number_field :plazas_totales, in: 1..100 , step: 1, required: true, placeholder: "Plazas " %> 
   </div>
   <div class="field">
     <%= c.label :modelo %><br />
     <%= c.text_field :modelo, required: true, placeholder: "Modelo de la combi:" %>
-  </div>
+  </div>  
   <div class="field">
     <%= c.label :patente %><br />
     <%= c.text_field :patente, required: true, placeholder: "Patente" %>
