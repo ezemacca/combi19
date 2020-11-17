@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1> Editar una combi </h1>
 
    <%= form_for :combi, url: combi_path, method: :patch do |c| %>
@@ -29,3 +30,4 @@
 <div> <%= link_to "Volver a lista de combis", combis_path %> </div>
 
 <div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
+<% end %>

@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h2>Ingrese los datos del lugar que desea agregar</h2>
 
    <%= form_for :lugar, :url => { :action => :create } do |l| %>
@@ -20,3 +21,4 @@
 <% end %>
 
 <div> <%= link_to "Volver al inicio de administrador", administrador_index_path %> </div>
+<%end%>

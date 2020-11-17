@@ -1,0 +1,65 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+es:
+  devise:
+    confirmations:
+      confirmed: "Tu email se confirmo exitosamente."
+      send_instructions: "En unos minutos recibiras un email para confirmar tu cuenta"
+      send_paranoid_instructions: "Si junamos tu mail, te llegara un correo de confirmacion."
+    failure:
+      already_authenticated: "Ya estas registrado en el sistema."
+      inactive: "Aun no activaste tu cuenta."
+      invalid: "Invalido %{authentication_keys} o contrasena."
+      locked: "Tu cuenta esta bloqueada."
+      last_attempt: "Tenes un ultimo intento antes de que se bloquee tu cuenta."
+      not_found_in_database: "Invalido %{authentication_keys} o contrasena."
+      timeout: "Expiro tu sesion, volve a iniciar sesion."
+      unauthenticated: "Necesitas registrarte o iniciar sesion para continuar."
+      unconfirmed: "Tenes que Validar tu cuenta antes de seguir, chequea tu mail."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmacion"
+      reset_password_instructions:
+        subject: "Reiniciar configuraciones de contrasena"
+      unlock_instructions:
+        subject: "Desbloquear instrucciones"
+      email_changed:
+        subject: "Email cambiado"
+      password_change:
+        subject: "Contrasena cambiada"
+    omniauth_callbacks:
+      failure: "No te pudimos autenticar che, %{kind} porque \"%{reason}\"."
+      success: "Autenticadisimo desde esta cuenta: %{kind}."
+    passwords:
+      no_token: "No podes acceder a esta pagina viniendo desde un mail de confirmacion. Vo fijate."
+      send_instructions: "En unos momentos vas a recibir un mail."
+      send_paranoid_instructions: "Si te junamos, vas a recibir un mail con instrucciones."
+      updated: "Tu contrasena se actualizo re bien, ahora iniciaste sesion re bien, que genio que sos."
+      updated_not_active: "Cambio de contrasena exitoso, safaste."
+    registrations:
+      destroyed: "Cuenta Cancelada."
+      signed_up: "Bienvenido! Iniciaste sesion satisfactoriamente."
+      signed_up_but_inactive: "Estas correctamente reigstrado, pero no podes iniciar sesion porque no verificaste tu cuenta, chequea tu mail."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "En unos momentos vas a recibir un mail. Estate atento."
+      update_needs_confirmation: "Actualizaste tu cuenta bien, pero pero pero hay que confirmarte, anda a chequear el mail."
+      updated: "Tu cuenta se actualizo correctamente."
+      updated_but_not_signed_in: "Tu cuenta se actualizo correctamente, pero tenes que iniciar sesion de nuevo capo"
+    sessions:
+      signed_in: "Inicio de sesion exitoso."
+      signed_out: "Cerraste sesion correctamente."
+      already_signed_out: "Ya habias cerrado sesion, ahora esta cerradisima la sesion."
+    unlocks:
+      send_instructions: "que tocaste? ahora tenes que seguir las instrucciones que te mandamos, anda a chequear el mail"
+      send_paranoid_instructions: "Si tu cuenta existe, si vos sos quien decis ser, vas a recibir un mail con instrucciones."
+      unlocked: "Te desbloqueamos la cuenta, la primera vez es gratis, ahora podes iniciar sesion"
+  errors:
+    messages:
+      already_confirmed: "Ya esta confirmado, ahora inicia sesion"
+      confirmation_period_expired: "Te re colgaste, tenes que iniciar sesion en %{period}, pedi un nuevo mail de confirmacion"
+      expired: "Ha expirado, pida uno nuevo"
+      not_found: "No se encontro"
+      not_locked: "no estaba bloqueado ?)"
+      not_saved:
+        one: "1 error prohibio que %{resource} pueda ser guardadp:"
+        other: "%{count} erroes prohibieron que  %{resource} pueda ser guardado:"

@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <p id="notice"><%= notice %></p>
 
 <h1>Viajes</h1>
@@ -49,3 +50,4 @@
 <br>
 
 <%= link_to 'Agregar viaje', new_viaje_path %>
+<%end%>

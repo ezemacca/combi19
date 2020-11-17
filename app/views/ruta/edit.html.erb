@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1>Editar ruta</h1>
 <%= form_for :ruta, url: rutum_path, method: :patch do |r| %>
   <div class="field">
@@ -16,4 +17,5 @@
   	</div>
 </div>
 	<%= r.submit "Editar ruta" %>
+<% end %>
 <% end %>

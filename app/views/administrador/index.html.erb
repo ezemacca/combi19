@@ -1,3 +1,4 @@
+<%if usuario_signed_in? && current_usuario.role == "admin" %>
 <h1> Inicio de administrador </h1>
 	
 	<%# Links para ver administrar los choferes #%>
@@ -30,3 +31,4 @@
 	<div><h2>Viajes</h2></div>
 	<div><%= link_to "Ver viajes", viajes_path %></div>
 	<div><%= link_to "Agregar viajes", new_viaje_path %></div>
+<%end%>
