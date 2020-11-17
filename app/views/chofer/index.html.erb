@@ -1,29 +1,38 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1>lista de choferes</h1>
+	<h1 align="center">Lista de choferes</h1>
+	<Br>
+	<Br>
 
-<%#mostrar toda la lista de choferes %>
-<table>
-	<tr>
-		<th>Apellido</th>
-		<th>Nombre</th>
-		<th>DNI</th>
-		<th>Email</th>
-		<th>Telefono</th>
-	</tr>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Apellido</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">DNI</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Telefono</th>
+	      <th scope="col">Acciones</th>
+	    </tr>
+	  </thead>
 
-	<% @chofer.each do |c| %>
-	<tr>
-		<td><%=c.apellido.titleize%></td>
-		<td><%=c.nombre.titleize%></td>
-		<td><%=c.DNI%></td>
-		<td><%=c.email%></td>
-		<td><%=c.telefono%></td>
-		<td>
-		<%=link_to "Ver", chofer_path(c)%> 
-		<%=link_to "Editar", edit_chofer_path(c)%>
-		<%=link_to "Eliminar", chofer_path(c), method: :delete%>
-		</td>
-	</tr>
-	<% end %>
-</table>
-<%end%>
+	  <tbody>
+	  	
+	  	<% @chofer.each do |c| %>	
+	  		<tr>
+	      <td><%=c.apellido.titleize%></td>
+	      <td><%=c.nombre.titleize%></td>
+	      <td><%=c.DNI%></td>
+	      <td><%=c.email%></td>
+	      <td><%=c.telefono%></td>
+	      <td>
+	      	<%=link_to "Ver", chofer_path(c)%> 
+			<%=link_to "Editar", edit_chofer_path(c)%>
+			<%=link_to "Eliminar", chofer_path(c), method: :delete%>
+	      </td>
+	    </tr>
+	    <% end %>
+	 	</tbody>
+		</table>
+<%else%> 
+  <h1 align="center">ACCESO DENEGADO</h1>
+<% end %>

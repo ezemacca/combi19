@@ -1,32 +1,42 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1> Inicio de administrador </h1>
+	<ul class="list-unstyled">
+	<h1 > Administrador </h1>
 	
-	<%# Links para ver administrar los choferes #%>
-	<div><h2>Choferes<h2></div>
-	<div><%= link_to "Ver Choferes", chofer_index_path %></div>
-	<div><%= link_to "Agregar chofer", new_chofer_path %></div>
-	
-	<%# Links para Agregar los lugares de origen y destino  #%>
-	<div><h2>Lugares<h2></div>
-	<div><%= link_to "Ver Lugares", lugar_index_path %></div>
-	<div><%= link_to "Agregar Lugares", new_lugar_path %></div>
+		<%# Links para ver administrar los choferes #%>
+		<div><h2>Choferes<h2></div>
+			<ul>
+				<div><%= link_to "Ver Choferes", chofer_index_path %></div>
+				<div><%= link_to "Agregar chofer", new_chofer_path %></div>
+			</ul>
+		<%# Links para Agregar los lugares de origen y destino  #%>
+		<div><h2>Lugares<h2></div>
+			<ul>
+		<div><%= link_to "Ver Lugares", lugar_index_path %></div>
+		<div><%= link_to "Agregar Lugares", new_lugar_path %></div>
+			</ul>
 
+		<div><h2>Rutas<h2></div>
+			<ul>
+		<div><%= link_to "Ver Rutas", ruta_index_path %></div>
+		<div><%= link_to "Agregar Ruta", ruta_alta_path %></div>
+			</ul>
 
-	<div><h2>Rutas<h2></div>
-	<div><%= link_to "Ver Rutas", ruta_index_path %></div>
-	<div><%= link_to "Agregar Ruta", ruta_alta_path %></div>
+		<div><h2>Combis<h2></div>
+			<ul>
+		<div><%= link_to "Ver lista Combis", combis_path %></div>
+		<div><%= link_to "Agregar Nueva Combi", new_combi_path%></div>
+			</ul>
 
-	<div><h2>Combis<h2></div>
+		<div><h2>Productos/Viandas<h2></div>
+			<ul>	
+		<div><%= link_to "Ver lista Productos", productos_path %></div>
+		<div><%= link_to "Agregar Nuevo Producto", new_producto_path %></div>
+			</ul>
 
-	<div><%= link_to "Ver lista Combis", combis_path ,class: 'btn btn-info btn-sm'%></div>
-	<div><%= link_to "Agregar Nueva Combi", new_combi_path ,class: 'btn btn-info btn-sm'%></div>
-
-	<div><h2>Productos/Viandas<h2></div>
-
-	<div><%= link_to "Ver lista Productos", productos_path ,class: 'btn btn-info btn-sm'%></div>
-	<div><%= link_to "Agregar Nuevo Producto", new_producto_path ,class: 'btn btn-info btn-sm'%></div>
-
-	<div><h2>Viajes</h2></div>
-	<div><%= link_to "Ver viajes", viajes_path %></div>
-	<div><%= link_to "Agregar viajes", new_viaje_path %></div>
+		<div><h2>Viajes</h2></div>
+			<ul>
+		<div><%= link_to "Ver viajes", viajes_path %></div>
+		<div><%= link_to "Agregar viajes", new_viaje_path %></div>
+			</ul>
+	</ul>
 <%end%>

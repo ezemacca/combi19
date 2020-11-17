@@ -1,10 +1,14 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1>Rutas</h1>
+<h1 align="center">Lista de Rutas <h3 align="left"></h3></h1>
+<Br>
+
+<Br>
 <table class="table">
 	<tr>
 		<th>Nombre</th>
 		<th>Origen</th>
 		<th>Destino</th>
+		<th>Acciones</th>
 	</tr>
 
 	<% @ruta.each do |r| %>

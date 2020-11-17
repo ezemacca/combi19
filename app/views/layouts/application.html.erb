@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Combi19</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,20 +13,6 @@
     <%= render 'layouts/header' %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-    <div>
-      <% if signed_in? %>
-        <%= link_to "Salir", destroy_usuario_session_path, method: :delete %>
-        <%if current_usuario.role == "admin" %>
-          <%= link_to "Inicio", administrador_index_path %>
-            <% elsif current_usuario.role == "usuario"%> 
-               <%= link_to "Inicio", usuario_index_path %>
-         
-        <%end%>
-      <% else %>
-        <%= link_to "Registrarse", new_usuario_registration_path %>
-        <%= link_to "Ingresar", new_usuario_session_path %>
-      <% end %>
-    </div>
     <%= yield %>
   </body>
 </html>

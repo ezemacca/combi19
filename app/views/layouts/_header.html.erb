@@ -1,17 +1,36 @@
 <header>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          
-          
-          <%= link_to root_path, class: 'navbar-brand' do %>
-            <%= image_tag "logo_is.png",size: "50x50", title: "Logo", class: "logo" %> Combi19
-          <% end %>
-        </div>
-        <div class="collapse navbar-collapse">
-          
-        </div><!--/.nav-collapse -->
-      </div>
+    <! -- Barra de navegacion flotante -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg" role="navigation">
+      <form class="form-inline">
+            <a class="navbar-brand" href= <%=root_path%>>
+              <%= image_tag "logo_is.png",size: "75x75", title: "Logo", class: "logo" %>
+            </a>
 
-    </div>
+            <%= link_to root_path, class: 'navbar-brand' do %> <! -- todo aca adentro es link a root -->
+                <% unless signed_in? %>
+                  <h3 align="left"> Combi-19 Bienvenido!</h3>
+                <%else%>
+                  <h3 align="left"> Combi-19</h3>
+                <%end%>
+            <% end %>
+
+            <! -- botones que se ven a la derecha de la NAVBAR flotante-->
+            <% unless signed_in? %>
+                <li class="nav-item active pull-xs-right">
+                  <h3 align="right"><%= link_to "Registrarse", new_usuario_registration_path, class:'btn btn-default'%>
+                  <%= link_to "Ingresar", new_usuario_session_path, class:'btn btn-default'%></h3>
+                </li>
+                <%else%>
+                  <li class="nav-item active pull-xs-right">
+                  
+                  <h2 align="right">
+
+                    <span><%= link_to "Salir", destroy_usuario_session_path, method: :delete ,:class => "btn1"%></span>
+
+                  </h2>
+                  </li>
+            <%end%>
+          </form>
+    </nav>   
+
 </header>

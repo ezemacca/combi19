@@ -1,15 +1,35 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1>Lista de lugares</h1>
 
-<% lugar= Lugar.all %>
+	<h1 align="center">Lista de Lugares</h1>
+	<Br>
+	<Br>
 
-	<% lugar.each do |l| %>
-	 <%if !(l.eliminado)%> 
-	<div><%=l.provincia.titleize%> - <%=l.ciudad.titleize%>
-	<%=link_to "Ver", lugar_path(l) %>
-	<%=link_to "Editar", edit_lugar_path(l)%>
-	<%=link_to "Eliminar", l,method: :delete%>
-	</div>
-	<%end%>
-	<%end%> 
-<%end%>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Provincia</th>
+	      <th scope="col">Ciudad</th>
+	      <th scope="col">Acciones</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	  	<% lugar= Lugar.all %>
+
+	  	<% lugar.each do |l| %>	
+	  		<tr>
+				<td><%=l.provincia.titleize%></td>
+				<td><%=l.ciudad.titleize%></td>
+	      	<td>
+				<%=link_to "Ver", lugar_path(l) %>
+				<%=link_to "Editar", edit_lugar_path(l)%>
+				<%=link_to "eliminar", l,method: :delete%>
+			</td>
+	    </tr>
+	    <% end %>
+	 	</tbody>
+	</table>		
+
+<%else%> 
+	<h1 align="center">ACCESO DENEGADO</h1>
+<% end %>

@@ -1,23 +1,28 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
 <p id="notice"><%= notice %></p>
 
-<h1>Viajes</h1>
 
-<table>
+
+
+<h1 align="center">Lista de Viajes <h3 align="left"><%= link_to 'Agregar viaje', new_viaje_path %></h3></h1>
+<Br>
+
+<Br>
+
+<table class="table">
   <thead>
     <tr>
-      <th>Fecha<br />(Año/Mes/Dia)</th>
-      <th>Origen</th>
-      <th>Destino</th>
-      <th>Ruta</th>
-      <th>Combi</th>
-      <th>Chofer</th>
-      <th> </th>
-      <th colspan="3"></th>
+      <th scope="col">Fecha<br />(Año/Mes/Dia)</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Combi</th>
+      <th scope="col">Chofer</th>
     </tr>
   </thead>
 
   <tbody>
+    
     <% @viajes.each do |viaje| %>
     <% if !viaje.eliminado %>
       <tr>
@@ -42,12 +47,12 @@
         <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
         <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>
       </tr>
-    <% end %>
-    <% end %>
+    <% end %>  
+  <% end %>
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Agregar viaje', new_viaje_path %>
-<%end%>
+  </table>
+  
+<%#mostrar toda la lista de choferes %>
+<%else%> 
+  <h1 align="center">ACCESO DENEGADO</h1>
+<% end %>
