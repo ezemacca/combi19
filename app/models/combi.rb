@@ -3,7 +3,7 @@ class Combi < ApplicationRecord
 	has_many :choferes
 	before_save :minuscula_patente 
 def minuscula_patente
-      self.patente.downcase
+      self.patente.downcase!
 end
 
 def mostrar_atributos

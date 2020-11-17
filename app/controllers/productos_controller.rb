@@ -44,10 +44,12 @@ class ProductosController < ApplicationController
               p.save
               redirect_to administrador_index_path, notice: "Se cargo el producto correctamente (2)"
             else
-              redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"
+              render :new 
+             #redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"
             end
           else
-            redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"    
+            render :new
+            #redirect_to administrador_index_path, notice: "No se cargo el producto, ya existe"    
           end
        
          }
