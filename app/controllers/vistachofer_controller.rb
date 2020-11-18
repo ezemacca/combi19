@@ -1,0 +1,2 @@
+class VistachoferController < ApplicationController
+end
