@@ -30,22 +30,22 @@
   </div>-->
 
   <div class="field">
-    <%= form.label :ruta %>
+    <%= form.label :ruta %><br />
     <%= form.collection_select :ruta, Rutum.where(eliminado: false), :id, :mostrar_nombre, { include_blank: "" }, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :combi %>
+    <%= form.label :combi %><br />
     <%= form.collection_select :combi, Combi.where(eliminado: false), :id, :mostrar_atributos, { include_blank: "" }, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :chofer %>
+    <%= form.label :chofer %><br />
     <%= form.collection_select :chofer, Usuario.where(role: "chofer", eliminado: false), :id, :mostrar_atributos, { include_blank: "" },  required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :fecha_llegada %>
+    <%= form.label :fecha_llegada %><br />
     <%= form.datetime_field :fecha_llegada, start_year: 2020, end_year: 2030 %>
   </div>
 

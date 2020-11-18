@@ -1,43 +1,37 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
 <p id="notice"><%= notice %></p>
 
+<h1>Productos</h1>
 
-
-<h1 align="center">Lista de Productos <h3 align="left"><%= link_to 'Agregar Producto', new_producto_path %></h3></h1>
-<Br>
-
-<Br>
-
-<table class="table">
+<table>
   <thead>
     <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Stock</th>
-      <th scope="col">Acciones</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @productos.each do |producto| %> 
-      <tr>
-      <td><%=producto.nombre%></td>
-      <td><%=producto.descripcion%></td>
-      <td>$<%=producto.precio%></td>
-      <td><%=producto.stock%></td>
-      <td>
-        <td><%= link_to 'Ver', producto %></td>
-        <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
-        <td><%= link_to 'Eliminar', producto, method: :delete%></td>
-      </td>
-    </tr>
-
+    <% @productos.each do |producto| %>
+      <% if !(producto.eliminado)%>
+          <tr>
+            <td><%= producto.nombre %></td>
+            <td><%= producto.descripcion %></td>
+            <td>$<%= producto.precio %> </td>
+           <td><%= producto.stock %></td>
+            <td><%= link_to 'Ver', producto %></td>
+            <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
+            <td><%= link_to 'Eliminar', producto, method: :delete%></td>
+          </tr>
+        <%end%>
     <% end %>
   </tbody>
-  </table>
-  
-<%#mostrar toda la lista de choferes %>
-<%else%> 
-  <h1 align="center">ACCESO DENEGADO</h1>
-<% end %>
+</table>
+
+<br>
+
+<%= link_to 'Agregar Producto', new_producto_path %>
+<%end%>
