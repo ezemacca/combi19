@@ -1,7 +1,7 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
 
 
-	<h1 align="center">Lista de Combis</h1>
+	<h1 align="center">Lista de Combis</h1><%= link_to "Agregar Combi", new_combi_path %>
 	<Br>
 	<Br>
 
@@ -15,7 +15,6 @@
 	      <th scope="col">Acciones</th>
 	    </tr>
 	  </thead>
-
 	  <tbody>
 	  	
 	  	<% @combi.each do |c| %>	
@@ -37,3 +36,4 @@
 <%else%> 
 	<h1 align="center">ACCESO DENEGADO</h1>
 <% end %>
+

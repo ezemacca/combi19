@@ -18,6 +18,8 @@
       <th scope="col">Ruta</th>
       <th scope="col">Combi</th>
       <th scope="col">Chofer</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
 
@@ -27,11 +29,12 @@
     <% if !viaje.eliminado %>
       <tr>
         <td><%= viaje.fecha %></td>
-        <td><%= @lugar.find(viaje.origen).mostrar_atributos %></td>
-        <td><%= @lugar.find(viaje.destino).mostrar_atributos %></td>
-        <td><%= @ruta.find(viaje.ruta).mostrar_nombre %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
         <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
         <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
+        
         <% if @usuario.find(viaje.chofer).eliminado || @combi.find(viaje.combi).eliminado%>
           <% if @usuario.find(viaje.chofer).eliminado && @combi.find(viaje.combi).eliminado%>
             <td><span>Chofer y Combi estan eliminados</span></td>
@@ -43,9 +46,9 @@
         <%else %>
           <td>--</td>
         <% end %>
-        <td><%= link_to 'Detalles', viaje %></td>
-        <td><%= link_to 'Editar', edit_viaje_path(viaje) %></td>
-        <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } %></td>
+        <td><%= link_to 'Detalles', viaje, class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Editar', edit_viaje_path(viaje), class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Eiminar', viaje, method: :delete, data: { confirm: 'Estas seguro' } , class: 'btn btn-danger btn-sm' %></td>
       </tr>
     <% end %>  
   <% end %>

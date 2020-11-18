@@ -42,36 +42,27 @@ class ViajesController < ApplicationController
   # POST /viajes.json
   def create
     @viaje = Viaje.new(viaje_params)
-    o = Rutum.find(@viaje.ruta).origen
-    d = Rutum.find(@viaje.ruta).destino
-    if @viaje.origen == o && @viaje.destino == d
-      if @viaje.validacion_fecha
-        respond_to do |format|
+      #if @viaje.validacion_fecha
+        #respond_to do |format|
           if @viaje.save
-            format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
-            format.json { render :show, status: :created, location: @viaje }
+            redirect_to @viaje, notice: "El viaje se agrego correctamente"
+            #format.html { redirect_to @viaje, notice: "El viaje se agrego correctamente" }
+            #format.json { render :show, status: :created, location: @viaje }
           else
-            format.html { redirect_to new_viaje_path, notice: "El viaje ya existe" }
-            format.json { render json: @viaje.errors, status: :unprocessable_entity }
+            flash[:error]
+            render :new
+            #format.html { render :new }
+            #format.json { render json: @viaje.errors, status: :unprocessable_entity }
           end
-        end
-      else
-        redirect_to new_viaje_path, notice: "La combi ya tiene asignado un viaje a esa hora, o la fecha ya paso"
-      end
-    else
-      redirect_to new_viaje_path, notice: "La ruta no es la correcta para el origen y destino que elegiste"
-    end
+        #end
+      #else
+        #redirect_to new_viaje_path, notice: "La combi ya tiene asignado un viaje a esa hora, o la fecha ya paso"
+      #end
   end
 
   # PATCH/PUT /viajes/1
   # PATCH/PUT /viajes/1.json
   def update
-    @viaje2 = Viaje.new(viaje_params)
-    o = Rutum.find(@viaje2.ruta).origen
-    d = Rutum.find(@viaje2.ruta).destino
-    if ((@viaje2.origen == o) && (@viaje2.destino == d))
-      a = @viaje2.validacion_actualizar
-      if a == 1
         respond_to do |format|
           if @viaje.update(viaje_params)
             format.html { redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
@@ -81,16 +72,6 @@ class ViajesController < ApplicationController
             format.json { render json: @viaje.errors, status: :unprocessable_entity }
           end
         end
-      else
-        if a == 2
-          redirect_to edit_viaje_path(@viaje), notice: "La fecha ya paso"
-        else
-          redirect_to edit_viaje_path(@viaje), notice: "No hiciste ningun cambio"
-        end
-      end
-    else
-      redirect_to edit_viaje_path(@viaje), notice: "La ruta no es la correcta para el origen y destino que elegiste"
-    end
   end
 
   # DELETE /viajes/1
@@ -109,6 +90,6 @@ class ViajesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viaje_params
-      params.require(:viaje).permit(:fecha, :origen, :destino, :ruta, :fecha_llegada, :combi, :chofer, :eliminado)
+      params.require(:viaje).permit(:fecha, :ruta, :fecha_llegada, :combi, :chofer, :eliminado)
     end
 end

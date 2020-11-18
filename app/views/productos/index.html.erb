@@ -20,19 +20,19 @@
   </thead>
 
   <tbody>
-    
     <% @productos.each do |producto| %> 
       <tr>
       <td><%=producto.nombre%></td>
       <td><%=producto.descripcion%></td>
-      <td><%=producto.precio%></td>
+      <td>$<%=producto.precio%></td>
       <td><%=producto.stock%></td>
       <td>
         <td><%= link_to 'Ver', producto %></td>
         <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
-        <td><%= link_to 'Eliminar', producto %></td>
+        <td><%= link_to 'Eliminar', producto, method: :delete%></td>
       </td>
     </tr>
+
     <% end %>
   </tbody>
   </table>

@@ -42,7 +42,7 @@ class CombisController < ApplicationController
 		if @combi.update(combi_params)
 			redirect_to combis_path, notice: "Se actualizo correctamente"
 		else
-			redirect_to combis_path, notice: "Error al actualizar"
+			redirect_to combis_path, notice: "Error al actualizar, la patente ya existe"
 		end
 	end
 

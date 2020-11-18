@@ -1,6 +1,6 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
 
-	<h1 align="center">Lista de Lugares</h1>
+	<h1 align="center">Lista de Lugares</h1><%= link_to "Agregar Lugares", new_lugar_path %>
 	<Br>
 	<Br>
 
@@ -33,3 +33,4 @@
 <%else%> 
 	<h1 align="center">ACCESO DENEGADO</h1>
 <% end %>
+
