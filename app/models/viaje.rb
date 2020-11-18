@@ -1,5 +1,6 @@
 class Viaje < ApplicationRecord
 	validate :validacion_rango_fecha
+	validate :validacion_fecha_llegada
 
 	def validacion_rango_fecha
 		viajes = Viaje.where("fecha < ?", self.fecha_llegada)
@@ -10,6 +11,10 @@ class Viaje < ApplicationRecord
 				errors.add(:chofer, :fecha, message: "El chofer tiene asignado un viaje en ese rango de fecha") if v.chofer == self.chofer
 			end
 		end
+	end
+
+	def validacion_fecha_llegada
+			errors.add(:fecha_llegada, message: "La fecha de llegada tiene que ser mayor que la fecha de salida") if self.fecha > self.fecha_llegada
 	end
 
 	def validacion_fecha
