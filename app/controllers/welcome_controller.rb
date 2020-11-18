@@ -10,6 +10,9 @@ class WelcomeController < ApplicationController
   		if current_usuario.role=="usuario"
   			redirect_to usuario_index_path
 		end
+		if current_usuario.role=="chofer"
+			redirect_to vistachofer_vistachofer_path
+		end
 	end
-	end
+  end
 end

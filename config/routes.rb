@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :combis
   devise_for :usuarios
   root 'welcome#index'
+  get 'vistachofer/vistachofer'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
