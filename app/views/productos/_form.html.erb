@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :nombre %><br />
-    <%= form.text_field :nombre %>
+    <%= form.text_field :nombre, presence: true %>
   </div>
 
   <div class="field">
@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :precio %><br />
-    <%= form.number_field :precio %>
+    <%= form.number_field :precio,in: 0..1000000000 , step: 0.1 ,presence: true %>
   </div>
 
   <div class="field">
     <%= form.label :stock %><br />
-    <%= form.number_field :stock %>
+    <%= form.number_field :stock, in: 0..100000000000 , step: 1%>
   </div>
 
   <div></div>

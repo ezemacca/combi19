@@ -14,12 +14,11 @@
 	  </thead>
 
 	  <tbody>
-	  	<% lugar= Lugar.all %>
 
-	  	<% lugar.each do |l| %>	
-	  		<tr>
-				<td><%=l.provincia.titleize%></td>
-				<td><%=l.ciudad.titleize%></td>
+	  	<% @lugar.each do |l| %>	
+	  		<tr>	
+				<td><%= l.provincia.titleize%></td>
+				<td><%= l.ciudad.titleize%></td>
 	      	<td>
 				<%=link_to "Ver", lugar_path(l) , class: "btn btn-success btn-sm" %>
 				<%=link_to "Editar", edit_lugar_path(l), class: 'btn btn-info btn-sm'%>

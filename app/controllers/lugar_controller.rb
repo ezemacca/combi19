@@ -1,6 +1,8 @@
 class LugarController < ApplicationController
   
   def index
+    @lugar = Lugar.where( eliminado: false)
+
   end
   #Parametros de lugar
 
