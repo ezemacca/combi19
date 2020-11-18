@@ -1,5 +1,6 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
 	<h1 align="center">Lista de choferes</h1>
+	<%= link_to 'Agregar Chofer', new_chofer_path %>
 	<Br>
 	<Br>
 
@@ -24,9 +25,9 @@
 	      <td><%=c.email%></td>
 	      <td><%=c.telefono%></td>
 	      <td>
-	      	<%=link_to "Ver", chofer_path(c)%> 
-			<%=link_to "Editar", edit_chofer_path(c)%>
-			<%=link_to "Eliminar", chofer_path(c), method: :delete%>
+	      	<%=link_to "Ver", chofer_path(c), class: "btn btn-success btn-sm" %> 
+			<%=link_to "Editar", edit_chofer_path(c), class: 'btn btn-info btn-sm'%>
+			<%=link_to "Eliminar", chofer_path(c), method: :delete, class: 'btn btn-danger btn-sm'%>
 	      </td>
 	    </tr>
 	    <% end %>

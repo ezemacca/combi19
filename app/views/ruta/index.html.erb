@@ -1,15 +1,20 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1 align="center">Lista de Rutas <h3 align="left"></h3></h1>
+<h1 align="center">Lista de Rutas </h1><%= link_to "Agregar ruta", ruta_alta_path %>
 <Br>
 
 <Br>
-<table class="table">
-	<tr>
-		<th>Nombre</th>
-		<th>Origen</th>
-		<th>Destino</th>
-		<th>Acciones</th>
-	</tr>
+
+
+	    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Origen</th>
+        <th scope="col">Destino</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
 
 	<% @ruta.each do |r| %>
 	<% if !r.eliminado %>
@@ -18,7 +23,7 @@
 		<td><%= @lugar.find(r.origen).mostrar_atributos.titleize%></td>
 		<td><%= @lugar.find(r.destino).mostrar_atributos.titleize%></td>
 		<td>
-			<%= link_to "Ver", rutum_path(r), class: 'btn btn-info btn-sm' %>
+			<%= link_to "Ver", rutum_path(r), class: "btn btn-success btn-sm"  %>
 			<%= link_to "Editar", edit_rutum_path(r), class: 'btn btn-info btn-sm' %>
 			<%= link_to "Eliminar", r, method: :delete, class: 'btn btn-danger btn-sm' %>
 		</td>
@@ -29,4 +34,4 @@
 <% end %>
 
 <br>
-<div><%= link_to "Agregar ruta", ruta_alta_path %></div>
+<div></div>

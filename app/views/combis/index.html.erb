@@ -1,6 +1,4 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-
-
 	<h1 align="center">Lista de Combis</h1><%= link_to "Agregar Combi", new_combi_path %>
 	<Br>
 	<Br>
@@ -24,9 +22,9 @@
 				<td><%=c.plazas_totales%></td> 
 				<td><%=c.modelo%></td>
 	      	<td>
-				<%=link_to "Ver", combi_path(c) %>
-				<%=link_to "Editar", edit_combi_path(c)%>
-				<%=link_to "eliminar", c,method: :delete%>
+				<%=link_to "Ver", combi_path(c), class: "btn btn-success btn-sm"  %>
+				<%=link_to "Editar", edit_combi_path(c), class: 'btn btn-info btn-sm'%>
+				<%=link_to "eliminar", c,method: :delete, class: 'btn btn-danger btn-sm'%>
 			</td>
 	    </tr>
 	    <% end %>

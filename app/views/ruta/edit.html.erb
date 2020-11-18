@@ -1,5 +1,5 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1>Editar ruta</h1>
+<h1>Editar ruta</h1><h3 align="left">
 <%= form_for :ruta, url: rutum_path, method: :patch do |r| %>
   <div class="field">
     <%= r.label "Nombre de la ruta:" %><br />
