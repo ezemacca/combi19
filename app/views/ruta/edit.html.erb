@@ -1,21 +1,19 @@
 <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<h1>Editar ruta</h1><h3 align="left">
-<%= form_for :ruta, url: rutum_path, method: :patch do |r| %>
-  <div class="field">
-    <%= r.label "Nombre de la ruta:" %><br />
-    <%= r.text_field :nombre, autofocus: true, required: true %>
-	</div>
-
-<div class="row">
-  	<div class="col-md-4">
-  		<h3> Origen </h3>
-  		<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
-  	</div>
-	<div class="col-md-4">
-  		<h3> Destino </h3>
-  		<%= r.collection_select :destino, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required: true %>
-  	</div>
-</div>
-	<%= r.submit "Editar ruta" %>
-<% end %>
+    <h1>Editar ruta</h1><h3 align="left">
+    <%= form_for :ruta, url: rutum_path, method: :patch do |r| %>
+  
+      <div class="row">
+            <h3> "Nombre de la ruta:" <h3>
+            <%= r.text_field :nombre, autofocus: true, required: true %>
+        		<h3> Origen </h3>
+        		<%= r.collection_select :origen, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required:true %>
+        	
+      	
+        		<h3> Destino </h3>
+        		<%= r.collection_select :destino, @lugar, :id, :mostrar_atributos, { include_blank: "" }, required: true %>
+        	
+      </div>
+      <Br>
+    	<%= r.submit "Editar ruta" %>
+    <% end %>
 <% end %>

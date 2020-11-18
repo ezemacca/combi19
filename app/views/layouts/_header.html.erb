@@ -8,24 +8,24 @@
 
             <%= link_to root_path, class: 'navbar-brand' do %> <! -- todo aca adentro es link a root -->
                 <% unless signed_in? %>
-                  <h3 align="left"> Combi-19 Bienvenido!</h3>
+                  <h2 align="left"> Combi-19 Bienvenido!</h2>
                 <%else%>
-                  <h3 align="left"> Combi-19</h3>
+                  <h2 align="left"> Combi-19</h2>
                 <%end%>
             <% end %>
 
             <! -- botones que se ven a la derecha de la NAVBAR flotante-->
             <% unless signed_in? %>
                 <li class="nav-item active pull-xs-right">
-                  <h3 align="right"><%= link_to "Registrarse", new_usuario_registration_path, class:'btn btn-default'%>
-                  <%= link_to "Ingresar", new_usuario_session_path, class:'btn btn-default'%></h3>
+                  <h3 align="right"><%= link_to "Registrarse", new_usuario_registration_path, class:'btn5'%>
+                  <%= link_to "Ingresar", new_usuario_session_path, class:'btn5'%></h3>
                 </li>
                 <%else%>
                   <li class="nav-item active pull-xs-right">
                   
                   <h2 align="right">
 
-                    <span><%= link_to "Salir", destroy_usuario_session_path, method: :delete ,:class => "btn1"%></span>
+                    <span><%= link_to " Salir ", destroy_usuario_session_path, method: :delete ,:class => "btn5"%></span>
 
                   </h2>
                   </li>
