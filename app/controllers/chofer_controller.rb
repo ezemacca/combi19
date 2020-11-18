@@ -33,7 +33,8 @@ class ChoferController < ApplicationController
     if @chofer.update(chofer_params)
       redirect_to chofer_index_path, notice: "El chofer se actualizo correctamente"
     else
-      redirect_to chofer_index_path,notice: "Error al actualizar el chofer, ya existe ese chofer"
+      render :edit
+      #redirect_to chofer_index_path,notice: "Error al actualizar el chofer, ya existe ese chofer"
     end
   end 
   def destroy

@@ -4,6 +4,15 @@
 <%= form_for @chofer, url: chofer_path , method: :patch do |f| %> <%# En caso de emergencia la palabra remplazada es remplazo%> 
  
   <%# <%= form_for @chofer, :url => { :action => :create } do |f| %>
+  <% if @chofer.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @chofer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.label :email %><br />
