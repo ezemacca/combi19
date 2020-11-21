@@ -1,8 +1,8 @@
 class Viaje < ApplicationRecord
 	validate :validacion_rango_fecha
 	validate :validacion_fecha_llegada
-
-
+	default_scope -> { order :fecha }
+	has_many :calificacions
 	def validacion_rango_fecha
 		viajes = Viaje.where("fecha < ?", self.fecha_llegada)
 		viajes2 = viajes.where("fecha_llegada > ?", self.fecha)

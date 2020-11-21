@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Calificacions</h1>
+    <h3>Hola, <%=current_usuario.nombre%></h3>
+    <h3>Estas son tus calificaciones</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Puntaje</th>
+        <th scope="col">Comentario</th>
+      </tr>
+    </thead>
+    <tbody>
+
+  <tbody>
+    <% @calificacions.each do |c| %>
+    <% if (c.usuario_id==current_usuario.id) %>
+      <tr>
+        <td><%= c.puntaje %></td>
+        <td><%= c.comentario %></td>
+        <td><%= link_to 'Show', c %></td>
+        <td><%= link_to 'Edit', edit_calificacion_path(c) %></td>
+        <td><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+     <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Calificacion', new_calificacion_path %>

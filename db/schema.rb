@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_235638) do
+ActiveRecord::Schema.define(version: 2020_11_21_154321) do
+
+  create_table "calificacions", force: :cascade do |t|
+    t.integer "puntaje"
+    t.string "comentario"
+    t.integer "usuario_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["usuario_id"], name: "index_calificacions_on_usuario_id"
+  end
 
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"

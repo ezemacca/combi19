@@ -1,0 +1,27 @@
+<%= form_with(model: calificacion, local: true) do |form| %>
+  <% if calificacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calificacion.errors.count, "error") %> prohibited this calificacion from being saved:</h2>
+
+      <ul>
+        <% calificacion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :puntaje %>
+    <%= number_field(:puntaje, in: 1..10, step: 1) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comentario %>
+    <%= form.text_field :comentario %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
