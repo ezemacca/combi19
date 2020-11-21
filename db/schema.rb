@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_21_154321) do
 
   create_table "calificacions", force: :cascade do |t|
@@ -20,6 +21,9 @@ ActiveRecord::Schema.define(version: 2020_11_21_154321) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["usuario_id"], name: "index_calificacions_on_usuario_id"
   end
+=======
+ActiveRecord::Schema.define(version: 2020_11_21_181748) do
+>>>>>>> a15c15d135a61e8718f3c32edea9e84e14391fef
 
   create_table "combis", force: :cascade do |t|
     t.string "clasificacion"
@@ -73,10 +77,11 @@ ActiveRecord::Schema.define(version: 2020_11_21_154321) do
     t.integer "DNI"
     t.boolean "suscripcion"
     t.string "nrotarjeta"
-    t.string "vencimiento"
     t.string "codseguridad"
     t.string "telefono"
     t.boolean "eliminado", default: false
+    t.integer "vencimientoMes"
+    t.integer "vencimientoAño"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
