@@ -13,7 +13,7 @@ class Usuario < ApplicationRecord
   validates :telefono, format: { with: /[0-9]/ }, if: :validar_chofer
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
- validates :DNI, numericality: true, length: {in:7..9}
+ validates :DNI, numericality: true , length: {in:7..9}, uniqueness: true
  
  default_scope -> { order :apellido }
   #scope :ordered, -> { includes(:usuarios).order('apellido') } 
