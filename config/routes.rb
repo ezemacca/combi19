@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
+  resources :usuario
   root 'welcome#index'
   get 'vistachofer/vistachofer'
   

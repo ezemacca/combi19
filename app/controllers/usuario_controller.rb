@@ -1,6 +1,14 @@
 class UsuarioController < ApplicationController
-  def index
+  def show
+  	@usuario=Usuario.find(current_usuario.id)
+
   end
 
+  def index
+  	@usuario=current_usuario.id
+  end
+  def edit
+  	@usuario=Usuario.find(current_usuario.id)
+  end
   
 end

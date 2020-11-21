@@ -8,16 +8,30 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+   <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.email_field :nombre, autofocus: true, autocomplete: "Nombre" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, autofocus: true, autocomplete: "Apellido" %>
+  </div>
+  <div class="field">
+    <%= f.label :DNI %><br />
+    <%= f.text_field :DNI, autofocus: true, autocomplete: "DNI" %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(No complete estos campos si usted no quiere cambiar su contrasena)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> Caracteres minimos</em>
     <% end %>
   </div>
 
@@ -27,17 +41,41 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(Ingrese su contrasena para confimar los cambios)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+
+ <div>Desea suscribirse? 10% de descuento en sus proximos viajes. Valor: $$</div>
+    <div class="field">
+    <%= f.label :suscripcion %> <br />
+    <%= f.check_box :suscripcion %> <br />
+    </div> 
+    <div><h3>Tarjeta de credito (Opcional)
+       </h3>
+       *Obligatorio con suscripcion activa</div>
+             <div class="field">
+      <%= f.label "Numero de tarjeta (16 digitos)" %><br />
+      <%= f.text_field :nrotarjeta, placeholder: 'Ingrese el numero de tarjeta' %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Vencimiento" %><br />
+      <%= f.text_field :vencimiento, placeholder: 'Ej: mes/año' %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Codigo de seguridad (3 digitos)" %><br />
+      <%= f.text_field :codseguridad, placeholder: 'Los tres digitos detras de la tarjeta' %>
+      </div>
+
 
   <div class="actions">
     <%= f.submit "Actualizar" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h4>Desea Borrar la cuenta permanentemente?</h4>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= button_to "Eliminar cuenta", registration_path(resource_name), data: { confirm: "Estas seguro de eliminar permanentemente tu cuenta del sistema?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "volver", welcome_index_path %>
