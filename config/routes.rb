@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'buscador/create'
   resources :calificacions
   resources :viajes
   resources :productos
