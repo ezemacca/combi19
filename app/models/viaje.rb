@@ -3,6 +3,8 @@ class Viaje < ApplicationRecord
 	validate :validacion_fecha_llegada
 	default_scope -> { order :fecha }
 	has_many :calificacions
+	has_and_belongs_to_many :usuarios
+
 
 	def validacion_rango_fecha
 		viajes = Viaje.where("fecha < ?", self.fecha_llegada)

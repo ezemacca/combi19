@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Calificacions</h1>
+<h1>Calificaciones</h1>
     <h3>Hola, <%=current_usuario.nombre%></h3>
     <h3>Estas son tus calificaciones</h3>
 
@@ -19,9 +19,9 @@
       <tr>
         <td><%= c.puntaje %></td>
         <td><%= c.comentario %></td>
-        <td><%= link_to 'Show', c %></td>
-        <td><%= link_to 'Edit', edit_calificacion_path(c) %></td>
-        <td><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', c , class: "btn btn-success btn-sm"  %>
+        <%= link_to 'Editar', edit_calificacion_path(c), class: 'btn btn-info btn-sm' %>
+        <%= link_to 'Eliminar', c, method: :delete, class: 'btn btn-danger btn-sm'%></td>
       </tr>
      <% end %>
     <% end %>

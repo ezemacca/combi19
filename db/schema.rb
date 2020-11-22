@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_194127) do
+ActiveRecord::Schema.define(version: 2020_11_22_203233) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2020_11_21_194127) do
     t.integer "usuario_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "viajes_id"
     t.index ["usuario_id"], name: "index_calificacions_on_usuario_id"
+    t.index ["viajes_id"], name: "index_calificacions_on_viajes_id"
   end
 
   create_table "combis", force: :cascade do |t|
@@ -45,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_194127) do
     t.string "descripcion"
     t.integer "precio"
     t.integer "stock"
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -95,4 +97,12 @@ ActiveRecord::Schema.define(version: 2020_11_21_194127) do
     t.datetime "fecha_llegada"
   end
 
+  create_table "viajes_usuarios", id: false, force: :cascade do |t|
+    t.integer "viajes_id"
+    t.integer "usuarios_id"
+    t.index ["usuarios_id"], name: "index_viajes_usuarios_on_usuarios_id"
+    t.index ["viajes_id"], name: "index_viajes_usuarios_on_viajes_id"
+  end
+
+  add_foreign_key "calificacions", "viajes", column: "viajes_id"
 end

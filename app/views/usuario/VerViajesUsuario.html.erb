@@ -1,10 +1,4 @@
-  <%if usuario_signed_in? && current_usuario.role == "admin" %>
-<p id="notice"><%= notice %></p>
-
-
-
-
-<h1 align="center">Lista de Viajes</h1> <%= link_to 'Agregar viaje', new_viaje_path %>
+<h1>Historial De Viajes de <%=current_usuario.nombre%></h1>
 <Br>
 <Br>
 
@@ -19,12 +13,11 @@
       <th scope="col">Combi</th>
       <th scope="col">Chofer</th>
       <th scope="col">Estado</th>
-      <th scope="col">Acciones</th>
       
     </tr>
   </thead>
 
-  <tbody>
+  <!--<tbody>
     
     <% @viajes.each do |viaje| %>
     <% if !viaje.eliminado %>
@@ -53,10 +46,5 @@
       </tr>
     <% end %>  
   <% end %>
-  </tbody>
+  </tbody> -->
   </table>
-  
-<%#mostrar toda la lista de choferes %>
-<%else%> 
-  <h1 align="center">ACCESO DENEGADO</h1>
-<% end %>

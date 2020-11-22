@@ -1,0 +1,43 @@
+<h2> Confirmar Pasaje <h2>
+
+<div>
+<%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %><br >
+<%= @viaje.fecha.strftime("Hora de salida: %H:%M") %><br >
+<%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %><br >
+Origen: <%= @origen.ciudad.titleize %><br >
+Destrino: <%= @destino.ciudad.titleize %><br >
+Por: <%= @ruta.nombre.titleize%><br >
+Tipo de combi: <%= @combi.clasificacion %><br>
+Precio: $$$<%$$%> <br >
+
+</div>
+
+<div>
+<h2>Quiere comprar algun Producto/Vianda para su viaje?<h2>
+Lista de Productos
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+
+  <tbody>
+    <% @producto.each do |producto| %>
+          <tr>
+            <td><%= producto.nombre.titleize %></td>
+            <td><%= producto.descripcion %></td>
+            <td>$<%= producto.precio %> </td>
+          <td><%= button_to 'Agregar producto'%> </td>
+          </tr>	
+    <% end %>
+  </tbody>
+</table>
+<div>
+<%= link_to "Volver", usuario_index_path %> 
+<%= button_to "Confirmar compra", method: :confirmar %>
+</div>
