@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   #get 'combis/index'
   #get 'combis/buscar_combi'
   #get 'combis/edit'
+  get 'usuario/comprarpasaje'
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   resources :usuario
   root 'welcome#index'
   get 'vistachofer/vistachofer'
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
