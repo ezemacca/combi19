@@ -11,7 +11,7 @@
 <table class="table">
   <thead>
     <tr>
-
+      
       <th scope="col">Fecha<br />(Año/Mes/Dia)</th>
       <th scope="col">Origen</th>
       <th scope="col">Destino</th>
@@ -20,11 +20,11 @@
       <th scope="col">Chofer</th>
       <th scope="col">Estado</th>
       <th scope="col">Acciones</th>
-
+      
     </tr>
   </thead>
 
-  <!--<tbody>
+  <tbody>
     
     <% @viajes.each do |viaje| %>
     <% if !viaje.eliminado %>
@@ -54,8 +54,9 @@
     <% end %>  
   <% end %>
   </tbody>
--->
   </table>
   
-
+<%#mostrar toda la lista de choferes %>
+<%else%> 
+  <h1 align="center">ACCESO DENEGADO</h1>
 <% end %>

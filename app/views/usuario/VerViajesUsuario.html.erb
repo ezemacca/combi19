@@ -1,1 +1,50 @@
 <h1>Historial De Viajes de <%=current_usuario.nombre%></h1>
+<Br>
+<Br>
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Fecha<br />(Año/Mes/Dia)</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Combi</th>
+      <th scope="col">Chofer</th>
+      <th scope="col">Estado</th>
+      
+    </tr>
+  </thead>
+
+  <!--<tbody>
+    
+    <% @viajes.each do |viaje| %>
+    <% if !viaje.eliminado %>
+      <tr>
+        <td><%= viaje.fecha %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
+        <td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
+        <td><%= @usuario.find(viaje.chofer).mostrar_atributos %></td>
+        
+        <% if @usuario.find(viaje.chofer).eliminado || @combi.find(viaje.combi).eliminado%>
+          <% if @usuario.find(viaje.chofer).eliminado && @combi.find(viaje.combi).eliminado%>
+            <td><span>Chofer y Combi estan eliminados</span></td>
+          <% elsif @usuario.find(viaje.chofer).eliminado %>
+            <td><span>Chofer eliminado</span></td>
+          <% else %>
+            <td><span>Combi eliminada</span></td>
+          <% end %>
+        <%else %>
+          <td>--</td>
+        <% end %>
+        <td><%= link_to 'Detalles', viaje, class: "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Editar', edit_viaje_path(viaje),  class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Eiminar', viaje, method: :delete , class: 'btn btn-danger btn-sm' %></td>
+      </tr>
+    <% end %>  
+  <% end %>
+  </tbody> -->
+  </table>
