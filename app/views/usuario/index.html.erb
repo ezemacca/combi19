@@ -1,8 +1,50 @@
 <h1>Inicio Usuario</h1>
 <Br>
-<%= link_to "Ver Perfil", usuario_path(@usuario)%> <Br>
+<%= link_to "Ver Perfil", usuario_path(@usuario)%> 
+<Br>
 <%=link_to "Editar Perfil", edit_usuario_registration_path %>
 <Br>
-<%=link_to "Calificaciones y Comentarios", calificacions_path %> <br >
-
+<%=link_to "Ver mis viajes",usuario_VerViajesUsuario_path%>
+<Br>
+<%=link_to "Calificaciones y Comentarios", calificacions_path %>
+<Br>
 <%= link_to "comprar pasaje", usuario_comprarpasaje_path %>
+
+
+<br>
+<br>
+
+<%= form_tag usuario_index_path, method: :get do %>
+	<%= label_tag "Origen:" %>
+	<%= text_field_tag :origen, nil, placeholder: "Origen" %><br />
+	<%= label_tag "Destino:" %>
+	<%= text_field_tag :destino, nil, placeholder: "Destino" %> <br />
+	<%= label_tag "Fecha de salida:" %>
+	<%= date_field_tag :fecha %> <br />
+	<%= submit_tag "Buscar viaje" %>
+<% end %>
+
+
+<div id="resultados">
+	<% if !@viajes.nil? %>
+		<% @viajes.each do |v| %>
+		<div class="panel panel-primary">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Viaje de <%= @lugar.find(v.origen).mostrar_atributos %> a <%= @lugar.find(v.destino).mostrar_atributos %></h3>
+  			</div>
+  			<div class="panel-body">
+    			<ul>
+    				<li>Fecha de salida: <%= v.fecha %></li>
+    				<li>Ruta: <%= @ruta.find(v.ruta).mostrar_atributos %></li>
+    				<li>Tipo de combi: <%= @combi.find(v.combi).clasificacion.titleize %></li>
+    				<li>Fecha estimada de llegada: <%= v.fecha_llegada %></li>
+    				<li>Precio:</li>
+    				<%= link_to "Comprar pasaje", usuario_comprarpasaje_path(v) %> 
+    			</ul>
+  			</div>
+		</div>
+		<% end %>
+	<% else %>
+		<%= @notice %>
+	<% end %>
+</div>

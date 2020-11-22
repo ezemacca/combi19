@@ -1,0 +1,42 @@
+<h1>Historial De Viajes de <%=current_usuario.nombre%></h1>
+<Br>
+<Br>
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Fecha de Salida<br />(Año/Mes/Dia)</th>
+      <th scope="col">Hora de Salida</th>
+      <th scope="col">Hora de Llegada</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Tipo de Combi</th>
+      <th scope="col">Precio</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <% @viajesusuario.each do |viaje| %>
+    <% if !viaje.eliminado %>
+      <tr>
+        <td><%= viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></td>
+        <td><%= viaje.fecha.strftime("Hora de salida: %H:%M")  %></td>
+        <td><%= viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M")  %></td>
+        <td><%= @lugar.find(viaje.origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(viaje.destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
+        <td><%= @combi.find(viaje.combi).clasificacion %></td>
+        <td><%=  EL PRECIO %></td>
+
+       
+        <td><%#= link_to 'Modificar/agregar', viaje, class: "btn btn-success btn-sm" %></td>
+      
+      </tr>
+    <% end %>  
+  <% end %>
+  </tbody>
+  </table>

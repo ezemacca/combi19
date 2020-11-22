@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'buscador/create'
   resources :calificacions
   resources :viajes
   resources :productos
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
+  get 'usuario/VerViajesUsuario'
   resources :usuario
   root 'welcome#index'
   get 'vistachofer/vistachofer'
