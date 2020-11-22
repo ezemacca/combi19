@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_11_22_164259) do
+ActiveRecord::Schema.define(version: 2020_11_22_203233) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -48,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_11_22_164259) do
     t.string "descripcion"
     t.integer "precio"
     t.integer "stock"
-    t.boolean "eliminado"
+    t.boolean "eliminado", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
