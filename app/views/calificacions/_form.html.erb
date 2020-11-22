@@ -11,17 +11,41 @@
     </div>
   <% end %>
 
+  <Br>
+    <div class="field">
+      <%= form.label "Seleccione el viaje que desea calificar:" %>
+      c=Combi.find_by(patente: @combi.patente.downcase)
+
+      <h2><% %></h2>
+      
+
+
+
+      <!--<div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a>HTML</a></li>
+          <li><a >CSS</a></li>
+          <li><a>JavaScript</a></li>
+        </ul>
+      </div>-->
+  </div>
+  <Br>
   <div class="field">
     <%= form.label :puntaje %>
+    <Br>
     <%= number_field(:puntaje, in: 1..10, step: 1) %>
   </div>
 
   <div class="field">
     <%= form.label :comentario %>
+    <Br>
     <%= form.text_field :comentario %>
   </div>
-
+  <Br>
   <div class="actions">
     <%= form.submit %>
   </div>
+  <Br>
 <% end %>

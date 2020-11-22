@@ -3,7 +3,9 @@ class UsuarioController < ApplicationController
   	@usuario=Usuario.find(current_usuario.id)
 
   end
-
+  def viaje_comprado
+  	#@viajecomprado= Viaje.find(1)
+  end
   def index
   	@usuario=current_usuario.id
   end
