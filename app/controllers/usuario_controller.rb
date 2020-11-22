@@ -22,7 +22,14 @@ class UsuarioController < ApplicationController
   	@usuario=Usuario.find(current_usuario.id)
   end
   def confirmar
-  	
-  	
+  end
+  def VerViajesUsuario
+
+    @viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
+  	@chofer= Usuario.all 
+    @combi=Combi.all
+    @ruta=Rutum.all 
+    @lugar=Lugar.all 
+    
   end
 end
