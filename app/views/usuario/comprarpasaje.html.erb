@@ -32,12 +32,12 @@ Lista de Productos
             <td><%= producto.nombre.titleize %></td>
             <td><%= producto.descripcion %></td>
             <td>$<%= producto.precio %> </td>
-          <td><%= button_to 'Agregar producto'%> </td>
+          <td><%= button_to 'Agregar producto', { :action => "agregar_producto" }, :method => :post%> </td>
           </tr>	
     <% end %>
   </tbody>
 </table>
 <div>
 <%= link_to "Volver", usuario_index_path %> 
-<%= button_to "Confirmar compra", method: :confirmar %>
+<%= button_to "Confirmar compra", { :action => "confirmar_compra" }, :method => :post%>
 </div>

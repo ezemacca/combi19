@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   #get 'combis/buscar_combi'
   #get 'combis/edit'
   get 'usuario/comprarpasaje'
+
+  post 'usuario/comprarpasaje' => "usuario#agregar_producto"
+  post 'usuario/comprarpasaje' => "usuario#confirmar_compra"
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
