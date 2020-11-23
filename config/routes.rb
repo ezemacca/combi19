@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   #get 'combis/index'
   #get 'combis/buscar_combi'
   #get 'combis/edit'
-  get 'usuario/comprarpasaje'
+  get 'usuario/comprarpasaje.:id', to: 'usuario#comprarpasaje'
 
   post 'usuario/comprarpasaje' => "usuario#agregar_producto"
   post 'usuario/comprarpasaje' => "usuario#confirmar_compra"

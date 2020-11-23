@@ -1,4 +1,5 @@
 <h1>Inicio Usuario</h1>
+
 <Br>
 <%= link_to "Ver Perfil", usuario_path(@usuario)%> 
 <Br>
@@ -24,13 +25,15 @@
 	<%= submit_tag "Buscar viaje" %>
 <% end %>
 
+<br>
+<br>
 
 <div id="resultados">
 	<% if !@viajes.nil? %>
 		<% @viajes.each do |v| %>
 		<div class="panel panel-primary">
   			<div class="panel-heading">
-    			<h3 class="panel-title">Viaje de <%= @lugar.find(v.origen).mostrar_atributos %> a <%= @lugar.find(v.destino).mostrar_atributos %></h3>
+    			<h3 class="panel-title">Viaje de <%= @lugar.find(@ruta.find(v.ruta).origen).mostrar_atributos %> a <%= @lugar.find(@ruta.find(v.ruta).destino).mostrar_atributos %></h3>
   			</div>
   			<div class="panel-body">
     			<ul>
