@@ -15,6 +15,7 @@ class CalificacionsController < ApplicationController
   # GET /calificacions/new
   def new
     #@calificacion = Calificacion.new
+
     @calificacion = current_usuario.calificacions.build
   end
 
