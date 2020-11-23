@@ -3,7 +3,8 @@ class Viaje < ApplicationRecord
 	validate :validacion_fecha_llegada
 	default_scope -> { order :fecha }
 	has_many :calificacions, dependent: :destroy
-	has_and_belongs_to_many :usuarios, dependent: :destroy
+	has_many :usuario_viajes
+	has_many :usuarios, through: :usuario_viajes
 
 
 	def validacion_rango_fecha

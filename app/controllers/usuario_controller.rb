@@ -54,8 +54,9 @@ class UsuarioController < ApplicationController
 
   def VerViajesUsuario
 
-    @viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
-  	@chofer= Usuario.all 
+    #@viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
+  	@viajesusuario= current_usuario.viajes
+    @chofer= Usuario.all 
     @combi=Combi.all
     @ruta=Rutum.all 
     @lugar=Lugar.all 
@@ -63,7 +64,7 @@ class UsuarioController < ApplicationController
   end
  def agregar_producto
 
- 	redirect_to usuario_index_path, notice:"Procuto Agregado"
+ 	redirect_to usuario_index_path, notice:"Producto Agregado"
 
 	end
 end
