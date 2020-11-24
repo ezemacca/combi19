@@ -18,12 +18,18 @@ Rails.application.routes.draw do
   #get 'combis/buscar_combi'
   #get 'combis/edit'
   get 'usuario/comprarpasaje'
+  
 
-  post 'usuario/comprarpasaje' => "usuario#agregar_producto"
-  post 'usuario/comprarpasaje' => "usuario#confirmar_compra"
+  patch 'usuario/comprarpasaje' => "usuario#agregarproducto"
+  
+  post 'usuario/comprarpasaje' => "usuario#confirmarcompra"
+
   post 'combis' => "combis#create"
   resources :combis
   devise_for :usuarios
+
+
+
   get 'usuario/VerViajesUsuario'
   resources :usuario
   root 'welcome#index'

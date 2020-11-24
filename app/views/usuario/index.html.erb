@@ -16,17 +16,20 @@
 
 <%= form_tag usuario_index_path, method: :get do %>
 	<%= label_tag "Origen:" %>
-	<%= text_field_tag :origen, nil, placeholder: "Origen" %><br />
+	<%= text_field_tag :origen, nil,placeholder: "Origen" %><br />
 	<%= label_tag "Destino:" %>
 	<%= text_field_tag :destino, nil, placeholder: "Destino" %> <br />
 	<%= label_tag "Fecha de salida:" %>
 	<%= date_field_tag :fecha %> <br />
 	<%= submit_tag "Buscar viaje" %>
+
 <% end %>
 
 
 <div id="resultados">
+	
 	<% if !@viajes.nil? %>
+
 		<% @viajes.each do |v| %>
 		<div class="panel panel-primary">
   			<div class="panel-heading">
