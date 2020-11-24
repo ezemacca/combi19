@@ -42,6 +42,8 @@ class ViajesController < ApplicationController
   # POST /viajes.json
   def create
     @viaje = Viaje.new(viaje_params)
+    @viaje.origen = Rutum.find(@viaje.ruta).origen
+    @viaje.destino = Rutum.find(@viaje.ruta).destino
       #if @viaje.validacion_fecha
         #respond_to do |format|
           if @viaje.save
@@ -65,7 +67,11 @@ class ViajesController < ApplicationController
   def update
         respond_to do |format|
           if @viaje.update(viaje_params)
-            format.html { redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
+            format.html { 
+              @viaje.origen = Rutum.find(@viaje.ruta).origen
+              @viaje.destino = Rutum.find(@viaje.ruta).destino
+              @viaje.save
+              redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
             format.json { render :show, status: :ok, location: @viaje }
           else
             format.html { render :edit }
@@ -90,6 +96,6 @@ class ViajesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viaje_params
-      params.require(:viaje).permit(:fecha, :ruta, :fecha_llegada, :combi, :chofer, :eliminado)
+      params.require(:viaje).permit(:fecha, :ruta, :fecha_llegada, :combi, :chofer)
     end
 end

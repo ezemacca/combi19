@@ -16,7 +16,9 @@ class Usuario < ApplicationRecord
   validates :DNI, numericality: true , length: {in:7..9}, uniqueness: true
   validate :vencimiento_tarjeta
   #before_validation :dia
-  has_and_belongs_to_many :viajes
+  has_many :usuario_viajes
+
+  has_many :viajes, through: :usuario_viajes
  
  default_scope -> { order :apellido }
   #scope :ordered, -> { includes(:usuarios).order('apellido') } 

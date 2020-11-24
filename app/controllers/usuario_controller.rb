@@ -7,7 +7,7 @@ class UsuarioController < ApplicationController
 
   end
   def comprarpasaje
-  	@viaje= Viaje.find(3)
+  	@viaje= Viaje.find(params[:id])
   	@chofer= Usuario.find(@viaje.chofer)
   	@combi= Combi.find(@viaje.combi)
   	@ruta= Rutum.find(@viaje.ruta)
@@ -24,8 +24,8 @@ class UsuarioController < ApplicationController
   	@combi= Combi.all
   	@chofer= Usuario.all
 
-  	origen = params[:origen]
-  	destino = params[:destino]
+  	origen = params[:origen].to_s.downcase
+  	destino = params[:destino].to_s.downcase
   	fecha = params[:fecha]
   	fecha1 = fecha.to_s
   	fecha2 = fecha1.to_datetime
@@ -56,14 +56,14 @@ class UsuarioController < ApplicationController
 
   def VerViajesUsuario
 
-    @viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
-  	@chofer= Usuario.all 
+    #@viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
+  	@viajesusuario= current_usuario.viajes
+    @chofer= Usuario.all 
     @combi=Combi.all
     @ruta=Rutum.all 
     @lugar=Lugar.all 
     
   end
- 
   def agregarproducto
  	redirect_to usuario_index_path, notice:"Producto Agregado"
   end
