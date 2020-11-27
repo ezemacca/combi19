@@ -16,6 +16,7 @@ class UsuarioController < ApplicationController
   	@producto= Producto.where("stock > ? AND eliminado=?",0,false)
 
   end
+
   def index
   	@usuario=current_usuario.id
   	@lugar= Lugar.all
@@ -42,14 +43,15 @@ class UsuarioController < ApplicationController
   		end
   	end
   end
+
   def edit
   	@usuario=Usuario.find(current_usuario.id)
   end
 
+  
 
-  def confirmar_compra
-
-  	redirect_to usuario_index_path, notice:"La compra se ha realizado (Mentira)"
+  def confirmarcompra
+  	redirect_to usuario_index_path, notice:" La compra se ha realizado (Mentira) "
   end
 
   def VerViajesUsuario
@@ -63,9 +65,7 @@ class UsuarioController < ApplicationController
     @calificacion=Calificacion.where(usuario_id: current_usuario)
     
   end
- def agregar_producto
-
+  def agregarproducto
  	redirect_to usuario_index_path, notice:"Producto Agregado"
-
-	end
+  end
 end

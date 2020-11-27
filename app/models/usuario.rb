@@ -23,6 +23,10 @@ class Usuario < ApplicationRecord
  default_scope -> { order :apellido }
   #scope :ordered, -> { includes(:usuarios).order('apellido') } 
   
+
+  # before_action:confirmar_compra, only[confirmar_compra]
+  def confirmar_compra
+  end
 def validar_chofer
     if self.role=="chofer"
       return true
