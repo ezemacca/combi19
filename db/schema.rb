@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_163445) do
+ActiveRecord::Schema.define(version: 2020_11_24_204235) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -18,9 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_163445) do
     t.integer "usuario_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "viajes_id"
-    t.index ["usuario_id"], name: "index_calificacions_on_usuario_id"
-    t.index ["viajes_id"], name: "index_calificacions_on_viajes_id"
+    t.integer "viaje_id"
   end
 
   create_table "combis", force: :cascade do |t|
@@ -106,5 +104,5 @@ ActiveRecord::Schema.define(version: 2020_11_23_163445) do
     t.datetime "fecha_llegada"
   end
 
-  add_foreign_key "calificacions", "viajes", column: "viajes_id"
+  add_foreign_key "calificacions", "viajes"
 end

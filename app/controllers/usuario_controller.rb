@@ -60,6 +60,7 @@ class UsuarioController < ApplicationController
     @combi=Combi.all
     @ruta=Rutum.all 
     @lugar=Lugar.all 
+    @calificacion=Calificacion.where(usuario_id: current_usuario)
     
   end
  def agregar_producto

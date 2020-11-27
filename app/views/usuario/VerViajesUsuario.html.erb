@@ -14,7 +14,7 @@
       <th scope="col">Ruta</th>
       <th scope="col">Tipo de Combi</th>
       <th scope="col">Precio</th>
-      
+      <th scope="col">Tus Opiniones</th>
     </tr>
   </thead>
 
@@ -32,9 +32,12 @@
         <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
         <td><%= @combi.find(viaje.combi).clasificacion %></td>
         <td>  EL PRECIO </td>
+        <%if ! @calificacion.where(viaje_id: viaje.id).nil?%> <!--si ya tiene una opinion-->
+          <td><%= link_to 'Editar tu opinion sobre este viaje', edit_calificacion_path(@calificacion.find_by(viaje_id: viaje.id)), class: "btn btn-success btn" %></td>
+        <%else%>
+          <td><%= link_to 'Dejar una opinion sobre este viaje', new_calificacion_path(viaje), class: "btn btn-success btn" %></td>
+        <%end%>
 
-       
-        <td><%= link_to 'Modificar/agregar', viaje, class: "btn btn-success btn-sm" %></td>
       
       </tr>
     <% end %>  

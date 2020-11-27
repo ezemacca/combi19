@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'buscador/create'
-  resources :calificacions
+  get 'calificacions/new(.:id)', to: 'calificacions#new'
+  resources :calificacions 
   resources :viajes
   resources :productos
   get 'ruta/alta'
