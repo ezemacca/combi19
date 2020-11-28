@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'buscador/create'
-  resources :calificacions
+  get 'calificacions/new(.:id)', to: 'calificacions#new'
+  resources :calificacions 
   resources :viajes
   resources :productos
   get 'ruta/alta'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   #get 'combis/index'
   #get 'combis/buscar_combi'
   #get 'combis/edit'
-  get 'usuario/comprarpasaje'
+  get 'usuario/comprarpasaje.:id', to: 'usuario#comprarpasaje'
   
 
   patch 'usuario/comprarpasaje' => "usuario#agregarproducto"

@@ -14,6 +14,7 @@ class CalificacionsController < ApplicationController
 
   # GET /calificacions/new
   def new
+    @viaje = params[:id]
     #@calificacion = Calificacion.new
 
     @calificacion = current_usuario.calificacions.build
@@ -21,6 +22,8 @@ class CalificacionsController < ApplicationController
 
   # GET /calificacions/1/edit
   def edit
+    @calificacion = Calificacion.find(params[:id])
+
   end
 
   # POST /calificacions
@@ -28,9 +31,16 @@ class CalificacionsController < ApplicationController
   def create
     #@calificacion = Calificacion.new(calificacion_params)
     @calificacion = current_usuario.calificacions.build(calificacion_params)
+    #viaje2=Viaje.find(params[:viaje])
+
+    #viaje2.califiacions << @calificacion
+    #@calificacion.viaje_id = params[:viaje]
     respond_to do |format|
       if @calificacion.save
-        format.html { redirect_to @calificacion, notice: 'Calificacion creada exitosamente.' }
+        format.html { 
+          
+        
+          redirect_to @calificacion, notice: 'Calificacion creada exitosamente.' }
         format.json { render :show, status: :created, location: @calificacion }
       else
         format.html { render :new }
@@ -42,6 +52,7 @@ class CalificacionsController < ApplicationController
   # PATCH/PUT /calificacions/1
   # PATCH/PUT /calificacions/1.json
   def update
+
     respond_to do |format|
       if @calificacion.update(calificacion_params)
         format.html { redirect_to @calificacion, notice: 'Calificacion was successfully updated.' }
@@ -71,6 +82,6 @@ class CalificacionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def calificacion_params
-      params.require(:calificacion).permit(:puntaje, :comentario)
+      params.require(:calificacion).permit(:puntaje, :comentario, :viaje_id)
     end
 end
