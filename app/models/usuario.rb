@@ -19,7 +19,7 @@ class Usuario < ApplicationRecord
   has_many :usuario_viajes
 
   has_many :viajes, through: :usuario_viajes
- 
+  has_many :pasajes
  default_scope -> { order :apellido }
   #scope :ordered, -> { includes(:usuarios).order('apellido') } 
   
