@@ -7,7 +7,7 @@ class UsuarioController < ApplicationController
 
   end
   def comprarpasaje
-  	@viaje= Viaje.find(params[:id])
+  	@viaje= Viaje.find_by(params[:id])
   	@chofer= Usuario.find(@viaje.chofer)
   	@combi= Combi.find(@viaje.combi)
   	@ruta= Rutum.find(@viaje.ruta)
@@ -51,6 +51,8 @@ class UsuarioController < ApplicationController
   
 
   def confirmarcompra
+  	
+
   	redirect_to usuario_index_path, notice:" La compra se ha realizado (Mentira) "
   end
 
@@ -65,6 +67,8 @@ class UsuarioController < ApplicationController
     
   end
   def agregarproducto
+
+
  	redirect_to usuario_index_path, notice:"Producto Agregado"
   end
 end
