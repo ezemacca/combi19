@@ -5,7 +5,8 @@ class Viaje < ApplicationRecord
 	has_many :calificacions, dependent: :destroy
 	has_many :usuario_viajes
 	has_many :usuarios, through: :usuario_viajes
-
+	has_many :pasajes
+	
 
 	def validacion_rango_fecha
 		viajes = Viaje.where("fecha < ?", self.fecha_llegada)

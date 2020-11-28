@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_204235) do
+ActiveRecord::Schema.define(version: 2020_11_28_184455) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -32,12 +32,31 @@ ActiveRecord::Schema.define(version: 2020_11_24_204235) do
     t.boolean "eliminado", default: false
   end
 
+  create_table "invitados", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.string "DNI"
+    t.string "integer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "lugars", force: :cascade do |t|
     t.string "provincia"
     t.string "ciudad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "eliminado", default: false
+  end
+
+  create_table "pasajes", force: :cascade do |t|
+    t.float "precio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "viaje_id"
+    t.integer "usuario_id"
+    t.index ["usuario_id"], name: "index_pasajes_on_usuario_id"
+    t.index ["viaje_id"], name: "index_pasajes_on_viaje_id"
   end
 
   create_table "productos", force: :cascade do |t|
@@ -57,15 +76,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_204235) do
     t.integer "origen"
     t.integer "destino"
     t.boolean "eliminado", default: false
-  end
-
-  create_table "usuario_viajes", force: :cascade do |t|
-    t.integer "usuario_id"
-    t.integer "viaje_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["usuario_id"], name: "index_usuario_viajes_on_usuario_id"
-    t.index ["viaje_id"], name: "index_usuario_viajes_on_viaje_id"
   end
 
   create_table "usuarios", force: :cascade do |t|

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pasajes
   get 'buscador/create'
   get 'calificacions/new(.:id)', to: 'calificacions#new'
   resources :calificacions 
