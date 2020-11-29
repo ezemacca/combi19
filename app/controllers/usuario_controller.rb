@@ -14,7 +14,13 @@ class UsuarioController < ApplicationController
   	@origen= Lugar.find(@ruta.origen)
   	@destino= Lugar.find(@ruta.destino)
   	@producto= Producto.where("stock > ? AND eliminado=?",0,false)
-
+  	if params[:pasaje]
+  		@pasaje = Pasaje.find(params[:pasaje])
+  	else
+  		@pasaje = Pasaje.new
+  		@pasaje.save
+  	end
+  	@cantidad = PasajesProducto.where(pasaje_id: @pasaje.id)
   end
 
   def index
@@ -48,18 +54,20 @@ class UsuarioController < ApplicationController
   	@usuario=Usuario.find(current_usuario.id)
   end
 
-  
-
   def confirmarcompra
-  	
 
-  	redirect_to usuario_index_path, notice:" La compra se ha realizado (Mentira) "
+  end
+  def crearinvitado
+  	@invitado = Invitado.new
+  	respond_to do |format|
+  		format.js
+  	end 
   end
 
   def VerViajesUsuario
 
     #@viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
-  	@viajesusuario= current_usuario.viajes
+  	@pasajesusuario= current_usuario.pasajes
     @chofer= Usuario.all 
     @combi=Combi.all
     @ruta=Rutum.all 
@@ -68,7 +76,32 @@ class UsuarioController < ApplicationController
     
   end
   def agregarproducto
-  render :html=>"hola"
- 	#redirect_to usuario_index_path, notice:"Producto Agregado"
+  	@producto = Producto.find(params[:producto])
+  	@pasaje = Pasaje.find(params[:pasaje])
+  	if @pasaje.productos.exists?(params[:producto])
+  		pr= PasajesProducto.find_by(pasaje_id: params[:pasaje],producto_id: params[:producto])
+  		pr.cantidad += 1
+  		pr.save
+  	else
+  		@pasaje.productos << @producto
+  	end
+  	redirect_to comprarpasaje_usuario_path(:id => params[:viaje],:pasaje => @pasaje)
+  	#@pasaje.save
   end
+
+  def cancelarproducto
+  	pasaje = Pasaje.find(params[:pasaje])
+  	producto = Producto.find(params[:producto])
+  	relacion = PasajesProducto.find_by(pasaje_id: params[:pasaje],producto_id: params[:producto])
+  	if !relacion.nil?
+  		if relacion.cantidad > 1
+  			relacion.cantidad -= 1
+  			relacion.save
+  		else
+  			pasaje.productos.delete(producto)
+  		end
+  	end  	
+  	redirect_to comprarpasaje_usuario_path(:id => params[:viaje],:pasaje => pasaje)  	
+  end
+  	
 end
