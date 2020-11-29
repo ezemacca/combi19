@@ -74,6 +74,15 @@ class CalificacionsController < ApplicationController
     end
   end
 
+  def CalificacionesPorViaje
+   
+    @viaje = Viaje.find(params[:format])
+    @origen = Lugar.find_by(Viaje.find(params[:format]).origen)
+    @destino =Lugar.find_by(Viaje.find(params[:format]).destino)
+
+    @calificacion = Calificacion.where(viaje_id: params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_calificacion

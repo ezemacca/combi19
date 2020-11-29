@@ -67,7 +67,7 @@ class UsuarioController < ApplicationController
   def VerViajesUsuario
 
     #@viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
-  	@viajesusuario= current_usuario.viajes
+  	@pasajesusuario= current_usuario.pasajes
     @chofer= Usuario.all 
     @combi=Combi.all
     @ruta=Rutum.all 

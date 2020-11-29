@@ -50,6 +50,11 @@
         <td><%= link_to 'Detalles', viaje, class: "btn btn-success btn-sm" %></td>
         <td><%= link_to 'Editar', edit_viaje_path(viaje),  class: 'btn btn-info btn-sm' %></td>
         <td><%= link_to 'Eiminar', viaje, method: :delete , class: 'btn btn-danger btn-sm' %></td>
+        <!--no estoy seguro si es la manera de corroborar fecha -->
+        <td><% if viaje.fecha_llegada < DateTime.now%> 
+          <%=link_to 'Ver Calificaciones', calificacions_CalificacionesPorViaje_path(viaje), class: "btn btn-success btn-sm"%>
+            <%end%>
+          </td>
       </tr>
     <% end %>  
   <% end %>
