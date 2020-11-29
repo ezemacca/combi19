@@ -7,7 +7,7 @@ class UsuarioController < ApplicationController
 
   end
   def comprarpasaje
-  	@viaje= Viaje.find_by(params[:id])
+  	@viaje= Viaje.find(params[:id])
   	@chofer= Usuario.find(@viaje.chofer)
   	@combi= Combi.find(@viaje.combi)
   	@ruta= Rutum.find(@viaje.ruta)
@@ -68,8 +68,7 @@ class UsuarioController < ApplicationController
     
   end
   def agregarproducto
-
-
- 	redirect_to usuario_index_path, notice:"Producto Agregado"
+  render :html=>"hola"
+ 	#redirect_to usuario_index_path, notice:"Producto Agregado"
   end
 end
