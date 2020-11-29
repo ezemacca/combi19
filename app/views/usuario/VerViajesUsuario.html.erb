@@ -20,22 +20,22 @@
 
   <tbody>
     
-    <% @viajesusuario.each do |viaje| %>
+    <% @pasajesusuario.each do |pasaje| %>
     
     <% if !viaje.eliminado %>
       <tr>
-        <td><%= viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></td>
-        <td><%= viaje.fecha.strftime("Hora de salida: %H:%M")  %></td>
-        <td><%= viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M")  %></td>
-        <td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
-        <td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
-        <td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
-        <td><%= @combi.find(viaje.combi).clasificacion %></td>
+        <td><%= pasaje.viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></td>
+        <td><%= pasaje.viaje.fecha.strftime("Hora de salida: %H:%M")  %></td>
+        <td><%= pasaje.viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M")  %></td>
+        <td><%= @lugar.find(@ruta.find(pasaje.viaje.ruta).origen).mostrar_atributos %></td>
+        <td><%= @lugar.find(@ruta.find(pasaje.viaje.ruta).destino).mostrar_atributos %></td>
+        <td><%= @ruta.find(pasaje.viaje.ruta).mostrar_atributos %></td>
+        <td><%= @combi.find(pasaje.viaje.combi).clasificacion %></td>
         <td>  EL PRECIO </td>
-        <%if ! @calificacion.where(viaje_id: viaje.id).nil?%> <!--si ya tiene una opinion-->
-          <td><%= link_to 'Editar tu opinion sobre este viaje', edit_calificacion_path(@calificacion.find_by(viaje_id: viaje.id)), class: "btn btn-success btn" %></td>
+        <%if ! @calificacion.where(viaje_id: pasaje.viaje.id).nil?%> <!--si ya tiene una opinion-->
+          <td><%= link_to 'Editar tu opinion sobre este viaje', edit_calificacion_path(@calificacion.find_by(viaje_id: pasaje.viaje.id)), class: "btn btn-success btn" %></td>
         <%else%>
-          <td><%= link_to 'Dejar una opinion sobre este viaje', new_calificacion_path(viaje), class: "btn btn-success btn" %></td>
+          <td><%= link_to 'Dejar una opinion sobre este viaje', new_calificacion_path(pasaje.viaje), class: "btn btn-success btn" %></td>
         <%end%>
 
       

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :pasajes
   get 'buscador/create'
   get 'calificacions/new(.:id)', to: 'calificacions#new'
+  get 'calificacions/CalificacionesPorViaje', to: 'calificacions#CalificacionesPorViaje'
   resources :calificacions 
   resources :viajes
   resources :productos
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   resources :usuario
   root 'welcome#index'
   get 'vistachofer/vistachofer'
+
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
