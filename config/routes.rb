@@ -19,12 +19,12 @@ Rails.application.routes.draw do
   #get 'combis/index'
   #get 'combis/buscar_combi'
   #get 'combis/edit'
-  get 'usuario/comprarpasaje.:id', to: 'usuario#comprarpasaje'
+  #get 'usuario/comprarpasaje(.:id)', to: 'usuario#comprarpasaje'
   
 
-  patch 'usuario/comprarpasaje' => "usuario#agregarproducto"
+  #patch 'usuario/comprarpasaje' => "usuario#agregarproducto"
   
-  post 'usuario/comprarpasaje' => "usuario#confirmarcompra"
+  #post 'usuario/comprarpasaje' => "usuario#confirmarcompra"
 
   post 'combis' => "combis#create"
   resources :combis
@@ -33,7 +33,15 @@ Rails.application.routes.draw do
 
 
   get 'usuario/VerViajesUsuario'
-  resources :usuario
+  resources :usuario do
+    member do
+      patch :agregarproducto
+      get :confirmarcompra
+      get :comprarpasaje
+      delete :cancelarproducto
+      get :crearinvitado
+    end
+  end
   root 'welcome#index'
   get 'vistachofer/vistachofer'
 

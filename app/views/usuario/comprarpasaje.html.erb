@@ -21,6 +21,7 @@ Lista de Productos
         <th scope="col">Nombre</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -32,13 +33,18 @@ Lista de Productos
             <td><%= producto.nombre.titleize %></td>
             <td><%= producto.descripcion %></td>
             <td>$<%= producto.precio %> </td>
-          <td><%= link_to 'Agregar producto',{ :action => "agregarproducto"}, method: :patch%> </td>
+            <% if @cantidad.find_by(producto_id: producto.id) != nil %>
+              <td><%= @cantidad.find_by(producto_id: producto.id).cantidad %></td>
+            <% else %>
+              <td>0</td>
+            <% end %>
+            <td><%= link_to "Agregar producto", agregarproducto_usuario_path(:producto => producto, :viaje => @viaje, :pasaje => @pasaje), method: :patch%>
+            <%= link_to "Cancelar producto", cancelarproducto_usuario_path(:producto => producto,:pasaje => @pasaje,:viaje => @viaje), method: :delete %> <br /> </td>
           </tr>	
     <% end %>
   </tbody>
 </table>
 <div> 
-<%= link_to "Volver", usuario_index_path %> 
-
-<%= link_to "Confirmar compra",{ :action => "confirmarcompra" }, method: :post %>
+<%= link_to "Volver", usuario_index_path %>
+<%= link_to "Confirmar compra", confirmarcompra_usuario_path(:pasaje => @pasaje) %>
 </div>

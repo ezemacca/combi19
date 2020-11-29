@@ -8,8 +8,7 @@
 <%=link_to "Ver mis viajes",usuario_VerViajesUsuario_path%>
 <Br>
 <%=link_to "Calificaciones y Comentarios", calificacions_path %>
-<Br>
-<%= link_to "comprar pasaje", usuario_comprarpasaje_path %>
+
 
 
 <br>
@@ -45,7 +44,7 @@
     				<li>Tipo de combi: <%= @combi.find(v.combi).clasificacion.titleize %></li>
     				<li>Fecha estimada de llegada: <%= v.fecha_llegada %></li>
     				<li>Precio:</li>
-    				<%= link_to "Comprar pasaje", usuario_comprarpasaje_path(v) %> 
+    				<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %> 
     			</ul>
   			</div>
 		</div>

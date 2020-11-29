@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_184455) do
+ActiveRecord::Schema.define(version: 2020_11_29_160505) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_11_28_184455) do
     t.index ["viaje_id"], name: "index_pasajes_on_viaje_id"
   end
 
+  create_table "pasajes_productos", force: :cascade do |t|
+    t.integer "pasaje_id", null: false
+    t.integer "producto_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "cantidad", default: 1
+    t.index ["pasaje_id"], name: "index_pasajes_productos_on_pasaje_id"
+    t.index ["producto_id"], name: "index_pasajes_productos_on_producto_id"
+  end
+
   create_table "productos", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
@@ -76,6 +86,15 @@ ActiveRecord::Schema.define(version: 2020_11_28_184455) do
     t.integer "origen"
     t.integer "destino"
     t.boolean "eliminado", default: false
+  end
+
+  create_table "usuario_viajes", force: :cascade do |t|
+    t.integer "usuario_id"
+    t.integer "viaje_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["usuario_id"], name: "index_usuario_viajes_on_usuario_id"
+    t.index ["viaje_id"], name: "index_usuario_viajes_on_viaje_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -114,5 +133,14 @@ ActiveRecord::Schema.define(version: 2020_11_28_184455) do
     t.datetime "fecha_llegada"
   end
 
+  create_table "viajes_usuarios", id: false, force: :cascade do |t|
+    t.integer "viajes_id"
+    t.integer "usuarios_id"
+    t.index ["usuarios_id"], name: "index_viajes_usuarios_on_usuarios_id"
+    t.index ["viajes_id"], name: "index_viajes_usuarios_on_viajes_id"
+  end
+
   add_foreign_key "calificacions", "viajes"
+  add_foreign_key "pasajes_productos", "pasajes"
+  add_foreign_key "pasajes_productos", "productos"
 end
