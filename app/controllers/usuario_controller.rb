@@ -55,8 +55,8 @@ class UsuarioController < ApplicationController
   end
 
   def confirmarcompra
-  end
 
+  end
   def crearinvitado
   	@invitado = Invitado.new
   	respond_to do |format|
