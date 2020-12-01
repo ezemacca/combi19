@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_12_01_032648) do
-
+ActiveRecord::Schema.define(version: 2020_12_01_051208) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -57,8 +55,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_032648) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "viaje_id"
     t.integer "usuario_id"
-    t.integer "calificacion_id"
-    t.index ["calificacion_id"], name: "index_pasajes_on_calificacion_id"
     t.index ["usuario_id"], name: "index_pasajes_on_usuario_id"
     t.index ["viaje_id"], name: "index_pasajes_on_viaje_id"
   end
