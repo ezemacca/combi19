@@ -16,10 +16,10 @@
 <h3>Pasajeros</h3>
 <div class="card" style="width: 18rem;">
   	<div class="card-body">
-  		<h5 class="card-title">Pasaje</h5>
+  		<h4 class="card-title"><strong>Pasajero:</strong></h4>
     	<p class="card-text">
-    		<p>Nombre: <%= @usuario.nombre %></p>
-			<p>Apellido: <%= @usuario.apellido %></p>
+    		<p>Nombre: <%= @usuario.nombre.titleize %></p>
+			<p>Apellido: <%= @usuario.apellido.titleize %></p>
 			<p>DNI: <%= @usuario.DNI %></p>
     	</p>
   	</div>
@@ -28,10 +28,10 @@
 	<% @invitados.each do |i| %>
 	<div class="card" style="width: 18rem;">
   	<div class="card-body">
-  		<h5 class="card-title">Pasaje</h5>
+  		<h4 class="card-title"><strong>Pasajero:</strong></h4>
     	<p class="card-text">
-    		<p>Nombre: <%= i.nombre %></p>
-			<p>Apellido: <%= i.apellido %></p>
+    		<p>Nombre: <%= i.nombre.titleize %></p>
+			<p>Apellido: <%= i.apellido.titleize %></p>
 			<p>DNI: <%= i.DNI %></p>
     	</p>
   	</div>
@@ -42,7 +42,7 @@
 <h3>Productos</h3>
 <ul>
 	<% @pasaje.productos.each do |p| %>
-	<li>Producto: <%= p.nombre %> <br />
+	<li>Producto: <%= p.nombre.titleize %> <br />
 		<%# if @cantidad.find_by(producto_id: p.id) != nil %>
 			Cantidad: <%= @cantidad.find_by(producto_id: p.id).cantidad %> <br />
 		<%# end %>

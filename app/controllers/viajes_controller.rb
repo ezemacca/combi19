@@ -92,6 +92,7 @@ class ViajesController < ApplicationController
     @viaje = Viaje.new(viaje_params)
     @viaje.origen = Rutum.find(@viaje.ruta).origen
     @viaje.destino = Rutum.find(@viaje.ruta).destino
+    @viaje.asientos = Combi.find(@viaje.combi).plazas_totales
       #if @viaje.validacion_fecha
         #respond_to do |format|
           if @viaje.save
@@ -118,6 +119,7 @@ class ViajesController < ApplicationController
             format.html { 
               @viaje.origen = Rutum.find(@viaje.ruta).origen
               @viaje.destino = Rutum.find(@viaje.ruta).destino
+              @viaje.asientos = Combi.find(@viaje.combi).plazas_totales
               @viaje.save
               redirect_to @viaje, notice: 'Viaje se modifico correctamente.' }
             format.json { render :show, status: :ok, location: @viaje }
