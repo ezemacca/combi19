@@ -40,7 +40,11 @@ Rails.application.routes.draw do
       get :confirmarcompra
       get :comprarpasaje
       delete :cancelarproducto
-      get :crearinvitado
+      get :nuevoinvitado
+      post :crearinvitado
+      patch :verificartarjeta
+      patch :finalizarcompra
+      get :showpasaje
     end
   end
   root 'welcome#index'
