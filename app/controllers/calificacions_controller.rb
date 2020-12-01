@@ -15,10 +15,10 @@ class CalificacionsController < ApplicationController
 
   # GET /calificacions/new
   def new
-    @viaje = params[:id]
+    @pasaje = params[:id]
     #@calificacion = Calificacion.new
 
-    @calificacion = current_usuario.calificacions.build
+    @calificacion = Calificacion.new
   end
 
   # GET /calificacions/1/edit
@@ -31,7 +31,9 @@ class CalificacionsController < ApplicationController
   # POST /calificacions.json
   def create
     #@calificacion = Calificacion.new(calificacion_params)
-    @calificacion = current_usuario.calificacions.build(calificacion_params)
+    @calificacion = Calificacion.new(calificacion_params)
+    @pasaje = params[:pasaje].to_i
+    @calificacion.pasaje_id = @pasaje
     #viaje2=Viaje.find(params[:viaje])
 
     #viaje2.califiacions << @calificacion

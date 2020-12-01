@@ -159,6 +159,7 @@ end
 
     #@viajesusuario= Viaje.all #necesito los vijaes del usuario actual,no todos, no .all
   	@pasajesusuario= current_usuario.pasajes
+  	@viajes = Viaje.all
     @chofer= Usuario.all 
     @combi=Combi.all
     @ruta=Rutum.all 
