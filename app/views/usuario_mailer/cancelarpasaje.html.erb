@@ -1,0 +1,14 @@
+<h1>Hola, <%=@usuario.nombre.titleize %></h1>
+  <p>
+    Se realizo la cancelacion de tu pasaje satisfactoriamente:
+	<br>
+     <% if  @viaje.fecha > Time.now.to_date+2  %>
+
+     		Como la cancelacion se esta realizando con mas de 48 hs de anticipacion se rembolsara el 100% del pasaje
+     		Se rembolsara: <%= @pasaje.precio %>		
+     <%else%>
+     		Como la cancelacion se esta realizando con menos de 48 hs de anticipacion se rembolsara el 50% del pasaje
+     		Se rembolsara: <%= @pasaje.precio * 0.5 %>
+     <%end%> 
+  </p>
+<p>Gracias, que tengas un buen día!</p>

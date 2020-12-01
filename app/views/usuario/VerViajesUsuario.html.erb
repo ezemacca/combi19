@@ -1,4 +1,4 @@
-<h1>Historial De Viajes de <%=current_usuario.nombre%></h1>
+<h1>Historial De Viajes de <%=current_usuario.nombre.titleize%></h1>
 <Br>
 <Br>
 
@@ -40,6 +40,11 @@
             </td>
         <%else%>
           <td>
+            <% if @viajes.find(pasaje.viaje_id).estado == "pendiente"%>
+              
+              <%= link_to 'Cancelar pasaje', cancelarpasaje_usuario_path(pasaje), method: :delete, class: 'btn btn-danger btn-sm'%></td>
+            
+            <%end%>
             <% if @viajes.find(pasaje.viaje_id).estado == "finalizado" %>
             <%= link_to 'Dejar una opinion sobre este viaje', new_calificacion_path(pasaje), class: "btn btn-success btn" %>
             <% end %>
