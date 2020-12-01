@@ -9,6 +9,9 @@
   <strong>Comentario:</strong>
   <%= @calificacion.comentario %>
 </p>
-
-<%= link_to 'Editar', edit_calificacion_path(@calificacion,:pasaje => @calificacion.pasaje_id) %> |
-<%= link_to 'Volver', usuario_VerViajesUsuario_path %>
+<% if current_usuario.role == "usuario" %>
+	<%= link_to 'Editar', edit_calificacion_path(@calificacion,:pasaje => @calificacion.pasaje_id) %> |
+	<%= link_to 'Volver', usuario_VerViajesUsuario_path %>
+<% else %>
+	<%= link_to 'Volver', viajes_path %>
+<% end %>

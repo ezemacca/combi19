@@ -81,13 +81,13 @@ class CalificacionsController < ApplicationController
     end
   end
 
-  def CalificacionesPorViaje
+  def calificacionesporviaje
    
-    @viaje = Viaje.find(params[:format])
-    @origen = Lugar.find_by(Viaje.find(params[:format]).origen)
-    @destino =Lugar.find_by(Viaje.find(params[:format]).destino)
-
-    @calificacion = Calificacion.where(pasaje_id: params[:id])
+    @viaje = Viaje.find(params[:id])
+    @origen = Lugar.find(Viaje.find(params[:id]).origen)
+    @destino =Lugar.find(Viaje.find(params[:id]).destino)
+    @usuarios = Usuario.all
+    @pasajes = @viaje.pasajes
 
   end
 

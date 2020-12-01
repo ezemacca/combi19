@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Calificaciones</h1>
+    <h3>Hola</h3>
+    <h3>Estas son las calificaciones del viaje <%= @origen.mostrar_atributos %> - <%=@destino.mostrar_atributos%></h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Usuario</th>
+        <th scope="col">Puntaje</th>
+        <th scope="col">Comentario</th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @pasajes.each do |p| %>
+    
+      <tr>
+
+        <td><%= @usuarios.find(p.usuario_id).email%></td> <!--estas chanchadas son xq no me dejan usar el through-->
+        <td><%= p.calificacion.puntaje %></td>
+        <td><%= p.calificacion.comentario %></td>
+        <td><%#= link_to 'Ver', p.calificacion , class: "btn btn-success btn-sm"  %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

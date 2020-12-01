@@ -68,7 +68,7 @@
         <td><%= link_to 'Eiminar', viaje, method: :delete , class: 'btn btn-danger btn-sm' %></td>
         <!--no estoy seguro si es la manera de corroborar fecha -->
         <td><% if viaje.estado == "finalizado" %> 
-          <%=link_to 'Ver Calificaciones', calificacions_CalificacionesPorViaje_path(viaje), class: "btn btn-success btn-sm"%>
+          <%=link_to 'Ver Calificaciones', calificacionesporviaje_calificacion_path(viaje.id),method: :get, class: "btn btn-success btn-sm"%>
             <%end%>
           </td>
       </tr>

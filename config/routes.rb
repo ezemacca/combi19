@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   resources :pasajes
   get 'buscador/create'
   get 'calificacions/new(.:id)', to: 'calificacions#new'
-  get 'calificacions/CalificacionesPorViaje', to: 'calificacions#CalificacionesPorViaje'
-  resources :calificacions 
+  #get 'calificacions/CalificacionesPorViaje', to: 'calificacions#CalificacionesPorViaje'
+  resources :calificacions do
+    member do
+      get :calificacionesporviaje
+    end
+  end 
   resources :viajes
   resources :productos
   get 'ruta/alta'
