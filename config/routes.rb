@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       patch :verificartarjeta
       patch :finalizarcompra
       get :showpasaje
+      delete :cancelarinvitado
     end
   end
   root 'welcome#index'

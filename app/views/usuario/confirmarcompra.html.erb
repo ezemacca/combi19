@@ -8,7 +8,11 @@
 	<% end %>
 </h3>
 
-<h3>Precio: $<%= @pasaje.precio %></h3>
+<% if current_usuario.suscripcion %>
+   <h5> Precio total con 10 de descuento por suscripcion:$<%= @pasaje.precio*0.9 %><h5> 
+  <%else%>
+  <h5>Precio total : $<%= @pasaje.precio %></h5> 
+  <%end%>
 
 <h4>Datos del/los acompañante/s:</h4>
 <% if !@invitados.nil? %>
@@ -21,7 +25,10 @@
 			<p>Apellido: <%= i.apellido %></p>
 			<p>DNI: <%= i.DNI %></p>
     	</p>
+
   	</div>
+<%= link_to "Cancelar Pasaje invitado", cancelarinvitado_usuario_path(:invitado => i,:pasaje => @pasaje,:viaje => @viaje), method: :delete %>
+	
 	</div>
 	<% end %>	
 <% end %>
