@@ -16,8 +16,10 @@ class CombisController < ApplicationController
 
 	def create
 		@combi=Combi.new(params.require(:combi).permit(:clasificacion,:plazas_totales,:modelo,:patente))
-		if @combi.save    		
-    		#UsuarioMailer.confirmacion_compra(email: current_usuario.email).deliver_now
+		if @combi.save   
+			@us=current_usuario 		
+    		#UsuarioMailer.with(usuario: @us).confirmacion_compra.deliver_now
+    		
     		redirect_to new_combi_path, notice: "se cargo la combi correctamente"
     	else
     		c=Combi.find_by(patente: @combi.patente.downcase)
