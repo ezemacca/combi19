@@ -111,7 +111,9 @@ end
   end
 
   def finalizarcompra
+    @us=current_usuario #paraelmailer
   	pasaje = Pasaje.find(params[:pasaje])
+    @pasaje1 = pasaje #para el mailer
   	viaje = Viaje.find(params[:viaje])
   	combi = Combi.find(viaje.combi)
   	if (combi.plazas_libres >= pasaje.invitados.size+1)
@@ -126,7 +128,9 @@ end
   		pasaje.save
   		combi.plazas_libres -= (pasaje.invitados.size+1)
   		combi.save
-  		redirect_to showpasaje_usuario_path(:pasaje => pasaje), notice: "La compra del pasaje se realizo correctamente"
+      #le mandamo el mail 
+      UsuarioMailer.with(usuario: @us, pasaje: @pasaje1).confirmacion_compra.deliver_now 
+  		redirect_to showpasaje_usuario_path(:pasaje => pasaje), notice: "La compra del pasaje se realizo correctamente"      
   	else
   		redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "No hay los suficientes lugares disponibles para la cantidad de pasajes que queres comprar"
   	end

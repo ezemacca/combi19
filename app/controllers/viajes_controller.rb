@@ -4,7 +4,55 @@ class ViajesController < ApplicationController
   # GET /viajes
   # GET /viajes.json
   def index
-    @viajes = Viaje.all
+    origen = params[:origen].to_s.downcase
+    destino = params[:destino].to_s.downcase
+    dni = params[:chofer].to_i
+    patente = params[:combi].to_s.downcase
+    combi = Combi.find_by(patente: patente)
+    chofer = Usuario.find_by(DNI: dni)
+    o = Lugar.find_by(ciudad: origen)
+    d = Lugar.find_by(ciudad: destino)
+    fecha = params[:fecha]
+    fecha1 = fecha.to_s
+    fecha2 = fecha1.to_datetime
+    if !o.nil? && !d.nil? && !chofer.nil? && !combi.nil? && !fecha2.nil?
+      @notice = "Ingrese solo un campo para filtrar"
+    else
+      if !o.nil? && !d.nil? && !chofer.nil? && !combi.nil?
+        @notice = "Ingrese solo un campo para filtrar"
+      else
+        if !o.nil? && !d.nil? && !chofer.nil?
+          @notice = "Ingrese solo un campo para filtrar"
+        else
+          if !o.nil? && !d.nil?
+            @notice = "Ingrese solo un campo para filtrar"
+          else
+            if !o.nil?
+              @viajes = Viaje.where(origen: o.id)  #Aca se busca por origen
+            else
+              if !d.nil?
+                @viajes = Viaje.where(destino: d.id)
+              else
+                if !chofer.nil?
+                  @viajes = Viaje.where(chofer: chofer.id)
+                else
+                  if !combi.nil?
+                    @viajes = Viaje.where(combi: combi.id)
+                  else
+                    if !fecha2.nil?
+                      @viajes = Viaje.where(fecha: fecha2..fecha2.end_of_day)
+                    else
+                      @viajes = Viaje.all
+                    end
+                  end     
+                end     
+              end
+            end
+          end
+        end
+      end
+    end
+    #@viajes = Viaje.all
     @lugar = Lugar.all
     @ruta = Rutum.all
     @combi = Combi.all

@@ -8,6 +8,22 @@
 <Br>
 <Br>
 
+<h3>Filtrar viajes por:</h3>
+<%= form_tag viajes_path, method: :get do %>
+  <%= label_tag "Origen:" %>
+  <%= text_field_tag :origen, nil,placeholder: "Origen" %>
+  <%= label_tag "Destino:" %>
+  <%= text_field_tag :destino, nil, placeholder: "Destino" %>
+  <%= label_tag "Chofer:" %>
+  <%= text_field_tag :chofer, nil, placeholder: "DNI del chofer" %>
+  <%= label_tag "Combi:" %>
+  <%= text_field_tag :combi, nil, placeholder: "Patente de la combi" %>
+  <%= label_tag "Fecha de salida:" %>
+  <%= date_field_tag :fecha %> 
+  <%= submit_tag "Buscar viaje" %>
+
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -25,7 +41,7 @@
   </thead>
 
   <tbody>
-    
+    <% if !@viajes.nil? %>
     <% @viajes.each do |viaje| %>
     <% if !viaje.eliminado %>
       <tr>
@@ -57,6 +73,9 @@
           </td>
       </tr>
     <% end %>  
+  <% end %>
+  <% else %>
+    <%= @notice %>
   <% end %>
   </tbody>
   </table>
