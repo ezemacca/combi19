@@ -3,6 +3,8 @@ class Usuario < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   #validates :vencimiento,presence: true, if: :suscripcion 
+  
+
   validates :nrotarjeta,
   						 numericality: true,
   						 length: { is: 16 },

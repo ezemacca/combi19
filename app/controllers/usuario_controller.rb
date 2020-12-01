@@ -78,10 +78,11 @@ end
   	@viaje = Viaje.find(params[:viaje])
   	@pasaje = Pasaje.find(params[:pasaje])
   	@invitados = @pasaje.invitados
-  	if (!@invitados.nil?)
-  		@pasaje.precio += (@viaje.precio * @invitados.size)
-  		@pasaje.save
-  	end
+  	#se comento para que no sume cada vez que se recargue la pagina
+    #if (!@invitados.nil?)
+  	#	@pasaje.precio += (@viaje.precio * @invitados.size)
+  	#	@pasaje.save
+  	#end
   end
 
   def verificartarjeta
@@ -118,6 +119,12 @@ end
   	if (combi.plazas_libres >= pasaje.invitados.size+1)
   		pasaje.usuario_id = current_usuario.id
   		pasaje.viaje_id = viaje.id
+
+      #Verifico si esta suscripto para aplicar el descuento
+      if current_usuario.suscripcion 
+        pasaje.precio= pasaje.precio*0.9
+      end
+
   		pasaje.save
   		combi.plazas_libres -= (pasaje.invitados.size+1)
   		combi.save
@@ -153,6 +160,8 @@ end
   	viaje = Viaje.find(params[:viaje])
   	@invitado.pasaje_id = params[:pasaje]
   	if @invitado.save
+      pasaje.precio = pasaje.precio+ viaje.precio 
+      pasaje.save
   		redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "Se agregaron los datos del acompañante correctamente"
   	else
   		redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "No se pudieron agregar los datos del acompañante"	
@@ -213,6 +222,18 @@ end
   		end
   	end  	
   	redirect_to comprarpasaje_usuario_path(:id => params[:viaje],:pasaje => pasaje)  	
+  end
+
+  def cancelarinvitado
+    invitado = Invitado.find(params[:invitado])
+    pasaje = Pasaje.find(params[:pasaje])
+    viaje = Viaje.find(params[:viaje])
+   
+    invitado.destroy
+    pasaje.precio -= viaje.precio
+    pasaje.save
+
+    redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "Se borro el pasaje del acompañante exitosamente"
   end
   	
 end

@@ -46,7 +46,11 @@ Lista de Productos
 </table>
 <div>
 
-<h5>Precio total: $<%= @pasaje.precio %></h5> 
+<% if current_usuario.suscripcion %>
+   <h5> Precio total con 10 de descuento por suscripcion:$<%= @pasaje.precio*0.9 %><h5> 
+  <%else%>
+  <h5>Precio total : $<%= @pasaje.precio %></h5> 
+  <%end%>
 <%= link_to "Volver", usuario_index_path %>
 <%= link_to "Confirmar compra", confirmarcompra_usuario_path(:pasaje => @pasaje,:viaje => @viaje,:habilitado => @habilitado) %>
 </div>
