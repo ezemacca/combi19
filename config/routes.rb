@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
 
   get 'usuario/VerViajesUsuario'
+  
   resources :usuario do
     member do
       patch :agregarproducto
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
       patch :finalizarcompra
       get :showpasaje
       delete :cancelarinvitado
+      delete :cancelarpasaje
     end
   end
   root 'welcome#index'

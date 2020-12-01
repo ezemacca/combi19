@@ -235,5 +235,24 @@ end
 
     redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "Se borro el pasaje del acompañante exitosamente"
   end
+
+  def cancelarpasaje
+    @us=current_usuario #paraelmailer
+    @pasaje = Pasaje.find(params[:id])
+    @productos = @pasaje.productos
+    @combi = Combi.find(Viaje.find(@pasaje.viaje_id).combi)
+    @productos.each do |p|
+      prod = PasajesProducto.find_by(pasaje_id: @pasaje.id, producto_id: p.id)
+       p.stock+= prod.cantidad
+       p.save
+    end
+      @combi.plazas_libres+= (@pasaje.invitados.size+1)
+      @combi.save
+    #enviar mail aca desp de destruirlo
+    UsuarioMailer.with(usuario: @us, pasaje: @pasaje).cancelarpasaje.deliver_now
+    @pasaje.invitados.destroy_all
+    @pasaje.destroy
+    redirect_to usuario_VerViajesUsuario_path, notice: "El pasaje se cancelo correctamente, revise su correo para mas informacion"
+  end
   	
 end
