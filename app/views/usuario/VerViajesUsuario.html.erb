@@ -16,6 +16,7 @@
       <th scope="col">Precio</th>
       <th scope="col">Estado</th>
       <th scope="col">Tus Opiniones</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
 
@@ -40,14 +41,16 @@
             </td>
         <%else%>
           <td>
-            <% if @viajes.find(pasaje.viaje_id).estado == "pendiente"%>
-              
+            <% if @viajes.find(pasaje.viaje_id).estado == "finalizado" %>
+            <%= link_to 'Dejar una opinion', new_calificacion_path(pasaje), class: "btn btn-info btn-sm" %>
+            <% end %>
+            </td>
+            <td>
+              <% if @viajes.find(pasaje.viaje_id).estado == "pendiente"%>
+              <%= link_to 'Ver',showpasaje_usuario_path(pasaje), class: 'btn btn-success btn-sm' %>
               <%= link_to 'Cancelar pasaje', cancelarpasaje_usuario_path(pasaje), method: :delete, class: 'btn btn-danger btn-sm'%></td>
             
             <%end%>
-            <% if @viajes.find(pasaje.viaje_id).estado == "finalizado" %>
-            <%= link_to 'Dejar una opinion sobre este viaje', new_calificacion_path(pasaje), class: "btn btn-success btn" %>
-            <% end %>
             </td>
         <%end%>
       </tr> 

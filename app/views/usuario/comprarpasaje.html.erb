@@ -1,20 +1,20 @@
-<h2> Confirmar Pasaje <h2>
+<h2> Comprar Pasaje <h2>
 
 <div>
-<%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %><br >
-<%= @viaje.fecha.strftime("Hora de salida: %H:%M") %><br >
-<%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %><br >
-Origen: <%= @origen.ciudad.titleize %><br >
-Destrino: <%= @destino.ciudad.titleize %><br >
-Por: <%= @ruta.nombre.titleize%><br >
-Tipo de combi: <%= @combi.clasificacion %><br>
-Precio: $<%= @viaje.precio%> <br >
-
+<h3>Viaje</h3>
+<ul>
+  <li><%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></li>
+  <li><%= @viaje.fecha.strftime("Hora de salida: %H:%M") %></li>
+  <li><%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %></li>
+  <li>Origen: <%= @origen.ciudad.titleize %></li>
+  <li>Destrino: <%= @destino.ciudad.titleize %></li>
+  <li>Por: <%= @ruta.nombre.titleize%></li>
+  <li>Tipo de combi: <%= @combi.clasificacion %></li>
+  <li>Precio: $<%= @viaje.precio%> </li>
+</ul>
 </div>
 
-<div>
-<h2>Quiere comprar algun Producto/Vianda para su viaje?<h2>
-Lista de Productos
+<h3>Lista de Productos</h3>
  <table class="table">
     <thead>
       <tr>
@@ -25,8 +25,6 @@ Lista de Productos
         <th scope="col">Acciones</th>
       </tr>
     </thead>
-    <tbody>
-
   <tbody>
     <% @producto.each do |producto| %>
           <tr>
@@ -38,19 +36,17 @@ Lista de Productos
             <% else %>
               <td>0</td>
             <% end %>
-            <td><%= link_to "Agregar producto", agregarproducto_usuario_path(:producto => producto, :viaje => @viaje, :pasaje => @pasaje), method: :patch%>
-            <%= link_to "Cancelar producto", cancelarproducto_usuario_path(:producto => producto,:pasaje => @pasaje,:viaje => @viaje), method: :delete %> <br /> </td>
+            <td><%= link_to "Agregar producto", agregarproducto_usuario_path(:producto => producto, :viaje => @viaje, :pasaje => @pasaje), method: :patch, class: "btn btn-info btn-sm"%>
+            <%= link_to "Cancelar producto", cancelarproducto_usuario_path(:producto => producto,:pasaje => @pasaje,:viaje => @viaje), method: :delete, class: 'btn btn-danger btn-sm' %> <br /> </td>
           </tr>	
     <% end %>
   </tbody>
 </table>
-<div>
 
 <% if current_usuario.suscripcion %>
-   <h5> Precio total con 10 de descuento por suscripcion:$<%= @pasaje.precio*0.9 %><h5> 
+   <h3> Precio total con 10 de descuento por suscripcion:$<%= @pasaje.precio*0.9 %></h3> 
   <%else%>
-  <h5>Precio total : $<%= @pasaje.precio %></h5> 
+  <h3>Precio total : $<%= @pasaje.precio %></h3> 
   <%end%>
 <%= link_to "Volver", usuario_index_path %>
-<%= link_to "Confirmar compra", confirmarcompra_usuario_path(:pasaje => @pasaje,:viaje => @viaje,:habilitado => @habilitado) %>
-</div>
+<%= link_to "Siguiente", confirmarcompra_usuario_path(:pasaje => @pasaje,:viaje => @viaje,:habilitado => @habilitado) %>

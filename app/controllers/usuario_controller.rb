@@ -130,14 +130,14 @@ end
   		combi.save
       #le mandamo el mail 
       UsuarioMailer.with(usuario: @us, pasaje: @pasaje1).confirmacion_compra.deliver_now 
-  		redirect_to showpasaje_usuario_path(:pasaje => pasaje), notice: "La compra del pasaje se realizo correctamente"      
+  		redirect_to showpasaje_usuario_path(:id => pasaje), notice: "La compra del pasaje se realizo correctamente"      
   	else
   		redirect_to confirmarcompra_usuario_path(:pasaje => pasaje,:viaje => viaje), notice: "No hay los suficientes lugares disponibles para la cantidad de pasajes que queres comprar"
   	end
   end
 
   def showpasaje
-  	@pasaje = Pasaje.find(params[:pasaje])
+    @pasaje = Pasaje.find(params[:id])
   	@usuario = Usuario.find(@pasaje.usuario_id)
   	@viaje = Viaje.find(@pasaje.viaje_id)
   	@combi= Combi.find(@viaje.combi)

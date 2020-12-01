@@ -6,6 +6,7 @@ class Usuario < ApplicationRecord
   
 
   validates :nrotarjeta,
+                uniqueness: true,
   						 numericality: true,
   						 length: { is: 16 },
   						 presence: true, if: :suscripcion
