@@ -16,11 +16,11 @@
 
 <%= form_tag usuario_index_path, method: :get do %>
 	<%= label_tag "Origen:" %>
-	<%= text_field_tag :origen, nil,placeholder: "Origen" %><br />
+	<%= text_field_tag :origen, nil,placeholder: "Origen", required: true %><br />
 	<%= label_tag "Destino:" %>
-	<%= text_field_tag :destino, nil, placeholder: "Destino" %> <br />
+	<%= text_field_tag :destino, nil, placeholder: "Destino", required: true %> <br />
 	<%= label_tag "Fecha de salida:" %>
-	<%= date_field_tag :fecha %> <br />
+	<%= date_field_tag :fecha, required: true %> <br />
 	<%= submit_tag "Buscar viaje" %>
 
 <% end %>
@@ -30,7 +30,7 @@
 
 <div id="resultados">
 	
-	<% if !@viajes.nil? %>
+	<% if !@viajes.nil? &&  @viajes.count > 0%>
 
 		<% @viajes.each do |v| %>
 		<div class="panel panel-primary">
