@@ -1,0 +1,52 @@
+<h1>Detalle del pasaje</h1>
+
+<h3>Viaje</h3>
+<ul>
+	<li><%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></li>
+	<li><%= @viaje.fecha.strftime("Hora de salida: %H:%M") %></li>
+	<li><%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %></li>
+	<li>Origen: <%= @origen.ciudad.titleize %></li>
+	<li>Destrino: <%= @destino.ciudad.titleize %></li>
+	<li>Por: <%= @ruta.nombre.titleize%></li>
+	<li>Tipo de combi: <%= @combi.clasificacion %></li>
+	<li>Cantidad de pasajes: <%= @pasaje.invitados.size+1 %> </li>
+	<li>Precio total: $<%= @pasaje.precio%> </li>	
+</ul>
+
+<h3>Pasajeros</h3>
+<div class="card" style="width: 18rem;">
+  	<div class="card-body">
+  		<h5 class="card-title">Pasaje</h5>
+    	<p class="card-text">
+    		<p>Nombre: <%= @usuario.nombre %></p>
+			<p>Apellido: <%= @usuario.apellido %></p>
+			<p>DNI: <%= @usuario.DNI %></p>
+    	</p>
+  	</div>
+	</div>
+<% if !@invitados.nil? %>
+	<% @invitados.each do |i| %>
+	<div class="card" style="width: 18rem;">
+  	<div class="card-body">
+  		<h5 class="card-title">Pasaje</h5>
+    	<p class="card-text">
+    		<p>Nombre: <%= i.nombre %></p>
+			<p>Apellido: <%= i.apellido %></p>
+			<p>DNI: <%= i.DNI %></p>
+    	</p>
+  	</div>
+	</div>
+	<% end %>	
+<% end %>
+
+<h3>Productos</h3>
+<ul>
+	<% @pasaje.productos.each do |p| %>
+	<li>Producto: <%= p.nombre %> <br />
+		<%# if @cantidad.find_by(producto_id: p.id) != nil %>
+			Cantidad: <%= @cantidad.find_by(producto_id: p.id).cantidad %> <br />
+		<%# end %>
+		Precio: $<%=p.precio %> 
+	</li>
+	<% end %>
+</ul>

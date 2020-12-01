@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_160505) do
+ActiveRecord::Schema.define(version: 2020_11_30_211206) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 2020_11_29_160505) do
   create_table "invitados", force: :cascade do |t|
     t.string "nombre"
     t.string "apellido"
-    t.string "DNI"
-    t.string "integer"
+    t.integer "DNI"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pasaje_id"
   end
 
   create_table "lugars", force: :cascade do |t|
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_160505) do
     t.integer "combi"
     t.integer "chofer"
     t.datetime "fecha_llegada"
+    t.float "precio"
   end
 
   create_table "viajes_usuarios", id: false, force: :cascade do |t|

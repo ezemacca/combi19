@@ -1,9 +1,60 @@
 <h1>Paso 2</h1>
 
-<h3>Comprar pasaje adicional</h3>
+<h3>Cantidad de pasajes comprados:
+	<% if !@invitados.nil? %>
+		<%= @invitados.size + 1 %>
+	<% else %>
+		1
+	<% end %>
+</h3>
 
-<p>Datos del acompañante:</p>
+<h3>Precio: $<%= @pasaje.precio %></h3>
+
+<h4>Datos del/los acompañante/s:</h4>
+<% if !@invitados.nil? %>
+	<% @invitados.each do |i| %>
+	<div class="card" style="width: 18rem;">
+  	<div class="card-body">
+  		<h5 class="card-title">Pasaje</h5>
+    	<p class="card-text">
+    		<p>Nombre: <%= i.nombre %></p>
+			<p>Apellido: <%= i.apellido %></p>
+			<p>DNI: <%= i.DNI %></p>
+    	</p>
+  	</div>
+	</div>
+	<% end %>	
+<% end %>
+
+<%= link_to "Agregar invitado", nuevoinvitado_usuario_path(:pasaje => @pasaje,:viaje => @viaje) %>
+
+<h3>Datos de la tarjeta</h3>
+<%= form_for current_usuario, :url => { :action => :verificartarjeta } do |f| %>
+	<%= f.label "Numero de tarjeta (16 digitos)" %><br />
+      <%= f.text_field :nrotarjeta, maxlength: 16, placeholder: 'Ingrese el numero de tarjeta',required: true%>
+      </div>
+
+      <div class="field">
+      <%= f.label "Vencimiento:" %><br />
+      <%= f.select :vencimientoMes, [1,2,3,4,5,6,7,8,9,10,11,12],required: true %>
+      <%= f.select :vencimientoAño, [2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030], required: true %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Codigo de seguridad (3 digitos)" %><br />
+      <%= f.text_field :codseguridad, maxlength: 3,size: 3, placeholder: 'Los tres digitos detras de la tarjeta',required:true%>
+      </div>
+
+      <%= hidden_field_tag "viaje", @viaje.id %>
+      <%= hidden_field_tag "pasaje", @pasaje.id %>
+
+  <div class="actions">
+    <%= f.submit "Confirmar tarjeta" %>
+  </div>
+ <% end %>
+<% if @habilitado == "1" %>
+ <%= link_to "Comprar pasaje",finalizarcompra_usuario_path(:pasaje => @pasaje,:viaje => @viaje),method: :patch, class: "btn btn-primary" %>
+ <% end %>
 
 
-<%= link_to "Agregar invitado", crearinvitado_usuario_path, remote: true, method: :get, class: "btn btn-primary" %>
 

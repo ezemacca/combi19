@@ -8,7 +8,7 @@ Origen: <%= @origen.ciudad.titleize %><br >
 Destrino: <%= @destino.ciudad.titleize %><br >
 Por: <%= @ruta.nombre.titleize%><br >
 Tipo de combi: <%= @combi.clasificacion %><br>
-Precio: $$$<%$$%> <br >
+Precio: $<%= @viaje.precio%> <br >
 
 </div>
 
@@ -44,7 +44,9 @@ Lista de Productos
     <% end %>
   </tbody>
 </table>
-<div> 
+<div>
+
+<h5>Precio total: $<%= @pasaje.precio %></h5> 
 <%= link_to "Volver", usuario_index_path %>
-<%= link_to "Confirmar compra", confirmarcompra_usuario_path(:pasaje => @pasaje) %>
+<%= link_to "Confirmar compra", confirmarcompra_usuario_path(:pasaje => @pasaje,:viaje => @viaje,:habilitado => @habilitado) %>
 </div>

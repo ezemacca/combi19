@@ -16,6 +16,7 @@ class CombisController < ApplicationController
 
 	def create
 		@combi=Combi.new(params.require(:combi).permit(:clasificacion,:plazas_totales,:modelo,:patente))
+		@combi.plazas_libres = @combi.plazas_totales
 		if @combi.save
     		redirect_to new_combi_path, notice: "se cargo la combi correctamente"
     	else
@@ -38,7 +39,7 @@ class CombisController < ApplicationController
 	#	@combiselected= Combi.where(patente: params[:id] ))
 	def update
 		@combi= Combi.find(params[:id])
-
+		@combi.plazas_libres = @combi.plazas_totales
 		if @combi.update(combi_params)
 			redirect_to combis_path, notice: "Se actualizo correctamente"
 		else

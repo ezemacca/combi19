@@ -96,6 +96,6 @@ class ViajesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viaje_params
-      params.require(:viaje).permit(:fecha, :ruta, :fecha_llegada, :combi, :chofer)
+      params.require(:viaje).permit(:fecha, :ruta, :fecha_llegada, :combi, :chofer, :precio)
     end
 end
