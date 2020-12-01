@@ -8,7 +8,11 @@
 <h2>Apellido: <%= @usuario.apellido %> <h2>
 
 <h3> DNI: <%= @usuario.DNI %> <h3> 
-
+    <% if !@usuario.suscripcion %>
+     <h2 style="color:red"> No estas suscripto! </h2>
+    	<%else%>
+    <h2 style="color:green"> Estas suscripto! </h2>
+    	<%end%>
 </div>
 
 <div>
