@@ -4,6 +4,7 @@ class CalificacionsController < ApplicationController
   # GET /calificacions
   # GET /calificacions.json
   def index
+    @pasajes = current_usuario.pasajes
     @calificacions = Calificacion.all
   end
 
@@ -80,7 +81,8 @@ class CalificacionsController < ApplicationController
     @origen = Lugar.find_by(Viaje.find(params[:format]).origen)
     @destino =Lugar.find_by(Viaje.find(params[:format]).destino)
 
-    @calificacion = Calificacion.where(viaje_id: params[:id])
+    @calificacion = Calificacion.where(pasaje_id: params[:id])
+
   end
 
   private

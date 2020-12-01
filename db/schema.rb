@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_160505) do
+ActiveRecord::Schema.define(version: 2020_12_01_032648) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
     t.string "comentario"
-    t.integer "usuario_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "viaje_id"
+    t.integer "pasaje_id"
+    t.index ["pasaje_id"], name: "index_calificacions_on_pasaje_id"
   end
 
   create_table "combis", force: :cascade do |t|
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_11_29_160505) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "viaje_id"
     t.integer "usuario_id"
+    t.integer "calificacion_id"
+    t.index ["calificacion_id"], name: "index_pasajes_on_calificacion_id"
     t.index ["usuario_id"], name: "index_pasajes_on_usuario_id"
     t.index ["viaje_id"], name: "index_pasajes_on_viaje_id"
   end
@@ -86,15 +88,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_160505) do
     t.integer "origen"
     t.integer "destino"
     t.boolean "eliminado", default: false
-  end
-
-  create_table "usuario_viajes", force: :cascade do |t|
-    t.integer "usuario_id"
-    t.integer "viaje_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["usuario_id"], name: "index_usuario_viajes_on_usuario_id"
-    t.index ["viaje_id"], name: "index_usuario_viajes_on_viaje_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -133,14 +126,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_160505) do
     t.datetime "fecha_llegada"
   end
 
-  create_table "viajes_usuarios", id: false, force: :cascade do |t|
-    t.integer "viajes_id"
-    t.integer "usuarios_id"
-    t.index ["usuarios_id"], name: "index_viajes_usuarios_on_usuarios_id"
-    t.index ["viajes_id"], name: "index_viajes_usuarios_on_viajes_id"
-  end
-
-  add_foreign_key "calificacions", "viajes"
   add_foreign_key "pasajes_productos", "pasajes"
   add_foreign_key "pasajes_productos", "productos"
 end
