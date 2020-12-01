@@ -10,5 +10,5 @@
   <%= @calificacion.comentario %>
 </p>
 
-<%= link_to 'Edit', edit_calificacion_path(@calificacion) %> |
-<%= link_to 'Back', calificacions_path %>
+<%= link_to 'Editar', edit_calificacion_path(@calificacion,:pasaje => @calificacion.pasaje_id) %> |
+<%= link_to 'Volver', usuario_VerViajesUsuario_path %>

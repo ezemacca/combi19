@@ -45,7 +45,11 @@
     				<li>Fecha estimada de llegada: <%= v.fecha_llegada %></li>
     				<li>Precio: $<%= v.precio %></li>
     				<li>Lugares disponibles: <%= @combi.find(v.combi).plazas_libres %></li>
-    				<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %> 
+    				<% if v.pasajes.find_by(usuario_id: current_usuario.id).nil? %>
+    					<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %>
+    				<% else %>
+    				<strong style="color:red">Ya tenes un pasaje para este viaje</strong>
+    				<% end %> 
     			</ul>
   			</div>
 		</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_051208) do
+ActiveRecord::Schema.define(version: 2020_12_01_165015) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_051208) do
     t.boolean "eliminado", default: false
   end
 
+  create_table "usuario_viajes", force: :cascade do |t|
+    t.integer "usuario_id"
+    t.integer "viaje_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["usuario_id"], name: "index_usuario_viajes_on_usuario_id"
+    t.index ["viaje_id"], name: "index_usuario_viajes_on_viaje_id"
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -123,6 +132,14 @@ ActiveRecord::Schema.define(version: 2020_12_01_051208) do
     t.integer "chofer"
     t.datetime "fecha_llegada"
     t.float "precio"
+    t.string "estado", default: "pendiente"
+  end
+
+  create_table "viajes_usuarios", id: false, force: :cascade do |t|
+    t.integer "viajes_id"
+    t.integer "usuarios_id"
+    t.index ["usuarios_id"], name: "index_viajes_usuarios_on_usuarios_id"
+    t.index ["viajes_id"], name: "index_viajes_usuarios_on_viajes_id"
   end
 
   add_foreign_key "pasajes_productos", "pasajes"

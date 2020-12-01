@@ -24,6 +24,7 @@ class CalificacionsController < ApplicationController
   # GET /calificacions/1/edit
   def edit
     @calificacion = Calificacion.find(params[:id])
+    @pasaje = params[:pasaje]
 
   end
 
@@ -55,10 +56,13 @@ class CalificacionsController < ApplicationController
   # PATCH/PUT /calificacions/1
   # PATCH/PUT /calificacions/1.json
   def update
-
+    @pasaje = params[:pasaje].to_i
     respond_to do |format|
       if @calificacion.update(calificacion_params)
-        format.html { redirect_to @calificacion, notice: 'Calificacion was successfully updated.' }
+        format.html { 
+          @calificacion.pasaje_id = @pasaje
+          @calificacion.save
+          redirect_to @calificacion, notice: 'Calificacion se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @calificacion }
       else
         format.html { render :edit }
@@ -72,7 +76,7 @@ class CalificacionsController < ApplicationController
   def destroy
     @calificacion.destroy
     respond_to do |format|
-      format.html { redirect_to calificacions_url, notice: 'Calificacion was successfully destroyed.' }
+      format.html { redirect_to usuario_VerViajesUsuario_path, notice: 'Calificacion se elimino correctamente' }
       format.json { head :no_content }
     end
   end
