@@ -32,13 +32,14 @@
         <td><%= @ruta.find(@viajes.find(pasaje.viaje_id).ruta).mostrar_atributos %></td>
         <td><%= @combi.find(@viajes.find(pasaje.viaje_id).combi).clasificacion %></td>
         <td>  <%= pasaje.precio %> </td>
-        <td> <%= @viajes.find(pasaje.viaje_id).estado %></td>
+        <td><strong><%= @viajes.find(pasaje.viaje_id).estado.titleize %></strong></td>
         <%if !pasaje.calificacion.nil?%> <!--si ya tiene una opinion-->
           <td>
             <%= link_to 'Ver', pasaje.calificacion , class: "btn btn-success btn-sm" %>
             <%= link_to 'Editar', edit_calificacion_path(pasaje.calificacion,:pasaje => pasaje), class: "btn btn-primary btn-sm" %>
               <%= link_to 'Eliminar', pasaje.calificacion, method: :delete, class: 'btn btn-danger btn-sm'%></td>
             </td>
+            <td><%= link_to 'Ver Viaje',showpasaje_usuario_path(pasaje), class: 'btn btn-success btn-sm' %></td>
         <%else%>
           <td>
             <% if @viajes.find(pasaje.viaje_id).estado == "finalizado" %>
@@ -46,8 +47,8 @@
             <% end %>
             </td>
             <td>
+              <%= link_to 'Ver Viaje',showpasaje_usuario_path(pasaje), class: 'btn btn-success btn-sm' %>
               <% if @viajes.find(pasaje.viaje_id).estado == "pendiente"%>
-              <%= link_to 'Ver',showpasaje_usuario_path(pasaje), class: 'btn btn-success btn-sm' %>
               <%= link_to 'Cancelar pasaje', cancelarpasaje_usuario_path(pasaje), method: :delete, class: 'btn btn-danger btn-sm'%></td>
             
             <%end%>

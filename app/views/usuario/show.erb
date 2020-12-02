@@ -3,11 +3,11 @@
 
 <div>
 	<h2>Email: <%= @usuario.email %> <h2>
-<h2>Nombre: <%= @usuario.nombre %> <h2> 
+<h2>Nombre: <%= @usuario.nombre.titleize %> <h2> 
 
-<h2>Apellido: <%= @usuario.apellido %> <h2>
+<h2>Apellido: <%= @usuario.apellido.titleize %> <h2>
 
-<h3> DNI: <%= @usuario.DNI %> <h3> 
+<h2> DNI: <%= @usuario.DNI %> <h2> 
     <% if !@usuario.suscripcion %>
      <h2 style="color:red"> No estas suscripto! </h2>
     	<%else%>

@@ -45,7 +45,11 @@
     				<li>Precio: $<%= v.precio %></li>
     				<li>Lugares disponibles: <%= v.asientos %></li>
     				<% if v.pasajes.find_by(usuario_id: current_usuario.id).nil? %>
-    					<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %>
+    					<% if v.asientos > 0 %>
+    						<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %>
+    					<% else %>
+    						<strong style="color:red">Pasajes agotados!!!</strong>
+    					<% end %>
     				<% else %>
     				<strong style="color:red">Ya tenes un pasaje para este viaje</strong>
     				<% end %> 

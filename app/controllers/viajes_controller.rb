@@ -57,6 +57,7 @@ class ViajesController < ApplicationController
     @ruta = Rutum.all
     @combi = Combi.all
     @usuario = Usuario.all
+    @calificaciones = false
   end
 
   # GET /viajes/1
