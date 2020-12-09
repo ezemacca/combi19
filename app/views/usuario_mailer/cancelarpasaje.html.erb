@@ -1,6 +1,20 @@
 <h1>Hola, <%=@usuario.nombre.titleize %></h1>
-  <p>
-    Se realizo la cancelacion de tu pasaje satisfactoriamente:
+  
+    <h3> Se realizo la cancelacion de tu pasaje satisfactoriamente!!</h3>
+    <br>
+    <h3>Detalles del viaje cancelado:</h3>
+    <ul>
+        <li><%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></li>
+        <li><%= @viaje.fecha.strftime("Hora de salida: %H:%M") %></li>
+        <li><%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %></li>
+        <li>Origen: <%= @origen.ciudad.titleize %></li>
+        <li>Destrino: <%= @destino.ciudad.titleize %></li>
+        <li>Por: <%= @ruta.nombre.titleize%></li>
+        <li>Tipo de combi: <%= @combi.clasificacion %></li>
+        <li>Cantidad de pasajes: <%= @pasaje.invitados.size+1 %> </li>
+        <li>Precio total: $<%= @pasaje.precio%> </li>  
+    </ul>
+    <strong>
 	<br>
      <% if  @viaje.fecha > Time.now.to_date+2  %>
 
@@ -10,5 +24,5 @@
      		Como la cancelacion se esta realizando con menos de 48 hs de anticipacion se rembolsara el 50% del pasaje
      		Se rembolsara: <%= @pasaje.precio * 0.5 %>
      <%end%> 
-  </p>
+  </strong>
 <p>Gracias, que tengas un buen día!</p>
