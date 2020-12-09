@@ -115,8 +115,7 @@ end
   	pasaje = Pasaje.find(params[:pasaje])
     @pasaje1 = pasaje #para el mailer
   	viaje = Viaje.find(params[:viaje])
-  	combi = Combi.find(viaje.combi)
-  	if (combi.plazas_libres >= pasaje.invitados.size+1)
+  	if (viaje.asientos >= pasaje.invitados.size+1)
   		pasaje.usuario_id = current_usuario.id
   		pasaje.viaje_id = viaje.id
 
@@ -126,8 +125,8 @@ end
       end
 
   		pasaje.save
-  		combi.plazas_libres -= (pasaje.invitados.size+1)
-  		combi.save
+  		viaje.asientos -= (pasaje.invitados.size+1)
+  		viaje.save
       #le mandamo el mail 
       UsuarioMailer.with(usuario: @us, pasaje: @pasaje1).confirmacion_compra.deliver_now 
   		redirect_to showpasaje_usuario_path(:id => pasaje), notice: "La compra del pasaje se realizo correctamente"      
@@ -240,14 +239,14 @@ end
     @us=current_usuario #paraelmailer
     @pasaje = Pasaje.find(params[:id])
     @productos = @pasaje.productos
-    @combi = Combi.find(Viaje.find(@pasaje.viaje_id).combi)
+    @viaje = Viaje.find(@pasaje.viaje_id)
     @productos.each do |p|
       prod = PasajesProducto.find_by(pasaje_id: @pasaje.id, producto_id: p.id)
        p.stock+= prod.cantidad
        p.save
     end
-      @combi.plazas_libres+= (@pasaje.invitados.size+1)
-      @combi.save
+      @viaje.asientos += (@pasaje.invitados.size+1)
+      @viaje.save
     #enviar mail aca desp de destruirlo
     UsuarioMailer.with(usuario: @us, pasaje: @pasaje).cancelarpasaje.deliver_now
     @pasaje.invitados.destroy_all

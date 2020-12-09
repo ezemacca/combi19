@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_165015) do
+ActiveRecord::Schema.define(version: 2020_12_01_212533) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_165015) do
     t.datetime "fecha_llegada"
     t.float "precio"
     t.string "estado", default: "pendiente"
+    t.integer "asientos"
   end
 
   add_foreign_key "pasajes_productos", "pasajes"

@@ -15,14 +15,14 @@
 
   <tbody>
     <% @pasajes.each do |p| %>
-    
+      <% if !p.calificacion.nil? %>
       <tr>
-
         <td><%= @usuarios.find(p.usuario_id).email%></td> <!--estas chanchadas son xq no me dejan usar el through-->
         <td><%= p.calificacion.puntaje %></td>
         <td><%= p.calificacion.comentario %></td>
         <td><%#= link_to 'Ver', p.calificacion , class: "btn btn-success btn-sm"  %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
