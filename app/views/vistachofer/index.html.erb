@@ -1,0 +1,61 @@
+
+<%if usuario_signed_in? && current_usuario.role == "chofer" %>
+
+<%=link_to "Ver historial de viajes", historialviajes_vistachofer_path(current_usuario.id)%>
+<h1>Viajes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Accion</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Fecha y hora</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Combi</th>
+      <th scope="col">Chofer</th>
+      <th scope="col">Pasajeros</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+	<% if !@viajeschofer.nil? %>
+		<% @viajeschofer.each do |viaje| %>
+		    <% if !viaje.eliminado %>
+		    	<% if viaje.estado !="finalizado" %>
+
+		    		<tr>
+				    <%if viaje.fecha > Time.now && viaje.estado=="pendiente"%><!-- PARA QUE FUNCIONE CORRECTAMENTE EL PICO TIENE QUE SER"<"-->				       
+						<td><%= link_to 'Iniciar viaje', iniciarviaje_vistachofer_path(:id => viaje.id) ,class: "btn btn-success btn-sm" %></td>
+				    <%else%>
+				     	<%if viaje.estado== "en curso"%>
+				      		<td><%= link_to 'Finalizar viaje',finalizarviaje_vistachofer_path(:id => viaje.id),class: "btn btn-danger btn-sm" %></td>
+						<%else%>
+							<td></td>
+						<%end%>
+					<%end%>
+					<% if viaje.estado=="pendiente" %>
+		    	  		<td  style="color:green" ><%= viaje.estado.titleize %> <h5> </td> 
+		    	  	<%end%> 
+		    	  	<% if viaje.estado=="en curso" %>
+		    	  		<td style="color:blue"><%= viaje.estado.titleize %> </td>
+		    	  	<%end%>
+		    	  	<% if viaje.estado=="finalizado" %>
+		    	  		<td style="color:red"><%= viaje.estado.titleize %> </td>
+		    	  	<%end%>
+		        	<td><%= viaje.fecha.strftime("%d-%m-%Y %H:%M") %></td>
+		        	<td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
+		        	<td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
+		        	<td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
+		        	<td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
+		        	<td><%= @usuario.mostrar_atributos %></td>
+		        	<td><%= link_to 'Pasajeros', pasajeros_vistachofer_path(:id=> viaje.id), class: "btn btn-success btn-sm" %></td>
+		        	</tr>
+		        <%end%>
+		    <%end%>
+		<%end%>	
+	<%end%>
+
+
+<%end%>

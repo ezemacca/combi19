@@ -1,0 +1,36 @@
+<%if usuario_signed_in? && current_usuario.role == "chofer" %>
+
+<h1>Historial de viajes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fecha y hora</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Combi</th>
+      <th scope="col">Chofer</th>
+      <th scope="col">Reporte</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+	<% if !@viajeschoferfinalizados.nil? %>
+		<% @viajeschoferfinalizados.each do |viaje| %>
+		    <% if !viaje.eliminado %>
+		    		<tr>
+		        	<td><%= viaje.fecha.strftime("%d-%m-%Y %H:%M") %></td>
+		        	<td><%= @lugar.find(@ruta.find(viaje.ruta).origen).mostrar_atributos %></td>
+		        	<td><%= @lugar.find(@ruta.find(viaje.ruta).destino).mostrar_atributos %></td>
+		        	<td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
+		        	<td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
+		        	<td><%= @usuario.mostrar_atributos %></td>
+		        	<td><%= link_to 'Reportar objeto perdido', historialviajes_vistachofer_path(:id=> viaje.id), class: "btn btn-danger btn-sm" %></td>
+		        	</tr>
+		    <%end%>
+		<%end%>	
+	<%end%>
+
+
+<%end%>

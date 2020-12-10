@@ -1,0 +1,38 @@
+<%= form_with(model: testeo, local: true) do |form| %>
+  <% if testeo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(testeo.errors.count, "errores.") %> Fallo la carga del testeo por:</h2>
+
+      <ul>
+        <% testeo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Temperatura:" %>
+    <%= form.number_field :temperatura, in: 33..45, step: 0.1, required: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Presento fiebre en la ultima semana?" %>
+    <%= form.check_box :pregunta1%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Tuvo perdida de olfato o gusto en la ultima semana?" %>
+    <%= form.check_box :pregunta2%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Presento dolor de garganta o alguna dificultad respiratoria?" %>
+    <%= form.check_box :pregunta3%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Finalizar testeo" %>
+  </div>
+
+<% end %>
