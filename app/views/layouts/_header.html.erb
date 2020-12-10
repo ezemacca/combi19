@@ -17,8 +17,12 @@
             <! -- botones que se ven a la derecha de la NAVBAR flotante-->
             <% unless signed_in? %>
                 <li class="nav-item active pull-xs-right">
-                  <h3 align="right"><%= link_to "Registrarse", new_usuario_registration_path, class:'btn5'%>
-                  <%= link_to "Ingresar", new_usuario_session_path, class:'btn5'%></h3>
+                  <h3 align="right">
+                    <%= link_to "Compra Exprés",  viajesencurso_expres_path, class:'btn5'%>  
+                    <%= link_to "Registrarse", new_usuario_registration_path, class:'btn5'%>
+                    <%= link_to "Ingresar", new_usuario_session_path, class:'btn5'%>
+                  
+                  </h3>
                 </li>
                 <%else%>
                   <li class="nav-item active pull-xs-right">

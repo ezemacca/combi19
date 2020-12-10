@@ -57,7 +57,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'vistachofer/vistachofer'
 
-
-  
+  resources :expres do
+    collection do 
+      get :rolexpres
+      patch :actualizarcuenta
+      get :comprarexpres
+      get :viajesencurso
+      post :confirmarusuario
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

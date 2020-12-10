@@ -1,0 +1,26 @@
+<h1>Compraste exitosamente, Detalle del pasaje</h1>
+
+<h3>Viaje</h3>
+<ul>
+	<li><%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></li>
+	<li><%= @viaje.fecha.strftime("Hora de salida: %H:%M") %></li>
+	<li><%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %></li>
+	<li>Origen: <%= @origen.ciudad.titleize %></li>
+	<li>Destrino: <%= @destino.ciudad.titleize %></li>
+	<li>Por: <%= @ruta.nombre.titleize%></li>
+	<li>Tipo de combi: <%= @combi.clasificacion %></li>
+	<li>Cantidad de pasajes: <%= @pasaje.invitados.size+1 %> </li>
+	<li>Precio total: $<%= @pasaje.precio%> </li>	
+</ul>
+
+<h3>Pasajeros</h3>
+<div class="card" style="width: 18rem;">
+  	<div class="card-body">
+  		<h4 class="card-title"><strong>Pasajero:</strong></h4>
+    	<p class="card-text">
+    		<p>Nombre: <%= @usuario.nombre.titleize %></p>
+			<p>Apellido: <%= @usuario.apellido.titleize %></p>
+			<p>DNI: <%= @usuario.DNI %></p>
+    	</p>
+  	</div>
+</div>

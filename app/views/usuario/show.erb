@@ -20,9 +20,9 @@
 	<%if @current_usuario.suscripcion%>
 	
 	<h2> Tarjeta de Credito <h2>
-<h4>Nro Tarjeta: <%=@usuario.nrotarjeta%> <br >
+<h4>Nro Tarjeta: XXXX-XXXX-XXXX-<%=@usuario.nrotarjeta[12..16]%> <br >
 	Vencimiento: <%=@usuario.vencimientoMes%>/<%=@usuario.vencimientoAño %><br >
-	CodSeg:  <%=@usuario.codseguridad%><br >
+	
 <h4>	
 	<%end%>
 	

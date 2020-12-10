@@ -1,0 +1,37 @@
+<h5 align="left"> Si no sos un cliente registrado, complete este formulario, te crearemos un usuario y deberas abonarle en efectivo al chofer </h5>
+
+<%= form_for @usuario, :url => { :action => :confirmarusuario } do |f| %>
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, required: true, placeholder: 'Ingrese el nombre' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, required: true, placeholder: 'Ingrese el apellido' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :DNI %><br/>
+    <%= f.text_field :DNI, required: true, placeholder: 'Ingrese su DNI' %>
+    </div>
+    	<!--contrasena generica que recibe por mail y debera cambiar -->
+    	<%= f.hidden_field :password, :value => @contrasena %>
+        <%= f.hidden_field :password_confirmation, :value => @contrasena%>
+    	<%= hidden_field_tag "viaje", @viaje.id%>
+
+
+  <div class="actions"> 
+    <%= f.submit "Registro expres y Reserva de un lugar" %>
+  </div>
+
+<% end %>
+
+
+<h5 align="left"> Si sos cliente, inicia sesion y realizaras la compra expres para este viaje </h5>
+<%= link_to "Tengo una cuenta", new_usuario_session_path, class:'btn5'%>

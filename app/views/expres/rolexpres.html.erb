@@ -1,0 +1,69 @@
+<h2>Confirmar tus datos</h2>
+
+<%= form_for current_usuario, :url => { :action =>  :actualizarcuenta } do |f| %>
+  <%= render "devise/shared/error_messages", resource: current_usuario %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, autofocus: true, autocomplete: "Nombre" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, autofocus: true, autocomplete: "Apellido" %>
+  </div>
+  <div class="field">
+    <%= f.label :DNI %><br />
+    <%= f.text_field :DNI, autofocus: true, autocomplete: "DNI" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Nueva contraseña" %> <i></i><br />
+    <%= f.password_field :password, autocomplete: "new-password", required: true %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> Caracteres minimos</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Confirmar Contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
+  </div>
+
+ <div>Desea suscribirse? 10% de descuento en sus proximos viajes. Valor: $$</div>
+    <div class="field">
+    <%= f.label :suscripcion %> <br />
+    <%= f.check_box :suscripcion %> <br />
+    </div> 
+    <div><h3>Tarjeta de credito (Opcional)
+       </h3>
+       *Obligatorio con suscripcion activa</div>
+             <div class="field">
+      <%= f.label "Numero de tarjeta (16 digitos)" %><br />
+      <%= f.text_field :nrotarjeta, placeholder: 'Ingrese el numero de tarjeta' %>
+      </div>
+
+       <div class="field">
+      <%= f.label "Vencimiento:" %><br />
+      <%= f.select :vencimientoMes, [1,2,3,4,5,6,7,8,9,10,11,12] %>
+      <%= f.select :vencimientoAño, [2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030] %>
+      </div>
+
+      <div class="field">
+      <%= f.label "Codigo de seguridad (3 digitos)" %><br />
+      <%= f.text_field :codseguridad, placeholder: 'Los tres digitos detras de la tarjeta' %>
+      </div>
+
+
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+<% end %>
+
+

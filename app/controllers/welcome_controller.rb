@@ -13,6 +13,9 @@ class WelcomeController < ApplicationController
 		if current_usuario.role=="chofer"
 			redirect_to vistachofer_vistachofer_path
 		end
+		if current_usuario.role=="expres"
+			redirect_to rolexpres_expres_path, notice: "Luego de completar tus datos pasaras a ser un usuario registrado"
+		end
 	end
   end
 end

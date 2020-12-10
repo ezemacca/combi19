@@ -1,8 +1,8 @@
 class UsuarioMailer < ApplicationMailer
 	default from: 'serviciocombi19@gmail.com'
 	
-	def confirmacion_compra
-		@pasaje1= params[:pasaje]
+    def confirmacion_compra
+		  @pasaje1= params[:pasaje]
     	@usuario1 =  params[:usuario]  
       @viaje = Viaje.find(@pasaje1.viaje_id)
       @combi= Combi.find(@viaje.combi)
@@ -23,4 +23,8 @@ class UsuarioMailer < ApplicationMailer
   		mail(to: @usuario.email, subject: 'Combi-19 Cancelacion de pasaje')
   	
   	end	
+    def compraexpres
+      
+    end
+
 end
