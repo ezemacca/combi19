@@ -5,11 +5,19 @@ class TesteosController < ApplicationController
 	end
 
 	def new
-		@testeo = Testeo.new		
+		@testeo = Testeo.new
+		if params[:pasaje]
+			@pasaje= params[:pasaje]
+		else
+			@invitado=params[:invitado]
+		end
+
 	end
 
 	def create
 		@testeo = Testeo.new(testeo_params)
+		
+		
 		#asignar pasaje
 		if @testeo.save
 			redirect_to @testeo, notice: "Se guardo el testeo correctamente"

@@ -60,7 +60,10 @@ Rails.application.routes.draw do
 
   resources :vistachofer do
   	member do
-
+  	   get :pasajeros
+  	   get :iniciarviaje
+  	   get :finalizarviaje
+  	   get :historialviajes
   	end
   end
 
