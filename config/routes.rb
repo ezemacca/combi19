@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 # Maneja la vista de lugar
   resources :lugar
   resources :chofer
+
+
   get 'usuario/index'
   get 'administrador/index'
   get 'welcome/index'
@@ -55,9 +57,12 @@ Rails.application.routes.draw do
     end
   end
   root 'welcome#index'
-  get 'vistachofer/vistachofer'
 
+  resources :vistachofer do
+  	member do
 
+  	end
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
