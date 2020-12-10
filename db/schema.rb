@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_212533) do
+ActiveRecord::Schema.define(version: 2020_12_10_050841) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -88,6 +88,27 @@ ActiveRecord::Schema.define(version: 2020_12_01_212533) do
     t.boolean "eliminado", default: false
   end
 
+  create_table "testeos", force: :cascade do |t|
+    t.float "temperatura"
+    t.boolean "pregunta1"
+    t.boolean "pregunta2"
+    t.boolean "pregunta3"
+    t.boolean "sospechado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "pasaje_id"
+    t.integer "invitado_id"
+  end
+
+  create_table "usuario_viajes", force: :cascade do |t|
+    t.integer "usuario_id"
+    t.integer "viaje_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["usuario_id"], name: "index_usuario_viajes_on_usuario_id"
+    t.index ["viaje_id"], name: "index_usuario_viajes_on_viaje_id"
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -125,6 +146,13 @@ ActiveRecord::Schema.define(version: 2020_12_01_212533) do
     t.float "precio"
     t.string "estado", default: "pendiente"
     t.integer "asientos"
+  end
+
+  create_table "viajes_usuarios", id: false, force: :cascade do |t|
+    t.integer "viajes_id"
+    t.integer "usuarios_id"
+    t.index ["usuarios_id"], name: "index_viajes_usuarios_on_usuarios_id"
+    t.index ["viajes_id"], name: "index_viajes_usuarios_on_viajes_id"
   end
 
   add_foreign_key "pasajes_productos", "pasajes"

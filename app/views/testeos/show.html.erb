@@ -1,0 +1,8 @@
+<%= @testeo.temperatura %>
+<%= @testeo.pregunta1 %>
+<%= @testeo.pregunta2 %>
+<%= @testeo.pregunta3 %>
+<%= @testeo.sospechado %>
+
+<%= link_to "Editar", edit_testeo_path(@testeo) %>
+<%= link_to "Eliminar", testeo_path(@testeo), method: :delete %>

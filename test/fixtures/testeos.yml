@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  temperatura: 1.5
+  pregunta1: false
+  pregunta2: false
+  pregunta3: false
+  sospechado: false
+
+two:
+  temperatura: 1.5
+  pregunta1: false
+  pregunta2: false
+  pregunta3: false
+  sospechado: false
