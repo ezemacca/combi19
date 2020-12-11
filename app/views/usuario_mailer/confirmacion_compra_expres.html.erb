@@ -1,0 +1,34 @@
+<h1>Hola, <%=@usuario1.nombre %></h1>
+  <h3><strong>Se realizo la compra de tu pasaje satisfactoriamente!!</strong></h3><br>
+
+  <h1>Detalle del pasaje</h1>
+
+<h3>Viaje</h3>
+<ul>
+	<li><%= @viaje.fecha.strftime("Fecha de salida: %d/%m/%y") %></li>
+	<li><%= @viaje.fecha.strftime("Hora de salida: %H:%M") %></li>
+	<li><%= @viaje.fecha_llegada.strftime("Hora aproximada de llegada: %H:%M") %></li>
+	<li>Origen: <%= @origen.ciudad.titleize %></li>
+	<li>Destrino: <%= @destino.ciudad.titleize %></li>
+	<li>Por: <%= @ruta.nombre.titleize%></li>
+	<li>Tipo de combi: <%= @combi.clasificacion %></li>
+	<li>Precio total: $<%= @pasaje1.precio%> </li>	
+</ul>
+
+<h3>Pasajero</h3>
+<div class="card" style="width: 18rem;">
+  	<div class="card-body">
+  		<h4 class="card-title"><strong>Pasajero:</strong></h4>
+    	<p class="card-text">
+    		<p>Nombre: <%= @usuario1.nombre.titleize %></p>
+			<p>Apellido: <%= @usuario1.apellido.titleize %></p>
+			<p>DNI: <%= @usuario1.DNI %></p>
+    	</p>
+  	</div>
+	</div>
+<h2>IMPORTANTE:</h2>
+	En tu próximo ingreso a la plataforma,deberás cambiar tu clave.
+	TU CLAVE ACTUAL ES: 123456
+
+
+<p>Gracias, que tengas un buen día!</p>
