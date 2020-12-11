@@ -253,5 +253,9 @@ end
     @pasaje.destroy
     redirect_to usuario_VerViajesUsuario_path, notice: "El pasaje se cancelo correctamente, revise su correo para mas informacion"
   end
+
+  def informacion
+    
+  end
   	
 end

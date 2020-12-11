@@ -1,0 +1,21 @@
+<p>
+  <strong>Fecha:</strong>
+  <%= @viaje.fecha %>
+</p>
+
+<p>
+  <strong>Origen:</strong>
+  <%= @lugar.find(@ruta.find(@viaje.ruta).origen).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @lugar.find(@ruta.find(@viaje.ruta).destino).mostrar_atributos %>
+</p>
+
+<p>
+  <strong>Ruta:</strong>
+  <%= @ruta.find(@viaje.ruta).mostrar_nombre %>
+</p>
+<br>
+<%= link_to "Volver", objetoperdido_index_path %>

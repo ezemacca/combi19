@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_050841) do
+ActiveRecord::Schema.define(version: 2020_12_11_191543) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_12_10_050841) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "eliminado", default: false
+  end
+
+  create_table "objetoperdidos", force: :cascade do |t|
+    t.string "nombre"
+    t.string "descripcion"
+    t.integer "viaje_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pasajes", force: :cascade do |t|

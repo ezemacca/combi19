@@ -1,0 +1,2 @@
+class Objetoperdido < ApplicationRecord
+end

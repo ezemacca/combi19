@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   devise_for :usuarios
 
 
-
+  get 'usuario/informacion'
   get 'usuario/VerViajesUsuario'
   
   resources :usuario do
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     end
   end
   resources :vistachofer do
-  	member do
+  	collection do
   	   get :pasajeros
   	   get :iniciarviaje
   	   get :finalizarviaje
@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   end
 
   resources :testeos
+  resources :objetoperdido
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

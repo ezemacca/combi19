@@ -4,6 +4,7 @@ class Viaje < ApplicationRecord
 	default_scope -> { order :fecha }
 	has_many :calificacions
 	has_many :pasajes
+	has_many :objetoperdidos
 	
 
 	def validacion_rango_fecha
@@ -46,5 +47,9 @@ class Viaje < ApplicationRecord
 				return 2 # return 2 (la validacion no se cumple, la fecha ya paso)
 			end
 		end		
+	end
+
+	def mostrar_datos
+		"de #{Lugar.find(origen).mostrar_atributos} a #{Lugar.find(destino).mostrar_atributos} por #{Rutum.find(ruta).mostrar_atributos}"		
 	end
 end

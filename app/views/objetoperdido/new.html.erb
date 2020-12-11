@@ -1,0 +1,30 @@
+<%= form_with(model: @objetoperdido, url: objetoperdido_index_path) do |form| %>
+  <% if @objetoperdido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@objetoperdido.errors.count, "errores.") %> Fallo la carga del objeto perdido por:</h2>
+
+      <ul>
+        <% @objetoperdido.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Nombre del objeto:" %><br>
+    <%= form.text_field :nombre, required: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Descripcion:" %><br>
+    <%= form.text_field :descripcion%>
+  </div>
+
+  <%= hidden_field_tag "viaje", @viaje %>
+
+  <div class="actions">
+    <%= form.submit "Registrar objeto perdido" %>
+  </div>
+
+<% end %>
