@@ -11,6 +11,27 @@ class ExpresController < ApplicationController
 		@contrasena= "123456"
 		@viaje = Viaje.find(params[:id])
 	end
+	def comprarexprescliente
+		@viaje = Viaje.find(params[:id])
+		@us=current_usuario #paraelmailer
+  		@pasaje = Pasaje.new(precio: @viaje.precio, viaje_id: @viaje.id, usuario_id: current_usuario.id)
+    	@pasaje1 = @pasaje #para el mailer
+  	
+  		@pasaje.usuario_id = current_usuario.id
+  		@pasaje.viaje_id = @viaje.id
+
+	    #Verifico si esta suscripto para aplicar el descuento
+	    if current_usuario.suscripcion 
+	        @pasaje.precio= @pasaje.precio*0.9
+	    end
+	  		@pasaje.save
+	  		@viaje.asientos -= 1
+	  		@viaje.save
+	      #le mandamo el mail 
+	    	UsuarioMailer.with(usuario: @us, pasaje: @pasaje1).confirmacion_compra.deliver_now 
+	  		redirect_to showpasaje_usuario_path(:id => @pasaje), notice: "La compra del pasaje se realizo correctamente"      
+
+	end
 	def confirmarusuario
 		@viaje = Viaje.find(params[:viaje])
 		
@@ -22,8 +43,11 @@ class ExpresController < ApplicationController
 			@pasaje = Pasaje.new(precio: @viaje.precio, viaje_id: @viaje.id, usuario_id: @usuario.id)			
 			@pasaje.save
 			@viaje.asientos -= 1
+			UsuarioMailer.with(usuario: @usuario, pasaje: @pasaje).confirmacion_compra_expres.deliver_now
+
 			@viaje.save
 			#UsuarioMailer.with(usuario: @us, pasaje: @pasaje).compraexpres.deliver_now
+
 			redirect_to expre_path(:id => @pasaje.id)
   			
   				

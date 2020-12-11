@@ -7,6 +7,8 @@
     <% if @viajes.count > 0%>
 
       <% @viajes.each do |v| %>
+      <div class="row">
+      <div class="col-sm-6">
       <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Viaje de <%= @lugar.find(@ruta.find(v.ruta).origen).mostrar_atributos %> a <%= @lugar.find(@ruta.find(v.ruta).destino).mostrar_atributos %></h3>
@@ -20,12 +22,18 @@
               <li>Precio: $<%= v.precio %></li>
               <li>Lugares disponibles: <%= v.asientos %></li>
               <% if v.asientos > 0 %>
-                  <%= link_to "Comprar un pasaje", comprarexpres_expres_path(:id => v) %>
+                  <%if signed_in? %>
+                    <%= link_to "Comprar un pasaje", comprarexprescliente_expres_path(:id => v) %>
+                  <%else%>
+                    <%= link_to "Comprar un pasaje", comprarexpres_expres_path(:id => v) %>
+                  <%end%>  
                 <% else %>
                   <strong style="color:red">Pasajes agotados!!!</strong>
                 <% end %>            
             </ul>
           </div>
+      </div>
+      </div>
       </div>
       <% end %>
     <% else %>

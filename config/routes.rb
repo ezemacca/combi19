@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       get :rolexpres
       patch :actualizarcuenta
       get :comprarexpres
+      get :comprarexprescliente
       get :viajesencurso
       post :confirmarusuario
     end
