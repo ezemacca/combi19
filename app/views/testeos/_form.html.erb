@@ -31,6 +31,9 @@
     <%= form.check_box :pregunta3%>
   </div>
 
+  <%= hidden_field_tag "pasaje", pasaje %>
+  <%= hidden_field_tag "invitado", invitado %>
+
   <div class="actions">
     <%= form.submit "Finalizar testeo" %>
   </div>

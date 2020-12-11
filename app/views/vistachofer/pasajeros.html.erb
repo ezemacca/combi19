@@ -11,6 +11,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Productos</th>
       <th scope="col">Test</th>
+      <th scope="col">Estado</th>
     </tr>
   </thead>
 
@@ -27,7 +28,17 @@
 								<br > 
 							<%end%>
 							</td>
-							<td> <%=link_to "Hacer Test", new_testeo_path(:pasaje => pasaje),class: "btn btn-info btn-sm"%></td>
+							<% if pasaje.testeo.nil? %>
+								<td> <%=link_to "Hacer Test", new_testeo_path(:pasaje => pasaje),class: "btn btn-info btn-sm"%></td>
+							<% else %>
+								<td> <%= link_to "Editar", edit_testeo_path(pasaje.testeo), class: "btn btn-success btn-sm" %>
+								<%= link_to "Eliminar", testeo_path(pasaje.testeo), method: :delete, class: "btn btn-danger btn-sm" %></td>
+								<% if pasaje.testeo.sospechado %>
+									<td style="color:red">Sospechado</td>
+								<% else %>
+									<td style="color:green">Apto</td>
+								<% end %>
+							<% end %>
 						</tr>
 				</tbody>
 
@@ -39,7 +50,17 @@
 									<td><%= invitado.apellido.titleize%></td>
 									<td><%= invitado.nombre.titleize%> </td>
 									<td></td>
-									<td> <%=link_to "Hacer Test", new_testeo_path(:invitado => invitado),class: "btn btn-info btn-sm"%></td>
+									<% if invitado.testeo.nil? %>
+										<td> <%=link_to "Hacer Test", new_testeo_path(:invitado => invitado),class: "btn btn-info btn-sm"%></td>
+									<% else %>
+										<td> <%= link_to "Editar", edit_testeo_path(invitado.testeo), class: "btn btn-success btn-sm" %>
+										<%= link_to "Eliminar", testeo_path(invitado.testeo), method: :delete, class: "btn btn-danger btn-sm" %></td>
+										<% if invitado.testeo.sospechado %>
+											<td style="color:red">Sospechado</td>
+										<% else %>
+											<td style="color:green">Apto</td>
+										<% end %>
+									<% end %>
 		  				 	 	</tr>
 		  				 	 </tbody>
 		  				 <%end%>

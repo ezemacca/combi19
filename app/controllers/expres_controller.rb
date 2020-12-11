@@ -44,6 +44,10 @@ class ExpresController < ApplicationController
 			@pasaje.save
 			@viaje.asientos -= 1
 			UsuarioMailer.with(usuario: @usuario, pasaje: @pasaje).confirmacion_compra_expres.deliver_now
+
+			@viaje.save
+			#UsuarioMailer.with(usuario: @us, pasaje: @pasaje).compraexpres.deliver_now
+
 			redirect_to expre_path(:id => @pasaje.id)
   			
   				
