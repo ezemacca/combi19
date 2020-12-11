@@ -23,8 +23,15 @@ class UsuarioMailer < ApplicationMailer
   		mail(to: @usuario.email, subject: 'Combi-19 Cancelacion de pasaje')
   	
   	end	
-    def compraexpres
-      
+    def confirmacion_compra_expres
+      @pasaje1= params[:pasaje]
+      @usuario1 =  params[:usuario]  
+      @viaje = Viaje.find(@pasaje1.viaje_id)
+      @combi= Combi.find(@viaje.combi)
+      @ruta= Rutum.find(@viaje.ruta)
+      @origen= Lugar.find(@ruta.origen)
+      @destino= Lugar.find(@ruta.destino)
+      mail(to: @usuario1.email, subject: 'Combi-19 Notifiacion')
     end
 
 end

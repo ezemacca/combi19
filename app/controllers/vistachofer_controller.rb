@@ -36,11 +36,35 @@ class VistachoferController < ApplicationController
     	@ruta = Rutum.all
    		@combi = Combi.all
    		@usuario = Usuario.find(current_usuario.id)
-   		
-
-		# aca van todas los controles al finalizar el viaje, volver a cargar los lugares a la combi
-
-
+   		@pasajes = @viaje.pasajes
+   			#Controla si el pasajero viajo (si se le realizo el testeo estuvo presente)	
+   			@pasajes.each do |p|
+   				if	p.testeo.nil?
+   					p.presenciapasajero = "ausente"
+   				else
+   					if p.testeo.sospechado 
+   						p.presenciapasajero = "sospechado"	
+   					else
+   						p.presenciapasajero = "apto"
+   					end
+   				end
+   				if !p.invitados.nil?
+   					#Verifica si los invitados viajaron o estan sospechados
+   					p.invitados.each do |i|
+		   				if	i.testeo.nil?
+		   					i.presenciapasajero="ausente"
+		   				else
+		   					if i.testeo.sospechado 
+		   						i.presenciapasajero="sospechado"	
+		   					else
+		   						i.presenciapasajero="apto"
+		   					end
+		   				end
+		   				i.save
+   					end	
+   				end
+   				p.save	
+   			end			
 		@viaje.estado = "finalizado"
 		@viaje.save
 		redirect_to vistachofer_index_path

@@ -1,0 +1,47 @@
+	<%if @pasajes.nil?%>
+
+			<h2 style="color:red"> NO HAY PASAJEROS PARA ESTE VIAJE</h2>
+	<%else%>
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">DNI</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Productos</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+
+		<%@pasajes.each do |pasaje|%>			
+				 <tbody>
+			    		<tr>
+					        <td><%= @usuario.find(pasaje.usuario_id).DNI %></td>
+							<td><%= @usuario.find(pasaje.usuario_id).apellido.titleize%></td>
+							<td><%= @usuario.find(pasaje.usuario_id).nombre.titleize%> </td>
+							<td>
+							<% pasaje.productos.each do |producto|%>
+								<%=PasajesProducto.find_by(pasaje_id: pasaje.id,producto_id: producto.id).cantidad%>
+								<%=producto.nombre.titleize%>
+								<br > 
+							<%end%>
+							</td>
+							<td><%=pasaje.presenciapasajero.titleize%></td>
+				</tbody>
+			    	<% if !pasaje.invitados.nil?%>
+						<% pasaje.invitados.each do |invitado|%>
+						    <tbody>
+							    <tr>
+						    	    <td><%= invitado.DNI %></td>
+									<td><%= invitado.apellido.titleize%></td>
+									<td><%= invitado.nombre.titleize%> </td>
+									<td></td>
+									<td> <%=invitado.presenciapasajero.titleize%></td>
+		  				 	 	</tr>
+		  				 	 </tbody>
+		  				 <%end%>
+		  			<%end%>
+		<%end%>
+	</table>
+<%end%>
+

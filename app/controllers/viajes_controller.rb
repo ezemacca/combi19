@@ -139,6 +139,12 @@ class ViajesController < ApplicationController
     redirect_to viajes_path, notice: "Se elimino correctamente"
   end
 
+  def verpasajeros
+    @viaje= Viaje.find(params[:id])
+    @pasajes= @viaje.pasajes
+    @usuario=Usuario.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_viaje

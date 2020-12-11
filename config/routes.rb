@@ -9,7 +9,12 @@ Rails.application.routes.draw do
       get :calificacionesporviaje
     end
   end 
-  resources :viajes
+  resources :viajes do
+  	collection do
+  		get :verpasajeros
+  	end
+  end
+
   resources :productos
   get 'ruta/alta'
   get 'ruta/index'
@@ -63,6 +68,7 @@ Rails.application.routes.draw do
       get :rolexpres
       patch :actualizarcuenta
       get :comprarexpres
+      get :comprarexprescliente
       get :viajesencurso
       post :confirmarusuario
     end

@@ -1,6 +1,10 @@
-<h1>Inicio Usuario</h1>
-
+<h1>Hola <%=current_usuario.nombre %>!</h1>
+<br>
+Querés ver los viajes que están en curso para subirte a uno? -->          
+<%= link_to "Compra Exprés",  viajesencurso_expres_path, class:'btn'%>
 <Br>
+<br>
+<br>
 <%= link_to "Ver Perfil", usuario_path(@usuario)%> 
 <Br>
 <%=link_to "Ver mis viajes",usuario_VerViajesUsuario_path%>
@@ -21,7 +25,6 @@
 	<%= label_tag "Fecha de salida:" %>
 	<%= date_field_tag :fecha, required: true %> <br />
 	<%= submit_tag "Buscar viaje" %>
-
 <% end %>
 
 <br>
@@ -61,3 +64,4 @@
 		<%= @notice %>
 	<% end %>
 </div>
+
