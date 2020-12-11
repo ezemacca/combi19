@@ -1,4 +1,4 @@
-class UsuarioMailer < ApplicationMailer
+class UsuarioMailer < Devise::Mailer
 	default from: 'serviciocombi19@gmail.com'
 	
     def confirmacion_compra
@@ -34,4 +34,7 @@ class UsuarioMailer < ApplicationMailer
       mail(to: @usuario1.email, subject: 'Combi-19 Notifiacion')
     end
 
+ def reset_password_instructions(record, token, opts={})
+   super
+ end
 end

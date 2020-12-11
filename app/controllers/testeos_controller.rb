@@ -29,7 +29,7 @@ class TesteosController < ApplicationController
 		end		
 		#asignar pasaje
 		if @testeo.save
-			redirect_to pasajeros_vistachofer_path(:id=> viaje), notice: "Se guardo el testeo correctamente"
+			redirect_to pasajeros_vistachofer_index_path(:id=> viaje), notice: "Se guardo el testeo correctamente"
 		else
 			render :new
 		end
@@ -49,7 +49,7 @@ class TesteosController < ApplicationController
 			viaje = Pasaje.find(@testeo.pasaje_id).viaje_id
 		end
 		if @testeo.update(testeo_params)
-			redirect_to pasajeros_vistachofer_path(:id=> viaje), notice: "Se actualizo el testeo correctamente"
+			redirect_to pasajeros_vistachofer_index_path(:id=> viaje), notice: "Se actualizo el testeo correctamente"
 		else
 			render :edit
 		end
@@ -63,7 +63,7 @@ class TesteosController < ApplicationController
 			viaje = Pasaje.find(@testeo.pasaje_id).viaje_id
 		end
 		@testeo.destroy
-		redirect_to pasajeros_vistachofer_path(:id=> viaje), notice: "El testeo se elimino correctamente"		
+		redirect_to pasajeros_vistachofer_index_path(:id=> viaje), notice: "El testeo se elimino correctamente"		
 	end
 
 	private
