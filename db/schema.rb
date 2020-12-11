@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_050841) do
+ActiveRecord::Schema.define(version: 2020_12_11_210458) do
 
   create_table "calificacions", force: :cascade do |t|
     t.integer "puntaje"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_050841) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "pasaje_id"
+    t.string "presenciapasajero", default: "pendiente"
   end
 
   create_table "lugars", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_050841) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "viaje_id"
     t.integer "usuario_id"
+    t.string "presenciapasajero", default: "pendiente"
     t.index ["usuario_id"], name: "index_pasajes_on_usuario_id"
     t.index ["viaje_id"], name: "index_pasajes_on_viaje_id"
   end

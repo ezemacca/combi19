@@ -26,7 +26,7 @@
 		    	<% if viaje.estado !="finalizado" %>
 
 		    		<tr>
-				    <%if viaje.fecha < Time.now && viaje.estado=="pendiente"%><!-- PARA QUE FUNCIONE CORRECTAMENTE EL PICO TIENE QUE SER"<"-->				       
+				    <%if viaje.fecha > Time.now && viaje.estado=="pendiente"%><!-- PARA QUE FUNCIONE CORRECTAMENTE EL PICO TIENE QUE SER"<"-->				       
 						<td><%= link_to 'Iniciar viaje', iniciarviaje_vistachofer_path(:id => viaje.id) ,class: "btn btn-success btn-sm" %></td>
 				    <%else%>
 				     	<%if viaje.estado== "en curso"%>

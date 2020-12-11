@@ -26,7 +26,7 @@
 		        	<td><%= @ruta.find(viaje.ruta).mostrar_atributos %></td>
 		        	<td><%= @combi.find(viaje.combi).mostrar_atributos %></td>
 		        	<td><%= @usuario.mostrar_atributos %></td>
-		        	<td><%= link_to 'Reportar objeto perdido', historialviajes_vistachofer_path(:id=> viaje.id), class: "btn btn-danger btn-sm" %></td>
+		        	<td><%= link_to 'Reportar objeto perdido', historialviajes_vistachofer_path(:id=> viaje.id), class: "btn btn-info btn-sm" %></td>
 		        	</tr>
 		    <%end%>
 		<%end%>	
