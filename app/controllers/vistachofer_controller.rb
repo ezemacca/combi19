@@ -43,7 +43,10 @@ class VistachoferController < ApplicationController
    					p.presenciapasajero = "ausente"
    				else
    					if p.testeo.sospechado 
-   						p.presenciapasajero = "sospechado"	
+   						p.presenciapasajero = "sospechado"
+   						u = Usuario.find(p.usuario_id) 
+   						u.baneo = Time.now.to_date + 15
+   						u.save	
    					else
    						p.presenciapasajero = "apto"
    					end

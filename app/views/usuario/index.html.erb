@@ -1,4 +1,7 @@
 <h1>Hola <%=current_usuario.nombre %>!</h1>
+<% if current_usuario.baneo > Time.now.to_date %>
+    <h3 style="color:orange">Estas sospechado de covid-19 hasta el: <%= current_usuario.baneo %></h3>
+<% end %>
 <br>
 Querés ver los viajes que están en curso para subirte a uno? -->          
 <%= link_to "Compra Exprés",  viajesencurso_expres_path, class:'btn'%>
@@ -48,13 +51,21 @@ Querés ver los viajes que están en curso para subirte a uno? -->
     				<li>Precio: $<%= v.precio %></li>
     				<li>Lugares disponibles: <%= v.asientos %></li>
     				<% if v.pasajes.find_by(usuario_id: current_usuario.id).nil? %>
-    					<% if v.asientos > 0 %>
+    					<% if v.asientos > 0 && current_usuario.baneo.nil? %>
     						<%= link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %>
     					<% else %>
-    						<strong style="color:red">Pasajes agotados!!!</strong>
+                            <% if v.asientos == 0 %>
+    						  <strong style="color:red">Pasajes agotados!!!</strong>
+                            <% else %>
+                                <% if current_usuario.baneo > v.fecha.to_date %>
+                                    <strong style="color:red">Tenes covid maestro!</strong>
+                                <% else %>
+                                    <%=  link_to "Comprar pasaje", comprarpasaje_usuario_path(:id => v) %>
+                                <% end %>
+                            <% end %>
     					<% end %>
     				<% else %>
-    				<strong style="color:red">Ya tenes un pasaje para este viaje</strong>
+    				    <strong style="color:red">Ya tenes un pasaje para este viaje</strong>
     				<% end %> 
     			</ul>
   			</div>
